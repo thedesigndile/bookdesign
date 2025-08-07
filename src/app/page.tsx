@@ -123,6 +123,50 @@ export default function Home() {
       </header>
       
       <main className="flex-1 pt-16">
+        <section id="hero" className="relative w-full min-h-[calc(100vh-4rem)] flex items-center justify-center">
+          <AnimatedHeroBackground />
+          <div className="container z-20 px-4 md:px-6">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div 
+                className="flex flex-col gap-4 text-center md:text-left"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-primary">
+                  Your Vision, Our Design Expertise
+                </h1>
+                <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                  Premium Cookbook & eBook Design for Global Authors
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
+                  <Link href="/portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
+                    View Portfolio
+                  </Link>
+                  <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
+                    Start Your Project
+                  </Link>
+                </div>
+              </motion.div>
+              <motion.div 
+                className="relative"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <Image
+                  src="https://placehold.co/600x400.png"
+                  alt="Elegant book cover designs"
+                  width={600}
+                  height={400}
+                  className="rounded-xl shadow-2xl shadow-primary/20 object-cover w-full h-auto"
+                  data-ai-hint="elegant book"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-black/20 border-y border-border/20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
