@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from 'framer-motion';
 
 function Logo(props: SVGProps<SVGSVGElement>) {
   return (
@@ -121,8 +122,7 @@ export default function Home() {
           background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--primary) / 0.1), transparent 80%)`,
         }}
       />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_20%,hsl(var(--secondary)/0.3)_0%,transparent_30%),radial-gradient(circle_at_80%_90%,hsl(var(--accent)/0.1)_0%,transparent_30%)]" />
-
+      
       <header className="px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 backdrop-blur-sm border-b border-white/5">
         <Link href="#" className="flex items-center justify-center gap-2" prefetch={false}>
           <Logo className="h-6 w-6" />
@@ -142,20 +142,68 @@ export default function Home() {
       </header>
       
       <main className="flex-1">
-        <section className="w-full h-[100dvh] flex items-center justify-center text-center relative">
-          <div className="container px-4 md:px-6 z-20">
-            <div className="space-y-4">
-              <h1 className="font-headline text-5xl font-bold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-br from-primary via-foreground to-accent">
-                Luminary Folio
-              </h1>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                A visionary digital experience crafted for a premier book design agency. We don't just design books; we craft narratives of design excellence.
-              </p>
-               <div className="pt-4">
-                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 active:scale-95">
-                    <Link href="#projects">Explore Our Work</Link>
-                 </Button>
-               </div>
+      <section className="w-full h-screen min-h-[700px] flex items-center justify-center relative overflow-hidden">
+          <motion.div
+            className="absolute inset-0 z-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            <div className="absolute inset-0 bg-background" />
+            <div
+              className="absolute inset-0 bg-repeat"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='hsl(var(--primary))' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                animation: "pattern-scroll 20s linear infinite",
+              }}
+            />
+             <style jsx>{`
+                @keyframes pattern-scroll {
+                  0% { background-position: 0 0; }
+                  100% { background-position: 0 -100%; }
+                }
+              `}</style>
+          </motion.div>
+          <div className="container px-4 md:px-6 z-10">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div 
+                className="flex flex-col items-center md:items-start text-center md:text-left"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <div className="space-y-4">
+                  <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
+                    Your Vision, Our Design Expertise
+                  </h1>
+                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
+                    Premium Cookbook & eBook Design for Global Authors
+                  </p>
+                   <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
+                     <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 active:scale-95">
+                        <Link href="#projects">View Portfolio</Link>
+                     </Button>
+                      <Button asChild size="lg" variant="outline" className="transition-all duration-300 active:scale-95">
+                        <Link href="#contact">Start Your Project</Link>
+                     </Button>
+                   </div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <Image
+                  src="https://placehold.co/600x400.png"
+                  alt="Book design elements"
+                  width={600}
+                  height={400}
+                  className="rounded-lg object-cover shadow-2xl"
+                  data-ai-hint="book design author"
+                />
+              </motion.div>
             </div>
           </div>
         </section>
