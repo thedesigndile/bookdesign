@@ -133,16 +133,16 @@ export default function Home() {
             <span className="text-lg font-bold">Luminary Folio</span>
           </Link>
           <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-            <Link href="#hero" className="text-sm font-medium hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#hero" className="text-sm font-medium hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
               Home
             </Link>
-            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
               Portfolio
             </Link>
-            <Link href="#services" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#services" className="text-sm font-medium text-muted-foreground hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
               Services
             </Link>
-            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
               Contact
             </Link>
           </nav>
