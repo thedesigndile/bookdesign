@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, Star, ArrowRight, Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from 'framer-motion';
+import { motion, useInView, useAnimation, animate } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
 import React from "react";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
@@ -154,65 +154,65 @@ const trustedByLogos = [
 const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </motion.svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
         ),
         title: "Content Creators",
         description: "Transform your blogs, newsletters, and ideas into stunning lead magnets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </motion.svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
         ),
         title: "Coaches & Educators",
         description: "Build authority with professionally designed workbooks and learning materials.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </motion.svg>
+             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
         ),
         title: "Video & Podcast Hosts",
         description: "Repurpose your audio and video content into valuable ebooks and summaries.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                 <motion.path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </motion.svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                 <path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
         ),
         title: "Marketers & Agencies",
         description: "Impress your clients with beautifully branded case studies and whitepapers.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </motion.svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
         ),
         title: "Small Businesses",
         description: "Grow your email list by transforming existing content into professional assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <motion.path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </motion.svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
         ),
         title: "Course Creators",
         description: "Enhance your courses with companion guides and downloadable resources.",
@@ -246,6 +246,27 @@ const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
   projectDetails: z.string().min(10, { message: "Please provide some details about your project." }),
 });
+
+function Counter({ to, className }: { to: number; className?: string }) {
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView && ref.current) {
+      const controls = animate(0, to, {
+        duration: 2,
+        onUpdate(value) {
+          if (ref.current) {
+            ref.current.textContent = Math.round(value).toString();
+          }
+        },
+      });
+      return () => controls.stop();
+    }
+  }, [isInView, to]);
+
+  return <span ref={ref} className={className}>0</span>;
+}
 
 
 export default function Home() {
@@ -437,12 +458,9 @@ export default function Home() {
                   <Card className="relative overflow-hidden group border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 transform-style-3d hover:-translate-y-2 h-full">
                     <div className="absolute inset-[-200%] -z-10 bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent))_50%,hsl(var(--primary))_100%)] transition-transform duration-1000 group-hover:rotate-[-90deg]"></div>
                     <CardContent className="p-6 flex flex-col items-center text-center gap-4 bg-card/95 backdrop-blur-sm h-full">
-                      <motion.div 
-                        className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all"
-                        whileHover={{ scale: 1.1, y: -5, transition: { type: 'spring', stiffness: 300 } }}
-                      >
+                      <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
                         <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
-                      </motion.div>
+                      </div>
                       <h3 className="text-xl font-bold">{service.title}</h3>
                       <p className="text-sm text-muted-foreground">{service.description}</p>
                     </CardContent>
@@ -472,12 +490,9 @@ export default function Home() {
                 >
                   <Card className="h-full group relative overflow-hidden transform-style-3d transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50">
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                       <motion.div 
-                        className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all"
-                         whileHover={{ scale: 1.1, y: -5, transition: { type: 'spring', stiffness: 300 } }}
-                       >
+                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
                         <item.icon className="h-6 w-6 text-primary" />
-                      </motion.div>
+                      </div>
                       <CardTitle>{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -495,7 +510,54 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
+        <section id="stats" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <motion.div 
+                className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Trophy className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-5xl font-bold tracking-tighter">
+                  <Counter to={150} />+
+                </h3>
+                <p className="text-lg text-muted-foreground mt-2">Projects Completed</p>
+              </motion.div>
+              <motion.div 
+                className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Users className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-5xl font-bold tracking-tighter">
+                  <Counter to={95} />+
+                </h3>
+                <p className="text-lg text-muted-foreground mt-2">Happy Clients</p>
+              </motion.div>
+               <motion.div 
+                className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Star className="h-12 w-12 text-primary mb-4" />
+                 <h3 className="text-5xl font-bold tracking-tighter">
+                   <Counter to={8} />+
+                </h3>
+                <p className="text-lg text-muted-foreground mt-2">Years of Experience</p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Begin Your Narrative</h2>
