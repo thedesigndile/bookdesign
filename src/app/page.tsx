@@ -117,6 +117,9 @@ export default function Home() {
   return (
     <div
       className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground"
+      style={{
+        fontFamily: "'Inter', sans-serif"
+      }}
     >
       <div 
         className="pointer-events-none fixed inset-0 z-10 transition-all duration-300" 
@@ -131,63 +134,50 @@ export default function Home() {
           <span className="text-lg font-bold">Luminary Folio</span>
         </Link>
         <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-          <Link href="#hero" className="text-sm font-medium hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#hero" className="text-sm font-medium hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Home
           </Link>
-          <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Portfolio
           </Link>
-          <Link href="#services" className="text-sm font-medium text-muted-foreground hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#services" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Services
           </Link>
-          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Contact
           </Link>
         </nav>
       </header>
       
       <main className="flex-1 pt-16">
-        <section id="hero" className="relative w-full min-h-[calc(100vh-4rem)] flex items-center justify-center">
-          <AnimatedHeroBackground />
+        <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center text-center">
+          <Image
+            src="https://placehold.co/1920x1080.png"
+            alt="Background of book design mockups"
+            fill
+            className="object-cover -z-10"
+            data-ai-hint="book design mockup"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent -z-10" />
           <div className="container z-20 px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div 
-                className="flex flex-col gap-4 text-center md:text-left"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-primary">
-                  Your Vision, Our Design Expertise
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Premium Cookbook & eBook Design for Global Authors
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
-                  <Link href="#portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
-                    View Portfolio
-                  </Link>
-                  <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
-                    Start Your Project
-                  </Link>
-                </div>
-              </motion.div>
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Image
-                  src="https://placehold.co/600x400.png"
-                  alt="Elegant book cover designs"
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-2xl shadow-primary/20 object-cover w-full h-auto"
-                  data-ai-hint="elegant book"
-                />
-              </motion.div>
-            </div>
+            <motion.div
+              className="flex flex-col gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl" style={{ fontFamily: "'Inter', sans-serif" }}>
+                Crafting Stories, Visually
+              </h1>
+              <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
+                We are a premium design agency dedicated to creating stunning, memorable book covers and interiors that capture the essence of your narrative.
+              </p>
+              <div className="flex justify-center mt-4">
+                <Link href="#portfolio" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                  Explore Our Work
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -195,7 +185,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Our Masterpieces</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl" style={{ fontFamily: "'Inter', sans-serif" }}>Our Masterpieces</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Explore a gallery of our finest work, where every cover is a canvas and every page tells a story of elegance and imagination.
                 </p>
@@ -233,7 +223,7 @@ export default function Home() {
         <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Our Design Ecosystem</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl" style={{ fontFamily: "'Inter', sans-serif" }}>Our Design Ecosystem</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 From concept to completion, our services are interconnected to bring your story to life with elegance and precision.
               </p>
@@ -258,7 +248,7 @@ export default function Home() {
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-primary">Begin Your Narrative</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight" style={{ fontFamily: "'Inter', sans-serif" }}>Begin Your Narrative</h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Ready to turn your manuscript into a masterpiece? Fill out the form below and let's discuss how we can bring your vision to life.
               </p>
