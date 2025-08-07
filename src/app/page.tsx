@@ -636,10 +636,10 @@ export default function Home() {
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index}`} className="border-b border-border/50">
-                    <AccordionTrigger className="py-6 text-lg text-left hover:no-underline hover:text-primary transition-colors">
+                    <AccordionTrigger className="py-6 text-lg font-sans text-left hover:no-underline hover:text-primary transition-colors">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-base text-muted-foreground">
+                    <AccordionContent className="text-base font-sans text-muted-foreground">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -774,3 +774,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
