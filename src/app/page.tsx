@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck, Wrench, FileText, Printer, CaseLower } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -99,7 +99,7 @@ const trustedByLogos = [
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
         <text x="0" y="30" fontFamily="serif" fontSize="32" fontWeight="600" fill="currentColor" fontStyle="italic">
-          Inke<tspan fill="hsl(var(--primary))">rr</tspan>a
+          Inke<tspan fill="hsl(var(--primary))">rr</tspan>
         </text>
       </svg>
     )
@@ -307,12 +307,12 @@ const certificationFeatures = [
 ];
 
 const dreamBookFeatures = [
-  { icon: Wand2, text: "AI Cover Designer" },
-  { icon: MoveUpRight, text: "Drag-and-Drop Editor" },
-  { icon: LayoutTemplate, text: "Professional Templates" },
-  { icon: ImagePlus, text: "Royalty-Free Images" },
-  { icon: BookOpenCheck, text: "Flipbook Exports" },
-  { icon: Type, text: "Premium Fonts" },
+  { icon: LayoutTemplate, text: "Book Layout Design" },
+  { icon: Wrench, text: "Manual Book Formatting" },
+  { icon: Palette, text: "Expert Interior Design" },
+  { icon: FileText, text: "Custom Page Structuring" },
+  { icon: Printer, text: "Print-Ready Book Setup" },
+  { icon: CaseLower, text: "Precision Typesetting" },
 ];
 
 
@@ -930,4 +930,5 @@ export default function Home() {
   );
 }
 
+    
     
