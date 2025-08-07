@@ -122,53 +122,7 @@ export default function Home() {
         </nav>
       </header>
       
-      <main className="flex-1">
-        <section className="w-full h-screen min-h-[700px] flex items-center justify-center relative overflow-hidden">
-          <AnimatedHeroBackground />
-          <div className="container px-4 md:px-6 z-10">
-            <div className="grid md:grid-cols-2 gap-10 items-center">
-              <motion.div 
-                className="flex flex-col items-center md:items-start text-center md:text-left"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <div className="space-y-4">
-                  <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
-                    Your Vision, Our Design Expertise
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                    Premium Cookbook & eBook Design for Global Authors
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
-                    <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 active:scale-95">
-                      <Link href="/portfolio">View Portfolio</Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="transition-all duration-300 active:scale-95">
-                      <Link href="#contact">Start Your Project</Link>
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <Image 
-                  src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8Ym9va3xlbnwwfHx8fDE3NTQ1NjM0NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Book design examples"
-                  width={600}
-                  height={400}
-                  className="rounded-lg object-cover shadow-2xl"
-                  data-ai-hint="book design"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
+      <main className="flex-1 pt-16">
         <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-black/20 border-y border-border/20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
