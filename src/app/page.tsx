@@ -421,7 +421,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section className="w-full py-20 bg-gradient-to-b from-background to-secondary/10">
+        <section className="w-full py-16 bg-gradient-to-b from-background to-secondary/10">
           <div className="container mx-auto text-center">
              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Featured On & Trusted By</h2>
             <div className="relative mt-12 overflow-hidden">
@@ -440,7 +440,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="portfolio" className="w-full py-16 md:py-24">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -480,7 +480,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
+        <section id="services" className="w-full py-16 md:py-24 bg-secondary/20 border-y border-border/20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Design Ecosystem</h2>
@@ -513,7 +513,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="who-we-help" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="who-we-help" className="w-full py-16 md:py-24">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Who We Help</h2>
@@ -552,7 +552,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20 relative">
+        <section id="stats" className="w-full py-16 md:py-24 bg-secondary/20 border-y border-border/20 relative">
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-94974124a224?q=80&w=2940&auto=format&fit=crop')", opacity: 0.2 }}
@@ -616,7 +616,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="faq" className="w-full py-16 md:py-24">
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Frequently Asked Questions</h2>
@@ -647,7 +647,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="contact" className="w-full py-16 md:py-24">
           <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Begin Your Narrative</h2>
@@ -772,3 +772,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
