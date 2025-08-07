@@ -178,28 +178,28 @@ export default function Home() {
                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                     >
                         <Image
-                            src="https://placehold.co/800x600.png"
+                            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop"
                             alt="Book Design Showcase"
                             width={800}
                             height={600}
                             className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl mix-blend-luminosity opacity-80"
-                            data-ai-hint="abstract design"
+                            data-ai-hint="books library"
                         />
                         <Image
-                            src="https://placehold.co/600x800.png"
+                            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2940&auto=format&fit=crop"
                             alt="Book Cover Example"
                             width={600}
                             height={800}
                             className="absolute -bottom-10 -right-10 w-2/3 h-auto object-contain rounded-lg shadow-2xl [transform:rotate(10deg)_translateZ(40px)]"
-                            data-ai-hint="book cover"
+                            data-ai-hint="reading book"
                         />
                          <Image
-                            src="https://placehold.co/600x800.png"
+                            src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2940&auto=format&fit=crop"
                             alt="Book Cover Example 2"
                             width={600}
                             height={800}
                             className="absolute -top-10 -left-10 w-1/2 h-auto object-contain rounded-lg shadow-2xl [transform:rotate(-15deg)_translateZ(20px)]"
-                            data-ai-hint="book cover design"
+                            data-ai-hint="stack books"
                         />
                     </motion.div>
                 </div>
@@ -355,5 +355,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
