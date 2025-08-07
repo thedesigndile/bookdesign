@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        headline: ['"Playfair Display"', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        headline: ['"Clash Display"', 'sans-serif'],
+        body: ['"General Sans"', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
