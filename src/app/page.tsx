@@ -132,16 +132,16 @@ export default function Home() {
             <span className="text-lg font-bold">Luminary Folio</span>
           </Link>
           <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-            <Link href="#hero" className="text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
+            <Link href="#hero" className="text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
               Home
             </Link>
-            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
+            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
               Portfolio
             </Link>
-            <Link href="#services" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
+            <Link href="#services" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
               Services
             </Link>
-            <Link href="#contact" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
+            <Link href="#contact" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
               Contact
             </Link>
           </nav>
