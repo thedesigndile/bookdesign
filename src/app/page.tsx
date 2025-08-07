@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { motion, useInView } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
+import { TrustedBy } from "@/components/TrustedBy";
 import React from "react";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
@@ -126,7 +127,7 @@ export default function Home() {
       />
       
       <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
-        <div className="container flex h-16 items-center px-4 md:px-6">
+        <div className="container mx-auto flex h-16 items-center px-4 md:px-6">
           <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
             <Logo className="h-6 w-6" />
             <span className="text-lg font-bold">Luminary Folio</span>
@@ -151,7 +152,7 @@ export default function Home() {
       <main className="flex-1 pt-16">
         <section id="hero" className="relative w-full h-screen flex items-center">
             <AnimatedHeroBackground />
-            <div className="container z-20 px-4 md:px-6">
+            <div className="container z-20 mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <motion.div
                         className="flex flex-col gap-6 text-center md:text-left"
@@ -205,9 +206,11 @@ export default function Home() {
                 </div>
             </div>
         </section>
+        
+        <TrustedBy />
 
         <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Masterpieces</h2>
@@ -246,7 +249,7 @@ export default function Home() {
         </section>
 
         <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Design Ecosystem</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -271,7 +274,7 @@ export default function Home() {
         </section>
 
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container grid items-center justify-center gap-8 px-4 text-center md:px-6">
+          <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Begin Your Narrative</h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -340,7 +343,7 @@ export default function Home() {
       </main>
 
       <footer className="w-full shrink-0 border-t border-border/20 bg-secondary/20">
-        <div className="container flex flex-col gap-2 sm:flex-row py-6 items-center px-4 md:px-6">
+        <div className="container mx-auto flex flex-col gap-2 sm:flex-row py-6 items-center px-4 md:px-6">
           <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
             <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
