@@ -51,17 +51,17 @@ const allLogos = [
 
 export const TrustedBy = () => {
   return (
-    <section className="w-full py-12 md:py-20 bg-secondary/20">
+    <section className="w-full py-16 md:py-24 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-muted-foreground">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-4xl text-muted-foreground">
             Featured On & Trusted By
           </h2>
         </div>
-        <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 md:grid-cols-5 items-center justify-center">
           {allLogos.map((logo) => (
             <div key={logo.name} className="flex items-center justify-center">
-              <div className="text-muted-foreground transition-colors duration-300 hover:text-foreground filter grayscale hover:grayscale-0">
+              <div className="text-muted-foreground opacity-70 transition-opacity duration-300 hover:opacity-100 filter grayscale hover:grayscale-0">
                 {logo.component}
               </div>
             </div>
