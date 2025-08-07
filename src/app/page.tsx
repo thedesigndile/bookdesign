@@ -554,9 +554,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="stats" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20 relative">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-94974124a224?q=80&w=2940&auto=format&fit=crop')", opacity: 0.1 }}
+            data-ai-hint="abstract pattern"
+          ></div>
+          <div className="container mx-auto px-4 md:px-6 relative">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <motion.div 
                 className="flex flex-col items-center text-center"
                 initial={{ opacity: 0, y: 50 }}
@@ -564,11 +569,11 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
               >
-                <Trophy className="h-12 w-12 text-primary mb-4" />
+                <Users className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-5xl font-bold tracking-tighter">
-                  <Counter to={150} />+
+                  <Counter to={95} />+
                 </h3>
-                <p className="text-lg text-muted-foreground mt-2">Projects Completed</p>
+                <p className="text-lg text-muted-foreground mt-2">Happy Clients</p>
               </motion.div>
               <motion.div 
                 className="flex flex-col items-center text-center"
@@ -577,11 +582,11 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true, margin: "-100px" }}
               >
-                <Users className="h-12 w-12 text-primary mb-4" />
+                <Book className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-5xl font-bold tracking-tighter">
-                  <Counter to={95} />+
+                  <Counter to={150} />+
                 </h3>
-                <p className="text-lg text-muted-foreground mt-2">Happy Clients</p>
+                <p className="text-lg text-muted-foreground mt-2">Projects Completed</p>
               </motion.div>
                <motion.div 
                 className="flex flex-col items-center text-center"
@@ -595,6 +600,19 @@ export default function Home() {
                    <Counter to={8} />+
                 </h3>
                 <p className="text-lg text-muted-foreground mt-2">Years of Experience</p>
+              </motion.div>
+              <motion.div 
+                className="flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Trophy className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-5xl font-bold tracking-tighter">
+                  <Counter to={25} />+
+                </h3>
+                <p className="text-lg text-muted-foreground mt-2">Awards Won</p>
               </motion.div>
             </div>
           </div>
