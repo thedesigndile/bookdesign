@@ -147,35 +147,61 @@ export default function Home() {
       </header>
       
       <main className="flex-1 pt-16">
-        <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center text-center">
-          <Image
-            src="https://placehold.co/1920x1080.png"
-            alt="Background of book design mockups"
-            fill
-            className="object-cover -z-10"
-            data-ai-hint="book design mockup"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent -z-10" />
-          <div className="container z-20 px-4 md:px-6">
-            <motion.div
-              className="flex flex-col gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
-                Crafting Stories, Visually
-              </h1>
-              <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
-                We are a premium design agency dedicated to creating stunning, memorable book covers and interiors that capture the essence of your narrative.
-              </p>
-              <div className="flex justify-center mt-4">
-                <Link href="#portfolio" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
-                  Explore Our Work
-                </Link>
-              </div>
-            </motion.div>
-          </div>
+        <section id="hero" className="relative w-full h-screen flex items-center">
+            <AnimatedHeroBackground />
+            <div className="container z-20 px-4 md:px-6">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <motion.div
+                        className="flex flex-col gap-6 text-center md:text-left"
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
+                            Crafting Stories, Visually
+                        </h1>
+                        <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                            We are a premium design agency dedicated to creating stunning, memorable book covers and interiors that capture the essence of your narrative.
+                        </p>
+                        <div className="flex justify-center md:justify-start mt-4">
+                            <Link href="#portfolio" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                                Explore Our Work
+                            </Link>
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        className="relative h-[50vh] md:h-[60vh] transform-style-3d"
+                        initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
+                        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                        transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                    >
+                        <Image
+                            src="https://placehold.co/800x600.png"
+                            alt="Book Design Showcase"
+                            width={800}
+                            height={600}
+                            className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl mix-blend-luminosity opacity-80"
+                            data-ai-hint="abstract design"
+                        />
+                        <Image
+                            src="https://placehold.co/600x800.png"
+                            alt="Book Cover Example"
+                            width={600}
+                            height={800}
+                            className="absolute -bottom-10 -right-10 w-2/3 h-auto object-contain rounded-lg shadow-2xl [transform:rotate(10deg)_translateZ(40px)]"
+                            data-ai-hint="book cover"
+                        />
+                         <Image
+                            src="https://placehold.co/600x800.png"
+                            alt="Book Cover Example 2"
+                            width={600}
+                            height={800}
+                            className="absolute -top-10 -left-10 w-1/2 h-auto object-contain rounded-lg shadow-2xl [transform:rotate(-15deg)_translateZ(20px)]"
+                            data-ai-hint="book cover design"
+                        />
+                    </motion.div>
+                </div>
+            </div>
         </section>
 
         <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
