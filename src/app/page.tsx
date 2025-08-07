@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, Star, ArrowRight } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, Star, ArrowRight, Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -21,13 +21,30 @@ import React from "react";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinejoin="round"/>
-      <path d="M12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2"/>
-      <path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2"/>
-      <path d="M12 12L2 7" stroke="hsl(var(--primary))" strokeWidth="2"/>
-      <path d="M7 4.5L17 9.5" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
+    <motion.svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <motion.path
+        d="M12 2L2 7V17L12 22L22 17V7L12 2Z"
+        stroke="hsl(var(--primary))"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <motion.path d="M12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" />
+      <motion.path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" />
+      <motion.path d="M12 12L2 7" stroke="hsl(var(--primary))" strokeWidth="2" />
+      <motion.path
+        d="M7 4.5L17 9.5"
+        stroke="hsl(var(--primary))"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </motion.svg>
   );
 }
 
@@ -137,9 +154,9 @@ const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.2 }}/>
-                <motion.path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
-                <motion.path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.4 }}/>
+                <motion.path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
         ),
         title: "Content Creators",
@@ -148,8 +165,8 @@ const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
-                <motion.path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.2 }}/>
+                <motion.path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
         ),
         title: "Coaches & Educators",
@@ -158,8 +175,8 @@ const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
              <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
-                <motion.path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}/>
+                <motion.path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
         ),
         title: "Video & Podcast Hosts",
@@ -168,11 +185,11 @@ const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}/>
-                <motion.path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 1.0 }}/>
-                <motion.path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 1.2 }}/>
-                <motion.path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
-                 <motion.path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 1.5 }}/>
+                <motion.path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                 <motion.path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
         ),
         title: "Marketers & Agencies",
@@ -181,8 +198,8 @@ const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
-                <motion.path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: 5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}/>
+                <motion.path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
         ),
         title: "Small Businesses",
@@ -191,9 +208,9 @@ const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <motion.path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }}/>
-                <motion.path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}/>
-                <motion.path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.6 }}/>
+                <motion.path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </motion.svg>
         ),
         title: "Course Creators",
@@ -422,7 +439,7 @@ export default function Home() {
                     <CardContent className="p-6 flex flex-col items-center text-center gap-4 bg-card/95 backdrop-blur-sm h-full">
                       <motion.div 
                         className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all"
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.1, y: -5, transition: { type: 'spring', stiffness: 300 } }}
                       >
                         <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
                       </motion.div>
@@ -457,14 +474,14 @@ export default function Home() {
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
                        <motion.div 
                         className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all"
-                        whileHover={{ scale: 1.1 }}
+                         whileHover={{ scale: 1.1, y: -5, transition: { type: 'spring', stiffness: 300 } }}
                        >
                         <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-125" />
                       </motion.div>
                       <CardTitle>{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground md:text-base/relaxed">{item.description}</p>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -547,47 +564,65 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="w-full shrink-0 border-t border-border/20 bg-secondary/20 text-foreground">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-4 md:px-6">
-          <div className="flex flex-col gap-4 items-center md:items-start">
-            <Link href="/" className="flex items-center gap-2" prefetch={false}>
-              <Logo className="h-8 w-8" />
-              <span className="text-xl font-bold">Luminary Folio</span>
-            </Link>
-            <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
-              A sensorial voyage through the future of book design, where every page is a masterpiece.
-            </p>
+      <footer className="w-full bg-background border-t border-border/20 text-foreground">
+        <div className="container mx-auto py-12 px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-4 flex flex-col gap-4 items-center md:items-start">
+               <Link href="/" className="flex items-center gap-2" prefetch={false}>
+                <Logo className="h-8 w-8" />
+                <span className="text-xl font-bold">Luminary Folio</span>
+              </Link>
+              <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
+                A sensorial voyage through the future of book design, where every page is a masterpiece.
+              </p>
+               <div className="flex space-x-4 mt-2">
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Twitter className="h-5 w-5" /></Link>
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Linkedin className="h-5 w-5" /></Link>
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Instagram className="h-5 w-5" /></Link>
+                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Facebook className="h-5 w-5" /></Link>
+              </div>
+            </div>
+
+            <div className="md:col-span-2">
+              <h4 className="font-semibold text-lg mb-4">Explore</h4>
+              <div className="flex flex-col gap-3">
+                <Link href="#hero" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Home</Link>
+                <Link href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
+                <Link href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Services</Link>
+                <Link href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
+              </div>
+            </div>
+
+             <div className="md:col-span-2">
+              <h4 className="font-semibold text-lg mb-4">Company</h4>
+              <div className="flex flex-col gap-3">
+                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
+                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Blog</Link>
+                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Careers</Link>
+              </div>
+            </div>
+
+            <div className="md:col-span-4">
+              <h4 className="font-semibold text-lg mb-4">Stay Updated</h4>
+              <p className="text-sm text-muted-foreground mb-4">Subscribe to our newsletter for the latest design trends and insights.</p>
+              <form className="flex gap-2">
+                <Input type="email" placeholder="Enter your email" className="flex-grow" />
+                <Button type="submit" variant="outline">Subscribe</Button>
+              </form>
+            </div>
+
           </div>
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <h4 className="font-semibold text-lg mb-2">Quick Links</h4>
-            <Link href="#hero" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
-              Home
-            </Link>
-            <Link href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
-              Portfolio
-            </Link>
-            <Link href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
-              Services
-            </Link>
-            <Link href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
-              Contact
-            </Link>
+          <div className="border-t border-border/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
+            <div className="flex gap-4 mt-4 md:mt-0">
+               <Link href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Privacy Policy</Link>
+               <Link href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Terms of Service</Link>
+            </div>
           </div>
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <h4 className="font-semibold text-lg mb-2">Legal</h4>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-        <div className="border-t border-border/20 py-6">
-            <p className="text-center text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
         </div>
       </footer>
     </div>
   );
 }
+
 
