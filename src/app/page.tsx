@@ -143,20 +143,17 @@ const whoWeHelp = [
             </motion.svg>
         ),
         title: "Content Creators",
-        description: "Convert blogs, newsletters, and notes into stunning lead magnets that capture attention.",
+        description: "We turn your existing content into beautiful lead magnets and digital products.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
                 <motion.path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
                 <motion.path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.2 }}/>
-                <motion.path d="M24 4V6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{y: 5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{repeat: Infinity, repeatType: "mirror", duration: 0.5, delay: 1.5 }}/>
-                <motion.path d="M38.8995 9.10051L37.4853 10.5147" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{y: 5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{repeat: Infinity, repeatType: "mirror", duration: 0.5, delay: 1.6 }}/>
-                <motion.path d="M44 24H42" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{x: 5, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{repeat: Infinity, repeatType: "mirror", duration: 0.5, delay: 1.7 }}/>
             </motion.svg>
         ),
         title: "Coaches & Educators",
-        description: "Build brand authority and engage learners with professionally designed educational assets.",
+        description: "Establish authority with professionally designed workbooks and teaching materials.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -166,7 +163,7 @@ const whoWeHelp = [
             </motion.svg>
         ),
         title: "Video & Podcast Hosts",
-        description: "Turn your valuable audio and video content into ebooks, transcripts, and summaries.",
+        description: "Repurpose your audio and video content into valuable ebooks and summaries.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -179,20 +176,17 @@ const whoWeHelp = [
             </motion.svg>
         ),
         title: "Marketers & Agencies",
-        description: "Save time and impress clients with beautifully branded ebooks, case studies, and whitepapers.",
+        description: "Impress your clients with beautifully branded case studies and whitepapers.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
                 <motion.path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
                 <motion.path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: 5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}/>
-                <motion.path d="M24 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, delay: 1.2, repeat: Infinity, repeatType: 'mirror' }}/>
-                <motion.path d="M16 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, delay: 1.3, repeat: Infinity, repeatType: 'mirror' }}/>
-                <motion.path d="M32 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, delay: 1.4, repeat: Infinity, repeatType: 'mirror' }}/>
             </motion.svg>
         ),
         title: "Small Businesses",
-        description: "Grow your subscriber list by repurposing existing content into powerful, professional assets.",
+        description: "Grow your email list by transforming existing content into professional assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -203,7 +197,7 @@ const whoWeHelp = [
             </motion.svg>
         ),
         title: "Course Creators",
-        description: "Recycle your valuable lessons into companion guides, downloadable PDFs, or interactive flipbooks.",
+        description: "Enhance your courses with companion guides and downloadable resources.",
     },
 ];
 
@@ -428,8 +422,7 @@ export default function Home() {
                     <CardContent className="p-6 flex flex-col items-center text-center gap-4 bg-card/95 backdrop-blur-sm h-full">
                       <motion.div 
                         className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all"
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        whileHover={{ scale: 1.1 }}
                       >
                         <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
                       </motion.div>
@@ -464,15 +457,14 @@ export default function Home() {
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
                        <motion.div 
                         className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all"
-                        animate={{ y: [0, -4, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                        whileHover={{ scale: 1.1 }}
                        >
                         <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-125" />
                       </motion.div>
                       <CardTitle>{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">{item.description}</p>
+                      <p className="text-muted-foreground md:text-base/relaxed">{item.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -555,19 +547,47 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="w-full shrink-0 border-t border-border/20 bg-secondary/20">
-        <div className="container mx-auto flex flex-col gap-2 sm:flex-row py-6 items-center px-4 md:px-6">
-          <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
-          <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-            <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
-              Privacy
+      <footer className="w-full shrink-0 border-t border-border/20 bg-secondary/20 text-foreground">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-4 md:px-6">
+          <div className="flex flex-col gap-4 items-center md:items-start">
+            <Link href="/" className="flex items-center gap-2" prefetch={false}>
+              <Logo className="h-8 w-8" />
+              <span className="text-xl font-bold">Luminary Folio</span>
             </Link>
-            <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
-              Terms
+            <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
+              A sensorial voyage through the future of book design, where every page is a masterpiece.
+            </p>
+          </div>
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <h4 className="font-semibold text-lg mb-2">Quick Links</h4>
+            <Link href="#hero" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              Home
             </Link>
-          </nav>
+            <Link href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              Portfolio
+            </Link>
+            <Link href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              Services
+            </Link>
+            <Link href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              Contact
+            </Link>
+          </div>
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <h4 className="font-semibold text-lg mb-2">Legal</h4>
+            <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              Privacy Policy
+            </Link>
+            <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+        <div className="border-t border-border/20 py-6">
+            <p className="text-center text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
         </div>
       </footer>
     </div>
   );
 }
+
