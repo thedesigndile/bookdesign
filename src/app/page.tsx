@@ -394,7 +394,7 @@ export default function Home() {
       </header>
       
       <main className="flex-1 pt-16">
-        <section id="hero" className="relative w-full h-screen flex items-center py-12 md:py-24">
+        <section id="hero" className="relative w-full h-screen flex items-center py-12">
             <AnimatedHeroBackground />
             <div className="container z-20 mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -451,7 +451,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section className="w-full py-12 md:py-16 bg-gradient-to-b from-background to-secondary/10">
+        <section className="w-full py-12 bg-gradient-to-b from-background to-secondary/10">
           <div className="container mx-auto text-center">
              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Featured On & Trusted By</h2>
             <div className="relative mt-12 overflow-hidden">
@@ -470,7 +470,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="w-full py-12 md:py-16">
+        <section id="portfolio" className="w-full py-12">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -510,7 +510,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="w-full py-12 md:py-16 bg-secondary/20 border-y border-border/20">
+        <section id="services" className="w-full py-12 bg-secondary/20 border-y border-border/20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Design Ecosystem</h2>
@@ -543,7 +543,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section id="certification" className="w-full py-12 md:py-16 bg-background">
+        <section id="certification" className="w-full py-12 bg-background">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <motion.div 
@@ -601,7 +601,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="dream-book-editor" className="w-full py-12 md:py-16 bg-white dark:bg-transparent overflow-hidden">
+        <section id="dream-book-editor" className="w-full py-12 bg-white dark:bg-transparent overflow-hidden">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div 
@@ -640,10 +640,10 @@ export default function Home() {
                 >
                   <Badge variant="secondary" className="mb-2">Used by 50K+ Self-Published Authors</Badge>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-gray-900 dark:text-white">
-                    Design Your Dream Book – No Experience Needed
+                    Transform Ideas into Stunning Books — Effortlessly
                   </h2>
                   <p className="mt-4 text-gray-600 dark:text-muted-foreground">
-                    Our intuitive platform empowers anyone to create professional-quality books, planners, and lead magnets effortlessly.
+                    Craft visually compelling, publication-ready books with smart formatting tools designed for authors, designers, and creators of all levels.
                   </p>
                 </motion.div>
                 <div className="grid grid-cols-2 gap-4 mt-4">
@@ -670,7 +670,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="who-we-help" className="w-full py-12 md:py-16">
+        <section id="who-we-help" className="w-full py-12">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Who We Help</h2>
@@ -709,7 +709,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="stats" className="w-full py-12 md:py-16 bg-secondary/20 border-y border-border/20 relative">
+        <section id="stats" className="w-full py-12 bg-secondary/20 border-y border-border/20 relative">
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-94974124a224?q=80&w=2940&auto=format&fit=crop')", opacity: 0.2 }}
@@ -773,7 +773,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="w-full py-12 md:py-16">
+        <section id="faq" className="w-full py-12">
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Frequently Asked Questions</h2>
@@ -804,7 +804,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="w-full py-12 md:py-16">
+        <section id="contact" className="w-full py-12">
           <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Begin Your Narrative</h2>
