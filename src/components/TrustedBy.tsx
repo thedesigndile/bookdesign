@@ -1,19 +1,11 @@
 import React from "react";
 
-const logos = [
-  { name: "Amazon KDP", path: "/logos/amazon-kdp.svg" },
-  { name: "Lulu", path: "/logos/lulu.svg" },
-  { name: "IngramSpark", path: "/logos/ingramspark.svg" },
-  { name: "Apple Books", path: "/logos/apple-books.svg" },
-  { name: "Barnes & Noble Press", path: "/logos/barnes-and-noble-press.svg" },
-];
-
 const AmazonKDPLogo = () => (
     <svg fill="currentColor" viewBox="0 0 140 40" className="h-10 w-auto">
       <path d="M25.9 20.3c0-3.9-2.3-6.9-6.9-6.9s-6.9 3-6.9 6.9c0 4.5 3.1 6.1 6.9 6.1s6.9-1.6 6.9-6.1zM19 24.3c-2.3 0-3.2-1.2-3.2-3.1 0-1.8.9-3.1 3.2-3.1s3.2 1.3 3.2 3.1c0 1.9-1 3.1-3.2 3.1zM34.3 13.9l-5.6 13h-3.4l5.6-13h3.4zM47.7 20.3c0-3.9-2.3-6.9-6.9-6.9s-6.9 3-6.9 6.9c0 4.5 3.1 6.1 6.9 6.1s6.9-1.6 6.9-6.1zm-6.9 4c-2.3 0-3.2-1.2-3.2-3.1 0-1.8.9-3.1 3.2-3.1s3.2 1.3 3.2 3.1c0 1.9-1 3.1-3.2 3.1zM61.4 13.9h3.3v13h-3.3v-13zM69.8 20.3c0-3.9-2.3-6.9-6.9-6.9s-6.9 3-6.9 6.9c0 4.5 3.1 6.1 6.9 6.1s6.9-1.6 6.9-6.1zm-6.9 4c-2.3 0-3.2-1.2-3.2-3.1 0-1.8.9-3.1 3.2-3.1s3.2 1.3 3.2 3.1c0 1.9-1 3.1-3.2 3.1zM82.8 13.9l-2.4 4.3c-1-1.3-2.6-2.1-4.2-2.1-3.5 0-5.6 2.3-5.6 5.4v5.4h3.3v-5.2c0-1.7.8-2.6 2.5-2.6s2.3.8 2.3 2.5v5.3h3.3v-13h-2.5zM91.8 19.4c-1.2-1-2.9-1.5-4.5-1.5-1.8 0-3.2.5-3.2 1.5 0 .9.8 1.3 2.8 1.9 3.2.8 4.9 1.9 4.9 4.4 0 2.6-2.2 4.2-5.1 4.2-3.4 0-5.4-1.8-5.5-4.1h3.3c.1 1.2 1.1 1.9 2.2 1.9s1.9-.6 1.9-1.5c0-.9-.7-1.3-2.9-1.9-3.1-.8-4.7-2-4.7-4.5 0-2.4 2-4.1 5-4.1 2.9 0 4.7 1.3 4.9 3.6h-3.3zM103.5 10.4c3.5 0 5.4 3.5 5.4 7.4 0 .9-.1 1.7-.1 2.5h-7.7c.3 2.1 1.6 3 3.5 3 1.5 0 2.8-.6 3.4-1.6l2.7 1.6c-1.3 2.2-3.6 3.4-6.4 3.4-4.5 0-7.7-3.6-7.7-8.2s3.2-8.4 7.5-8.4zm-.2 5.5h4.6c-.1-1.8-1-3-2.3-3s-2.3 1.2-2.3 3z"></path>
       <path d="M121.2,13.9v13h-3.3V13.9H121.2z M131.8,20.3c0-3.4-2.2-5.3-5.3-5.3s-5.3,1.9-5.3,5.3,2.2,5.3,5.3,5.3S131.8,23.7,131.8,20.3z M126.5,23.5c-1.8,0-2.1-1.3-2.1-3.2c0-1.9,0.4-3.2,2.1-3.2s2.1,1.3,2.1,3.2C128.6,22.2,128.3,23.5,126.5,23.5z M137.9,13.9 l-4.3,8.8v4.1h-3.3v-4.1l-4.3-8.8h3.6l2.5,5.6,2.5-5.6H137.9z"></path>
     </svg>
-  );
+);
   
 const LuluLogo = () => (
     <svg fill="currentColor" viewBox="0 0 92 34" className="h-8 w-auto">
@@ -51,7 +43,7 @@ const allLogos = [
 
 export const TrustedBy = () => {
   return (
-    <section className="w-full py-16 md:py-24 bg-secondary/20">
+    <section className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-2xl font-semibold tracking-tight sm:text-4xl text-muted-foreground">
@@ -61,7 +53,7 @@ export const TrustedBy = () => {
         <div className="mt-10 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 md:grid-cols-5 items-center justify-center">
           {allLogos.map((logo) => (
             <div key={logo.name} className="flex items-center justify-center">
-              <div className="text-muted-foreground opacity-70 transition-opacity duration-300 hover:opacity-100 filter grayscale hover:grayscale-0">
+              <div className="text-muted-foreground opacity-70 transition-opacity duration-300 hover:opacity-100">
                 {logo.component}
               </div>
             </div>
