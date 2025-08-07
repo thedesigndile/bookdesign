@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, type SVGProps } from "react";
@@ -7,7 +8,7 @@ import { Book, PenTool, Palette, Type, Bot, Star, ArrowRight } from "lucide-reac
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +17,6 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
-import { TrustedBy } from "@/components/ui/trusted-by";
 import React from "react";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
@@ -54,78 +54,153 @@ const services = [
   },
 ];
 
+const trustedByLogos = [
+  { 
+    name: "PublixPress", 
+    Logo: () => (
+      <svg viewBox="0 0 140 40" className="h-10">
+        <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" letterSpacing="1" fill="currentColor">
+          Publix<tspan fill="hsl(var(--primary))">Press</tspan>
+        </text>
+      </svg>
+    )
+  },
+  { 
+    name: "Typeflow", 
+    Logo: () => (
+      <svg viewBox="0 0 120 40" className="h-10">
+        <path d="M10 10 Q15 0, 20 10 T30 10" stroke="currentColor" strokeWidth="2" fill="none"/>
+        <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Typeflow</text>
+      </svg>
+    )
+  },
+  { 
+    name: "Inkerra", 
+    Logo: () => (
+      <svg viewBox="0 0 120 40" className="h-10">
+        <text x="0" y="30" fontFamily="serif" fontSize="32" fontWeight="600" fill="currentColor" fontStyle="italic">
+          Inkerra
+        </text>
+      </svg>
+    )
+  },
+  { 
+    name: "Booknova", 
+    Logo: () => (
+      <svg viewBox="0 0 130 40" className="h-10">
+        <path d="M20 5 L23 15 L33 15 L25 22 L28 32 L20 25 L12 32 L15 22 L7 15 L17 15 Z" fill="hsl(var(--primary))"/>
+        <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Booknova</text>
+      </svg>
+    )
+  },
+  { 
+    name: "Craftlab Media", 
+    Logo: () => (
+      <svg viewBox="0 0 180 40" className="h-10">
+        <rect x="0" y="10" width="20" height="20" fill="currentColor" rx="4"/>
+        <text x="30" y="30" fontFamily="monospace" fontSize="26" fontWeight="500" fill="currentColor">Craftlab Media</text>
+      </svg>
+    )
+  },
+  { 
+    name: "Readistack", 
+    Logo: () => (
+      <svg viewBox="0 0 150 40" className="h-10">
+        <rect x="0" y="5" width="25" height="5" fill="currentColor"/>
+        <rect x="0" y="15" width="25" height="5" fill="currentColor" opacity="0.7"/>
+        <rect x="0" y="25" width="25" height="5" fill="currentColor" opacity="0.4"/>
+        <text x="35" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Readistack</text>
+      </svg>
+    )
+  },
+  { 
+    name: "Printory", 
+    Logo: () => (
+      <svg viewBox="0 0 120 40" className="h-10">
+        <path d="M10 30 C 30 10, 60 10, 80 30" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+        <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Printory</text>
+      </svg>
+    )
+  },
+  { 
+    name: "Zinfolio", 
+    Logo: () => (
+      <svg viewBox="0 0 130 40" className="h-10">
+        <path d="M5 20 A 15 15, 0, 0, 1, 35 20" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+        <text x="45" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Zinfolio</text>
+      </svg>
+    )
+  },
+];
+
 const whoWeHelp = [
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <motion.path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.2 }}/>
+                <motion.path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
+                <motion.path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.4 }}/>
+            </motion.svg>
         ),
         title: "Content Creators",
         description: "Convert blogs, newsletters, and notes into stunning lead magnets that capture attention.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M24 4V6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M38.8995 9.10051L37.4853 10.5147" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M44 24H42" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M38.8995 38.8995L37.4853 37.4853" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M9.10051 9.10051L10.5147 10.5147" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M4 24H6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M9.10051 38.8995L10.5147 37.4853" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <motion.path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
+                <motion.path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.2 }}/>
+                <motion.path d="M24 4V6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{y: 5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{repeat: Infinity, repeatType: "mirror", duration: 0.5, delay: 1.5 }}/>
+                <motion.path d="M38.8995 9.10051L37.4853 10.5147" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{y: 5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{repeat: Infinity, repeatType: "mirror", duration: 0.5, delay: 1.6 }}/>
+                <motion.path d="M44 24H42" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{x: 5, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{repeat: Infinity, repeatType: "mirror", duration: 0.5, delay: 1.7 }}/>
+            </motion.svg>
         ),
         title: "Coaches & Educators",
         description: "Build brand authority and engage learners with professionally designed educational assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+             <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <motion.path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
+                <motion.path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}/>
+            </motion.svg>
         ),
         title: "Video & Podcast Hosts",
         description: "Turn your valuable audio and video content into ebooks, transcripts, and summaries.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                 <path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <motion.path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}/>
+                <motion.path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 1.0 }}/>
+                <motion.path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 0.5, delay: 1.2 }}/>
+                <motion.path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
+                 <motion.path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 1.5 }}/>
+            </motion.svg>
         ),
         title: "Marketers & Agencies",
         description: "Save time and impress clients with beautifully branded ebooks, case studies, and whitepapers.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M24 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M16 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M32 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <motion.path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }} transition={{ duration: 1 }}/>
+                <motion.path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: 5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}/>
+                <motion.path d="M24 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, delay: 1.2, repeat: Infinity, repeatType: 'mirror' }}/>
+                <motion.path d="M16 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, delay: 1.3, repeat: Infinity, repeatType: 'mirror' }}/>
+                <motion.path d="M32 20V22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.3, delay: 1.4, repeat: Infinity, repeatType: 'mirror' }}/>
+            </motion.svg>
         ),
         title: "Small Businesses",
         description: "Grow your subscriber list by repurposing existing content into powerful, professional assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <motion.svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+                <motion.path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }}/>
+                <motion.path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}/>
+                <motion.path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ y: -5, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.6 }}/>
+            </motion.svg>
         ),
         title: "Course Creators",
         description: "Recycle your valuable lessons into companion guides, downloadable PDFs, or interactive flipbooks.",
@@ -267,7 +342,29 @@ export default function Home() {
             </div>
         </section>
 
-        <TrustedBy />
+        <section className="w-full py-20 bg-gradient-to-b from-background to-secondary/10">
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              Featured On & Trusted By
+            </h2>
+            <div className="relative mt-12 overflow-hidden">
+              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
+              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
+              <div className="flex w-max marquee">
+                {[...trustedByLogos, ...trustedByLogos].map(({ Logo, name }, index) => (
+                  <div key={`${name}-${index}`} className="flex-shrink-0 w-64 h-20 flex items-center justify-center">
+                    <div className="text-foreground/70 transition-all duration-300 hover:text-foreground hover:scale-105">
+                      <Logo />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="mt-8 text-lg text-muted-foreground font-roboto-medium">
+                Trusted by creative entrepreneurs, indie publishers, and storytellers worldwide.
+            </p>
+          </div>
+        </section>
 
         <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6">
@@ -329,9 +426,13 @@ export default function Home() {
                   <Card className="relative overflow-hidden group border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 transform-style-3d hover:-translate-y-2 h-full">
                     <div className="absolute inset-[-200%] -z-10 bg-[conic-gradient(from_90deg_at_50%_50%,hsl(var(--primary))_0%,hsl(var(--accent))_50%,hsl(var(--primary))_100%)] transition-transform duration-1000 group-hover:rotate-[-90deg]"></div>
                     <CardContent className="p-6 flex flex-col items-center text-center gap-4 bg-card/95 backdrop-blur-sm h-full">
-                      <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all">
-                        <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
-                      </div>
+                      <motion.div 
+                        className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all"
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
+                      </motion.div>
                       <h3 className="text-xl font-bold">{service.title}</h3>
                       <p className="text-sm text-muted-foreground">{service.description}</p>
                     </CardContent>
@@ -361,9 +462,13 @@ export default function Home() {
                 >
                   <Card className="h-full group relative overflow-hidden transform-style-3d transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50">
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all">
-                        <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
-                      </div>
+                       <motion.div 
+                        className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all"
+                        animate={{ y: [0, -4, 0] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                       >
+                        <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-125" />
+                      </motion.div>
                       <CardTitle>{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
