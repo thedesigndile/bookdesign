@@ -4,12 +4,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig: FirebaseOptions = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "YOUR_API_KEY",
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "YOUR_AUTH_DOMAIN",
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "YOUR_PROJECT_ID",
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "YOUR_STORAGE_BUCKET",
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "YOUR_MESSAGING_SENDER_ID",
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "YOUR_APP_ID",
+  apiKey: "AIzaSyA_w8MRusF9roXOoPDNJflI-d4P7H7au8I",
+  authDomain: "bookdesign-485c7.firebaseapp.com",
+  projectId: "bookdesign-485c7",
+  storageBucket: "bookdesign-485c7.firebasestorage.app",
+  messagingSenderId: "534155987842",
+  appId: "1:534155987842:web:e71a2cc0afed52b02add9b",
+  measurementId: "G-956CMC2FTN"
 };
 
 // Initialize Firebase
