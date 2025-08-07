@@ -201,7 +201,7 @@ export default function Home() {
                   width={600}
                   height={400}
                   className="rounded-lg object-cover shadow-2xl"
-                  data-ai-hint="book design"
+                  data-ai-hint="elegant book"
                 />
               </motion.div>
             </div>
@@ -349,5 +349,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
