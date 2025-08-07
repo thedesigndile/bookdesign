@@ -16,7 +16,6 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { motion, useInView } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
-import { TrustedBy } from "@/components/TrustedBy";
 import React from "react";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
@@ -133,16 +132,16 @@ export default function Home() {
             <span className="text-lg font-bold">Luminary Folio</span>
           </Link>
           <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-            <Link href="#hero" className="text-sm font-medium hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#hero" className="text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
               Home
             </Link>
-            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
               Portfolio
             </Link>
-            <Link href="#services" className="text-sm font-medium text-muted-foreground hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#services" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
               Services
             </Link>
-            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:bg-primary/20 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+            <Link href="#contact" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary/20" prefetch={false}>
               Contact
             </Link>
           </nav>
@@ -206,8 +205,6 @@ export default function Home() {
                 </div>
             </div>
         </section>
-        
-        <TrustedBy />
 
         <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6">
