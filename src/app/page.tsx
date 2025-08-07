@@ -18,6 +18,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
 import React from "react";
+import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
   return (
@@ -272,6 +273,7 @@ export default function Home() {
     <div
       className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground"
     >
+      <MouseSpotlight />
       <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
         <div className="container mx-auto flex h-16 items-center px-4 md:px-6">
           <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
