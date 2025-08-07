@@ -77,9 +77,9 @@ const trustedByLogos = [
   {
     name: "PublixPress",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 140 40" className="h-10" {...props}>
-        <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" letterSpacing="1" fill="currentColor">
-          Publix<tspan fill="hsl(var(--primary))">Press</tspan>
+      <svg viewBox="0 0 140 40" className="h-10 w-auto" {...props}>
+        <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" letterSpacing="1" fill="hsl(var(--primary))">
+          Publix<tspan fill="currentColor">Press</tspan>
         </text>
       </svg>
     )
@@ -87,7 +87,7 @@ const trustedByLogos = [
   {
     name: "Typeflow",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 120 40" className="h-10" {...props}>
+      <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
         <path d="M10 10 Q15 0, 20 10 T30 10" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none"/>
         <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Typeflow</text>
       </svg>
@@ -96,7 +96,7 @@ const trustedByLogos = [
   {
     name: "Inkerra",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 120 40" className="h-10" {...props}>
+      <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
         <text x="0" y="30" fontFamily="serif" fontSize="32" fontWeight="600" fill="currentColor" fontStyle="italic">
           Inke<tspan fill="hsl(var(--primary))">rr</tspan>a
         </text>
@@ -106,7 +106,7 @@ const trustedByLogos = [
   {
     name: "Booknova",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 130 40" className="h-10" {...props}>
+      <svg viewBox="0 0 130 40" className="h-10 w-auto" {...props}>
         <path d="M20 5 L23 15 L33 15 L25 22 L28 32 L20 25 L12 32 L15 22 L7 15 L17 15 Z" fill="hsl(var(--primary))"/>
         <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Booknova</text>
       </svg>
@@ -115,7 +115,7 @@ const trustedByLogos = [
   {
     name: "Craftlab Media",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 180 40" className="h-10" {...props}>
+      <svg viewBox="0 0 180 40" className="h-10 w-auto" {...props}>
         <rect x="0" y="10" width="20" height="20" fill="hsl(var(--primary))" rx="4"/>
         <text x="30" y="30" fontFamily="monospace" fontSize="26" fontWeight="500" fill="currentColor">Craftlab Media</text>
       </svg>
@@ -124,7 +124,7 @@ const trustedByLogos = [
   {
     name: "Readistack",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 150 40" className="h-10" {...props}>
+      <svg viewBox="0 0 150 40" className="h-10 w-auto" {...props}>
         <rect x="0" y="5" width="25" height="5" fill="hsl(var(--primary))"/>
         <rect x="0" y="15" width="25" height="5" fill="hsl(var(--primary))" opacity="0.7"/>
         <rect x="0" y="25" width="25" height="5" fill="hsl(var(--primary))" opacity="0.4"/>
@@ -135,7 +135,7 @@ const trustedByLogos = [
   {
     name: "Printory",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 120 40" className="h-10" {...props}>
+      <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
         <path d="M10 30 C 30 10, 60 10, 80 30" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
         <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Printory</text>
       </svg>
@@ -144,7 +144,7 @@ const trustedByLogos = [
   {
     name: "Zinfolio",
     Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 130 40" className="h-10" {...props}>
+      <svg viewBox="0 0 130 40" className="h-10 w-auto" {...props}>
         <path d="M5 20 A 15 15, 0, 0, 1, 35 20" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none"/>
         <text x="45" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Zinfolio</text>
       </svg>
@@ -631,13 +631,13 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible className="w-full space-y-4">
                 {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-b border-border/50">
-                    <AccordionTrigger className="py-6 text-lg text-left hover:no-underline hover:text-primary transition-colors">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
+                    <AccordionTrigger className="group flex w-full items-center justify-between p-6 text-lg text-left font-medium transition-all duration-300 hover:no-underline hover:bg-primary hover:text-primary-foreground rounded-t-md [&[data-state=open]]:rounded-b-none">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-base text-muted-foreground">
+                    <AccordionContent className="text-base text-muted-foreground p-6 pt-2">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
