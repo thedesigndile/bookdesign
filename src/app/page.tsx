@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import { motion, useInView, useAnimation, animate } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
 import React from "react";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
+import { Badge } from "@/components/ui/badge";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
   return (
@@ -304,6 +305,16 @@ const certificationFeatures = [
         description: "89% of clients prefer certified designers for publishing projects (Survey: 2025 Publishing Industry Outlook).",
     },
 ];
+
+const dreamBookFeatures = [
+  { icon: Wand2, text: "AI Cover Designer" },
+  { icon: MoveUpRight, text: "Drag-and-Drop Editor" },
+  { icon: LayoutTemplate, text: "Professional Templates" },
+  { icon: ImagePlus, text: "Royalty-Free Images" },
+  { icon: BookOpenCheck, text: "Flipbook Exports" },
+  { icon: Type, text: "Premium Fonts" },
+];
+
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -590,6 +601,75 @@ export default function Home() {
             </div>
         </section>
 
+        <section id="dream-book-editor" className="w-full py-12 md:py-16 bg-white dark:bg-transparent overflow-hidden">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div 
+                className="relative"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                <div className="absolute -inset-16 -z-10">
+                    <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] text-primary/5" aria-hidden="true">
+                      <defs>
+                        <radialGradient id="dream-book-gradient" cx="50%" cy="50%" r="50%">
+                          <stop offset="0%" stopColor="hsl(var(--primary) / 0.1)" />
+                          <stop offset="100%" stopColor="hsl(var(--primary) / 0)" />
+                        </radialGradient>
+                      </defs>
+                      <rect width="100%" height="100%" fill="url(#dream-book-gradient)"/>
+                    </svg>
+                </div>
+                <Image
+                  src="https://placehold.co/600x600.png"
+                  alt="Book design editor mockup"
+                  width={600}
+                  height={600}
+                  className="rounded-lg shadow-2xl object-cover w-full h-auto relative"
+                  data-ai-hint="design editor mockup"
+                />
+              </motion.div>
+              <div className="flex flex-col gap-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <Badge variant="secondary" className="mb-2">Used by 50K+ Self-Published Authors</Badge>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-gray-900 dark:text-white">
+                    Design Your Dream Book – No Experience Needed
+                  </h2>
+                  <p className="mt-4 text-gray-600 dark:text-muted-foreground">
+                    Our intuitive platform empowers anyone to create professional-quality books, planners, and lead magnets effortlessly.
+                  </p>
+                </motion.div>
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                  {dreamBookFeatures.map((feature, i) => (
+                    <motion.div
+                      key={feature.text}
+                      className="group"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.1 + 0.3 }}
+                      viewport={{ once: true }}
+                    >
+                      <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100 dark:bg-card/60 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30">
+                        <div className="flex-shrink-0 bg-white dark:bg-background rounded-full p-2">
+                           <feature.icon className="h-5 w-5 text-primary transition-colors group-hover:text-inherit" />
+                        </div>
+                        <span className="font-semibold text-sm text-gray-800 dark:text-foreground group-hover:text-primary-foreground">{feature.text}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="who-we-help" className="w-full py-12 md:py-16">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -711,7 +791,7 @@ export default function Home() {
               <Accordion type="single" collapsible className="w-full space-y-4">
                 {faqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index}`} className="border-border/50 rounded-md bg-card/60 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/10">
-                    <AccordionTrigger className="group flex w-full items-center justify-between p-4 text-lg text-left font-medium transition-colors duration-300 hover:no-underline hover:bg-primary/90 hover:text-primary-foreground rounded-t-md [&[data-state=open]]:bg-primary [&[data-state=open]]:text-primary-foreground [&[data-state=closed]]:rounded-md">
+                    <AccordionTrigger className="group flex w-full items-center justify-between p-4 text-lg text-left font-medium transition-colors duration-300 hover:no-underline hover:bg-primary hover:text-primary-foreground rounded-t-md [&[data-state=open]]:bg-primary [&[data-state=open]]:text-primary-foreground [&[data-state=closed]]:rounded-md">
                       <span>{faq.question}</span>
                     </AccordionTrigger>
                     <AccordionContent className="text-base text-muted-foreground p-4 pt-2 bg-background/50 rounded-b-md">
@@ -849,3 +929,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
