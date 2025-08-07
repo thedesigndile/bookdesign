@@ -17,8 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        headline: ['"Clash Display"', 'sans-serif'],
-        body: ['"General Sans"', 'sans-serif'],
+        sans: ['var(--font-sans)', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

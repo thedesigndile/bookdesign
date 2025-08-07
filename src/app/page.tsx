@@ -116,7 +116,7 @@ export default function Home() {
 
   return (
     <div
-      className="relative min-h-screen w-full overflow-x-hidden bg-background font-body text-foreground"
+      className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground"
     >
       <div 
         className="pointer-events-none fixed inset-0 z-10 transition-all duration-300" 
@@ -125,22 +125,22 @@ export default function Home() {
         }}
       />
       
-      <header className="px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 backdrop-blur-sm border-b border-white/5">
+      <header className="px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
           <Logo className="h-6 w-6" />
-          <span className="font-headline text-lg font-bold">Luminary Folio</span>
+          <span className="text-lg font-bold">Luminary Folio</span>
         </Link>
         <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-          <Link href="#hero" className="text-sm font-medium hover:bg-primary/10 text-primary-foreground/80 hover:text-primary-foreground rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#hero" className="text-sm font-medium hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Home
           </Link>
-          <Link href="#portfolio" className="text-sm font-medium hover:bg-primary/10 text-primary-foreground/80 hover:text-primary-foreground rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Portfolio
           </Link>
-          <Link href="#services" className="text-sm font-medium hover:bg-primary/10 text-primary-foreground/80 hover:text-primary-foreground rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#services" className="text-sm font-medium text-muted-foreground hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Services
           </Link>
-          <Link href="#contact" className="text-sm font-medium hover:bg-primary/10 text-primary-foreground/80 hover:text-primary-foreground rounded-md px-3 py-2 transition-colors" prefetch={false}>
+          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-primary rounded-md px-3 py-2 transition-colors" prefetch={false}>
             Contact
           </Link>
         </nav>
@@ -157,7 +157,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-primary">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-primary">
                   Your Vision, Our Design Expertise
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
@@ -195,7 +195,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary">Our Masterpieces</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Our Masterpieces</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Explore a gallery of our finest work, where every cover is a canvas and every page tells a story of elegance and imagination.
                 </p>
@@ -220,7 +220,7 @@ export default function Home() {
                       data-ai-hint={project.aiHint}
                     />
                     <CardContent className="p-4">
-                      <h3 className="text-lg font-bold font-headline">{project.title}</h3>
+                      <h3 className="text-lg font-bold">{project.title}</h3>
                       <p className="text-sm text-muted-foreground">{project.category}</p>
                     </CardContent>
                   </Card>
@@ -230,10 +230,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-black/20 border-y border-border/20">
+        <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary">Our Design Ecosystem</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Our Design Ecosystem</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 From concept to completion, our services are interconnected to bring your story to life with elegance and precision.
               </p>
@@ -246,7 +246,7 @@ export default function Home() {
                     <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all">
                       <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    <h3 className="text-xl font-bold font-headline">{service.title}</h3>
+                    <h3 className="text-xl font-bold">{service.title}</h3>
                     <p className="text-sm text-muted-foreground">{service.description}</p>
                   </CardContent>
                 </Card>
@@ -258,7 +258,7 @@ export default function Home() {
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight font-headline text-primary">Begin Your Narrative</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-primary">Begin Your Narrative</h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Ready to turn your manuscript into a masterpiece? Fill out the form below and let's discuss how we can bring your vision to life.
               </p>
@@ -312,7 +312,7 @@ export default function Home() {
                       <div className="flex flex-col sm:flex-row gap-2 mt-2">
                         <Button type="submit" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 active:scale-95">Submit Inquiry</Button>
                         <Button variant="outline" className="flex-1 gap-2 group" type="button" onClick={() => form.reset()}>
-                          <Bot className="w-4 h-4 text-accent group-hover:text-primary transition-colors" /> AI Autofill
+                          <Bot className="w-4 h-4 text-primary group-hover:text-primary transition-colors" /> AI Autofill
                         </Button>
                       </div>
                     </form>
@@ -324,7 +324,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-border/20 bg-black/20">
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-border/20 bg-secondary/20">
         <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
