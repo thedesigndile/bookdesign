@@ -125,25 +125,27 @@ export default function Home() {
         }}
       />
       
-      <header className="px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
-        <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-          <Logo className="h-6 w-6" />
-          <span className="text-lg font-bold">Luminary Folio</span>
-        </Link>
-        <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-          <Link href="#hero" className="text-sm font-medium hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
-            Home
+      <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
+        <div className="container flex h-16 items-center px-4 md:px-6">
+          <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+            <Logo className="h-6 w-6" />
+            <span className="text-lg font-bold">Luminary Folio</span>
           </Link>
-          <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
-            Portfolio
-          </Link>
-          <Link href="#services" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
-            Services
-          </Link>
-          <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
-            Contact
-          </Link>
-        </nav>
+          <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
+            <Link href="#hero" className="text-sm font-medium hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+              Home
+            </Link>
+            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+              Portfolio
+            </Link>
+            <Link href="#services" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+              Services
+            </Link>
+            <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:bg-accent/50 rounded-md px-3 py-2 transition-colors" prefetch={false}>
+              Contact
+            </Link>
+          </nav>
+        </div>
       </header>
       
       <main className="flex-1 pt-16">
@@ -337,17 +339,21 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-border/20 bg-secondary/20">
-        <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
-            Privacy
-          </Link>
-          <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
-            Terms
-          </Link>
-        </nav>
+      <footer className="w-full shrink-0 border-t border-border/20 bg-secondary/20">
+        <div className="container flex flex-col gap-2 sm:flex-row py-6 items-center px-4 md:px-6">
+          <p className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luminary Folio. All rights reserved.</p>
+          <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+            <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
+              Privacy
+            </Link>
+            <Link href="#" className="text-xs hover:text-primary transition-colors" prefetch={false}>
+              Terms
+            </Link>
+          </nav>
+        </div>
       </footer>
     </div>
   );
 }
+
+    
