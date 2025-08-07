@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { motion, useInView, useAnimation, animate } from 'framer-motion';
@@ -161,7 +162,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Content Creators",
-        description: "Transform your blogs, newsletters, and ideas into stunning lead magnets.",
+        description: "Transform your digital content into beautifully designed lead magnets and ebooks.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -171,7 +172,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Coaches & Educators",
-        description: "Build authority with professionally designed workbooks and learning materials.",
+        description: "Build authority and enhance learning with professionally designed workbooks and materials.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -181,7 +182,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Video & Podcast Hosts",
-        description: "Repurpose your audio and video content into valuable ebooks and summaries.",
+        description: "Repurpose your spoken content into valuable ebooks, summaries, and show notes.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -194,7 +195,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Marketers & Agencies",
-        description: "Impress your clients with beautifully branded case studies and whitepapers.",
+        description: "Impress clients with beautifully branded case studies, whitepapers, and reports.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -204,7 +205,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Small Businesses",
-        description: "Grow your email list by transforming existing content into professional assets.",
+        description: "Grow your email list by turning your existing content into professional assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -215,7 +216,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Course Creators",
-        description: "Enhance your courses with companion guides and downloadable resources.",
+        description: "Enhance your online courses with companion guides and downloadable resources.",
     },
 ];
 
@@ -239,6 +240,49 @@ const projects = [
     imageUrl: "https://placehold.co/600x800.png",
     aiHint: "future city"
   },
+];
+
+const faqs = [
+  {
+    question: "What services do you offer in book design?",
+    answer: "We offer a comprehensive suite of services including cover design, interior layout and typesetting, illustration, and full jacket design for both print and digital formats. Our goal is to provide a complete design solution from concept to completion."
+  },
+  {
+    question: "Can you design both print and eBook versions?",
+    answer: "Absolutely. We specialize in creating cohesive designs that work beautifully in both print (paperback, hardcover) and digital (ePub, Mobi, PDF) formats, ensuring a consistent brand experience for your readers across all platforms."
+  },
+  {
+    question: "How long does the book formatting process take?",
+    answer: "The timeline depends on the complexity and length of the manuscript. A standard interior layout for a novel typically takes 2-4 weeks. Cover designs can take 1-3 weeks. We provide a detailed project timeline after our initial consultation."
+  },
+  {
+    question: "Do you also design covers or only interiors?",
+    answer: "We design both! We believe the cover and interior should work together to create a seamless experience. You can hire us for cover design, interior formatting, or a complete package that includes both."
+  },
+  {
+    question: "What file formats will I receive?",
+    answer: "For print, we provide press-ready PDF files. For eBooks, you'll receive validated ePub and/or Mobi files compatible with all major platforms like Amazon KDP, Apple Books, and Kobo."
+  },
+  {
+    question: "Can you help with publishing on Amazon KDP?",
+    answer: "While our primary focus is design, we provide files that are optimized and ready for direct upload to platforms like Amazon KDP, IngramSpark, and others. We can also offer guidance on the upload process."
+  },
+  {
+    question: "Do you accept revisions after the initial design?",
+    answer: "Yes, our design process is collaborative. We include a set number of revision rounds in our proposals to ensure you are completely satisfied with the final product. Additional revisions are available if needed."
+  },
+  {
+    question: "How do I get started with your services?",
+    answer: "The best way to start is by filling out the contact form on our website with details about your project. We'll then schedule a complimentary consultation to discuss your vision, goals, and how we can help."
+  },
+  {
+    question: "Do you provide custom illustrations for books?",
+    answer: "Yes, we have talented illustrators on our team who can create custom artwork, maps, and spot illustrations that perfectly match your story's tone and style."
+  },
+  {
+    question: "What makes your book design service different?",
+    answer: "We combine artistic passion with marketing expertise. Our designs are not only beautiful but also strategically crafted to attract your target audience and enhance readability, ensuring your book stands out in a crowded market."
+  }
 ];
 
 const formSchema = z.object({
@@ -556,6 +600,36 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="faq" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Frequently Asked Questions</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Find answers to common questions about our book design services.
+              </p>
+            </div>
+            <motion.div 
+              className="mt-12"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-b border-border/50">
+                    <AccordionTrigger className="py-6 text-lg text-left hover:no-underline hover:text-primary transition-colors">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base text-muted-foreground">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
+          </div>
+        </section>
 
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
