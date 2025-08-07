@@ -85,8 +85,8 @@ export function TrustedBy() {
   return (
     <section className="w-full py-20 bg-gradient-to-b from-background to-secondary/10">
       <div className="container mx-auto text-center">
-        <h2 className="text-sm font-medium tracking-[0.2em] text-muted-foreground uppercase" style={{ fontFamily: 'Roboto, sans-serif' }}>
-          FEATURED ON & TRUSTED BY
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+          Featured On & Trusted By
         </h2>
         <div className="relative mt-12 overflow-hidden">
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
