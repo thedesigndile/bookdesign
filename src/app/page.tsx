@@ -374,7 +374,7 @@ export default function Home() {
         <div className="container mx-auto flex h-16 items-center px-4 md:px-6">
           <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
             <Logo className="h-6 w-6" />
-            <span className="text-lg font-bold">Luminary Folio</span>
+            <span className="text-lg font-bold">Design Dile</span>
           </Link>
           <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
             <Link href="#hero" className="text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
@@ -879,7 +879,7 @@ export default function Home() {
             <div className="md:col-span-4 flex flex-col gap-4 items-center md:items-start">
                <Link href="/" className="flex items-center gap-2" prefetch={false}>
                 <Logo className="h-8 w-8" />
-                <span className="text-xl font-bold">Luminary Folio</span>
+                <span className="text-xl font-bold">Design Dile</span>
               </Link>
               <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
                 A sensorial voyage through the future of book design, where every page is a masterpiece.
@@ -922,7 +922,7 @@ export default function Home() {
 
           </div>
           <div className="border-t border-border/20 mt-8 pt-6 flex flex-col justify-center items-center">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Luminary Folio. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">&copy; 2025 Design Dile. All rights reserved.</p>
           </div>
         </div>
       </footer>
