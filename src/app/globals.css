@@ -4,26 +4,65 @@
 
 @layer base {
   :root {
-    --background: 240 70% 8%;
-    --foreground: 220 20% 90%;
-    --card: 240 64% 17%;
-    --card-foreground: 220 20% 90%;
-    --popover: 240 70% 8%;
-    --popover-foreground: 220 20% 90%;
-    --primary: 43 90% 60%;
-    --primary-foreground: 43 90% 10%;
-    --secondary: 240 30% 20%;
-    --secondary-foreground: 220 20% 90%;
-    --muted: 240 30% 20%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 220 83% 70%;
-    --accent-foreground: 240 70% 8%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 220 20% 90%;
-    --border: 240 30% 25%;
-    --input: 240 30% 25%;
-    --ring: 43 90% 60%;
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 45 86% 51%;
+    --primary-foreground: 22 47.4% 11.2%;
+ 
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+ 
     --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 45 86% 51%;
+    --primary-foreground: 22 47.4% 11.2%;
+ 
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
   }
 }
 
@@ -39,5 +78,19 @@
 @layer utilities {
   .transform-style-3d {
     transform-style: preserve-3d;
+  }
+  @keyframes pulse-gold {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 hsl(44, 45%, 63%, 0.7);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px 5px hsl(44, 45%, 63%, 0);
+    }
+  }
+
+  .animate-pulse-gold {
+    animation: pulse-gold 2.5s infinite;
   }
 }

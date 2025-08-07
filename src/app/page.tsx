@@ -3,7 +3,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, Star } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -14,8 +14,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
+import React from "react";
 
 function Logo(props: SVGProps<SVGSVGElement>) {
   return (
@@ -52,6 +53,18 @@ const services = [
   },
 ];
 
+const highlights = [
+    {
+      text: "Professional book formatting for print and digital platforms—ensuring pixel-perfect layout and publishing compliance across Amazon KDP, IngramSpark, and more.",
+    },
+    {
+      text: "Bespoke cover and interior design tailored to genre, target audience, and branding—crafted with precision using Adobe InDesign and Photoshop.",
+    },
+    {
+      text: "Seamless end-to-end publishing support—from manuscript to market-ready files, including proofreading, ISBN setup, and eBook conversions.",
+    },
+  ];
+
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -62,6 +75,9 @@ const formSchema = z.object({
 export default function Home() {
   const { toast } = useToast();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const highlightsRef = React.useRef(null);
+  const isInView = useInView(highlightsRef, { once: true, amount: 0.3 });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -165,6 +181,32 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
+        </section>
+
+        <section id="highlights" className="w-full py-12 md:py-24 lg:py-32 bg-[hsl(222,47%,11%)]">
+            <div
+                ref={highlightsRef}
+                className="container px-4 md:px-6"
+            >
+                <div className="mx-auto max-w-3xl space-y-8">
+                {highlights.map((highlight, index) => (
+                    <motion.div
+                    key={index}
+                    className="flex items-start gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    >
+                    <div className="mt-1 flex-shrink-0">
+                        <div className="w-3 h-3 rounded-full bg-[hsl(44,45%,63%)] animate-pulse-gold" />
+                    </div>
+                    <p className="text-gray-300/90">
+                        {highlight.text}
+                    </p>
+                    </motion.div>
+                ))}
+                </div>
+            </div>
         </section>
 
         <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-black/20 border-y border-border/20">
