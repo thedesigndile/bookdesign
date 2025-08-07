@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 60 17% 98%; /* #FAFAF8 */
-    --foreground: 240 10% 3.9%; /* #1F1F1F - Mapped from dark mode foreground */
+    --background: 48 33% 97%; /* #F5F5F3 - Ivory Mist */
+    --foreground: 210 29% 11%; /* #1C2B39 - Rich Navy Blue (for text) */
 
-    --card: 60 17% 98%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 48 33% 97%;
+    --card-foreground: 210 29% 11%;
  
-    --popover: 60 17% 98%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 48 33% 97%;
+    --popover-foreground: 210 29% 11%;
  
-    --primary: 217 39% 53%; /* #4A6FA5 - Slate Blue */
-    --primary-foreground: 0 0% 98%;
+    --primary: 43 44% 67%; /* #D4B483 - Muted Antique Gold */
+    --primary-foreground: 210 29% 11%;
  
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    --secondary: 48 19% 91%; /* #EAE7DC - Soft Beige */
+    --secondary-foreground: 210 29% 11%;
  
-    --muted: 220 9% 65%; /* #5F6368 */
-    --muted-foreground: 240 4% 46%;
+    --muted: 0 0% 54%; /* #8A8A8A - Slate Gray */
+    --muted-foreground: 0 0% 40%;
  
-    --accent: 42 85% 69%; /* #F2C66D - Soft Golden Amber */
-    --accent-foreground: 240 6% 10%;
+    --accent: 210 29% 17%; /* #1C2B39 - Rich Navy Blue */
+    --accent-foreground: 48 33% 97%;
  
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89%; /* #E2E2E2 */
-    --input: 0 0% 89%;
-    --ring: 217 39% 53%;
+    --border: 48 19% 85%; /* #EAE7DC */
+    --input: 48 19% 85%;
+    --ring: 43 44% 67%;
  
     --radius: 0.5rem;
   }
  
   .dark {
-    --background: 240 3% 11%; /* #1C1C1E */
+    --background: 0 0% 11%; /* #1C1C1C - Near Black */
     --foreground: 0 0% 96%; /* #F5F5F5 */
  
-    --card: 240 3% 11%;
+    --card: 0 0% 11%;
     --card-foreground: 0 0% 96%;
  
-    --popover: 240 3% 11%;
+    --popover: 0 0% 11%;
     --popover-foreground: 0 0% 96%;
  
-    --primary: 217 39% 53%; /* #4A6FA5 - Slate Blue */
-    --primary-foreground: 0 0% 98%;
+    --primary: 43 44% 67%; /* #D4B483 - Muted Antique Gold */
+    --primary-foreground: 210 29% 11%;
  
-    --secondary: 240 5% 15%;
+    --secondary: 0 0% 20%; /* #333333 */
     --secondary-foreground: 0 0% 98%;
  
-    --muted: 0 0% 71%; /* #B5B5B5 */
-    --muted-foreground: 0 0% 96%;
+    --muted: 0 0% 54%; /* #8A8A8A - Slate Gray */
+    --muted-foreground: 0 0% 80%; /* #CCCCCC */
  
-    --accent: 42 85% 69%; /* #F2C66D - Soft Golden Amber */
-    --accent-foreground: 240 6% 10%;
+    --accent: 43 44% 67%; /* #D4B483 */
+    --accent-foreground: 210 29% 11%;
  
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
  
-    --border: 240 2% 18%; /* #2E2E2E */
-    --input: 240 2% 18%;
-    --ring: 217 39% 53%;
+    --border: 0 0% 18%; /* #2E2E2E */
+    --input: 0 0% 18%;
+    --ring: 43 44% 67%;
   }
 }
 
