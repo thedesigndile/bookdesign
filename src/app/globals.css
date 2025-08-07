@@ -4,65 +4,65 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 60 17% 98%; /* #FAFAF8 */
+    --foreground: 240 10% 3.9%; /* #1F1F1F - Mapped from dark mode foreground */
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 60 17% 98%;
+    --card-foreground: 240 10% 3.9%;
  
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 60 17% 98%;
+    --popover-foreground: 240 10% 3.9%;
  
-    --primary: 217 59% 53%; /* Muted Blue */
+    --primary: 217 39% 53%; /* #4A6FA5 - Slate Blue */
     --primary-foreground: 0 0% 98%;
  
-    --secondary: 240 5% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
  
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 4% 65%;
+    --muted: 220 9% 65%; /* #5F6368 */
+    --muted-foreground: 240 4% 46%;
  
-    --accent: 48 96% 71%; /* Soft Yellow */
+    --accent: 42 85% 69%; /* #F2C66D - Soft Golden Amber */
     --accent-foreground: 240 6% 10%;
  
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 4% 18%;
-    --input: 240 4% 18%;
-    --ring: 217 59% 53%; /* Muted Blue */
+    --border: 0 0% 89%; /* #E2E2E2 */
+    --input: 0 0% 89%;
+    --ring: 217 39% 53%;
  
     --radius: 0.5rem;
   }
  
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 240 3% 11%; /* #1C1C1E */
+    --foreground: 0 0% 96%; /* #F5F5F5 */
  
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 240 3% 11%;
+    --card-foreground: 0 0% 96%;
  
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 240 3% 11%;
+    --popover-foreground: 0 0% 96%;
  
-    --primary: 217 59% 53%; /* Muted Blue */
+    --primary: 217 39% 53%; /* #4A6FA5 - Slate Blue */
     --primary-foreground: 0 0% 98%;
  
     --secondary: 240 5% 15%;
     --secondary-foreground: 0 0% 98%;
  
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 4% 65%;
+    --muted: 0 0% 71%; /* #B5B5B5 */
+    --muted-foreground: 0 0% 96%;
  
-    --accent: 48 96% 71%; /* Soft Yellow */
+    --accent: 42 85% 69%; /* #F2C66D - Soft Golden Amber */
     --accent-foreground: 240 6% 10%;
  
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
  
-    --border: 240 4% 18%;
-    --input: 240 4% 18%;
-    --ring: 217 59% 53%; /* Muted Blue */
+    --border: 240 2% 18%; /* #2E2E2E */
+    --input: 240 2% 18%;
+    --ring: 217 39% 53%;
   }
 }
 
