@@ -196,7 +196,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <Image
-                  src="https://placehold.co/600x400.png"
+                  src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8Ym9va3xlbnwwfHx8fDE3NTQ1NjM0NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
                   alt="Book design elements"
                   width={600}
                   height={400}
