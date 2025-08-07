@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -6,65 +7,65 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 221 65% 16%; /* #14213D */
+    --foreground: 0 0% 90%; /* #E5E5E5 */
  
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 221 65% 16%;
+    --card-foreground: 0 0% 90%;
  
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 221 65% 16%;
+    --popover-foreground: 0 0% 90%;
  
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 38 96% 52%; /* #FCA311 */
+    --primary-foreground: 0 0% 0%; /* Black for contrast on orange */
  
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 221 65% 25%;
+    --secondary-foreground: 0 0% 90%;
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 221 65% 25%;
+    --muted-foreground: 0 0% 60%;
  
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 221 65% 25%;
+    --accent-foreground: 0 0% 90%;
  
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
+    --border: 221 65% 25%;
+    --input: 221 65% 25%;
+    --ring: 38 96% 52%;
  
     --radius: 0.5rem;
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 221 65% 16%; /* #14213D */
+    --foreground: 0 0% 90%; /* #E5E5E5 */
  
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 221 65% 16%;
+    --card-foreground: 0 0% 90%;
  
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 221 65% 16%;
+    --popover-foreground: 0 0% 90%;
  
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 38 96% 52%; /* #FCA311 */
+    --primary-foreground: 0 0% 0%; /* Black for contrast on orange */
  
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 221 65% 25%;
+    --secondary-foreground: 0 0% 90%;
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 221 65% 25%;
+    --muted-foreground: 0 0% 60%;
  
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 221 65% 25%;
+    --accent-foreground: 0 0% 90%;
  
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
+    --border: 221 65% 25%;
+    --input: 221 65% 25%;
+    --ring: 38 96% 52%;
   }
 }
 
@@ -77,7 +78,7 @@
     font-family: 'Inter', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Playfair Display', serif;
   }
 }
 

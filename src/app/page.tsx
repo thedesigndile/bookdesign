@@ -117,9 +117,6 @@ export default function Home() {
   return (
     <div
       className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground"
-      style={{
-        fontFamily: "'Inter', sans-serif"
-      }}
     >
       <div 
         className="pointer-events-none fixed inset-0 z-10 transition-all duration-300" 
@@ -166,7 +163,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
                 Crafting Stories, Visually
               </h1>
               <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl">
@@ -185,7 +182,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl" style={{ fontFamily: "'Inter', sans-serif" }}>Our Masterpieces</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Masterpieces</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Explore a gallery of our finest work, where every cover is a canvas and every page tells a story of elegance and imagination.
                 </p>
@@ -223,7 +220,7 @@ export default function Home() {
         <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl" style={{ fontFamily: "'Inter', sans-serif" }}>Our Design Ecosystem</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Design Ecosystem</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 From concept to completion, our services are interconnected to bring your story to life with elegance and precision.
               </p>
@@ -248,7 +245,7 @@ export default function Home() {
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-8 px-4 text-center md:px-6">
             <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight" style={{ fontFamily: "'Inter', sans-serif" }}>Begin Your Narrative</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Begin Your Narrative</h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Ready to turn your manuscript into a masterpiece? Fill out the form below and let's discuss how we can bring your vision to life.
               </p>
