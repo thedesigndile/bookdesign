@@ -53,6 +53,27 @@ const services = [
   },
 ];
 
+const projects = [
+  {
+    title: "The Celestial Query",
+    category: "Science Fiction",
+    imageUrl: "https://placehold.co/600x800.png",
+    aiHint: "galaxy book"
+  },
+  {
+    title: "Whispers of the Old Wood",
+    category: "Fantasy",
+    imageUrl: "https://placehold.co/600x800.png",
+    aiHint: "fantasy forest"
+  },
+  {
+    title: "Echoes of the Metropolis",
+    category: "Dystopian",
+    imageUrl: "https://placehold.co/600x800.png",
+    aiHint: "future city"
+  },
+];
+
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -110,7 +131,10 @@ export default function Home() {
           <span className="font-headline text-lg font-bold">Luminary Folio</span>
         </Link>
         <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
-          <Link href="/portfolio" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+          <Link href="#hero" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+            Home
+          </Link>
+          <Link href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
             Portfolio
           </Link>
           <Link href="#services" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
@@ -140,7 +164,7 @@ export default function Home() {
                   Premium Cookbook & eBook Design for Global Authors
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
-                  <Link href="/portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
+                  <Link href="#portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
                     View Portfolio
                   </Link>
                   <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" prefetch={false}>
@@ -163,6 +187,45 @@ export default function Home() {
                   data-ai-hint="elegant book"
                 />
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline text-primary">Our Masterpieces</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Explore a gallery of our finest work, where every cover is a canvas and every page tells a story of elegance and imagination.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 mt-12 [perspective:2000px]">
+              {projects.map((project) => (
+                <motion.div 
+                  key={project.title} 
+                  className="group relative transform-style-3d transition-transform duration-500 ease-in-out hover:[transform:translateZ(40px)_rotateX(10deg)]"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Card className="bg-card/60 backdrop-blur-sm border-border/50 transition-all duration-500 ease-in-out group-hover:shadow-[0_25px_50px_-12px_hsl(var(--primary)/0.25)] group-hover:border-primary/50">
+                    <Image 
+                      src={project.imageUrl}
+                      alt={`Book cover for ${project.title}`}
+                      width={600}
+                      height={800}
+                      className="rounded-t-lg object-cover w-full aspect-[3/4] transition-transform duration-500 ease-in-out group-hover:scale-105"
+                      data-ai-hint={project.aiHint}
+                    />
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-bold font-headline">{project.title}</h3>
+                      <p className="text-sm text-muted-foreground">{project.category}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
