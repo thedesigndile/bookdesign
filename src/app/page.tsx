@@ -576,10 +576,10 @@ export default function Home() {
                 A sensorial voyage through the future of book design, where every page is a masterpiece.
               </p>
                <div className="flex space-x-4 mt-2">
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Twitter className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Linkedin className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Instagram className="h-5 w-5" /></Link>
-                 <Link href="#" className="text-muted-foreground hover:text-primary transition-colors" prefetch={false}><Facebook className="h-5 w-5" /></Link>
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Twitter className="h-5 w-5" /></Link>
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Linkedin className="h-5 w-5" /></Link>
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Instagram className="h-5 w-5" /></Link>
+                 <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Facebook className="h-5 w-5" /></Link>
               </div>
             </div>
 
@@ -624,5 +624,3 @@ export default function Home() {
     </div>
   );
 }
-
-
