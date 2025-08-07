@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -163,7 +163,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Content Creators",
-        description: "Transform your digital content into beautifully designed lead magnets and ebooks.",
+        description: "Convert blogs, newsletters, and notes into stunning lead magnets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -173,7 +173,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Coaches & Educators",
-        description: "Build authority and enhance learning with professionally designed workbooks and materials.",
+        description: "Build brand authority with professionally designed learning assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -183,7 +183,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Video & Podcast Hosts",
-        description: "Repurpose your spoken content into valuable ebooks, summaries, and show notes.",
+        description: "Turn audio/video content into ebooks, transcripts, and summaries.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -196,7 +196,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Marketers & Agencies",
-        description: "Impress clients with beautifully branded case studies, whitepapers, and reports.",
+        description: "Save time with client-branded ebooks, case studies, and whitepapers.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -206,7 +206,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Small Businesses",
-        description: "Grow your email list by turning your existing content into professional assets.",
+        description: "Grow subscriber lists by repurposing existing content into powerful assets.",
     },
     {
         icon: (props: SVGProps<SVGSVGElement>) => (
@@ -217,7 +217,7 @@ const whoWeHelp = [
             </svg>
         ),
         title: "Course Creators",
-        description: "Enhance your online courses with companion guides and downloadable resources.",
+        description: "Recycle lessons and modules into companion guides, PDFs, or flipbooks.",
     },
 ];
 
@@ -284,6 +284,25 @@ const faqs = [
     question: "What makes your book design service different?",
     answer: "We combine artistic passion with marketing expertise. Our designs are not only beautiful but also strategically crafted to attract your target audience and enhance readability, ensuring your book stands out in a crowded market."
   }
+];
+
+const certificationFeatures = [
+    {
+        title: "Creative Work Ethic",
+        description: "Master layout consistency, typography hierarchy, and editorial detail publishers trust.",
+    },
+    {
+        title: "Industry-Endorsed Certification",
+        description: "Build a portfolio that meets the creative and technical standards of professional publishers.",
+    },
+    {
+        title: "Client Confidence & Brand Trust",
+        description: "Show proven design capabilities that help brands and authors trust your design direction.",
+    },
+    {
+        title: "Career-Ready Credibility",
+        description: "89% of clients prefer certified designers for publishing projects (Survey: 2025 Publishing Industry Outlook).",
+    },
 ];
 
 const formSchema = z.object({
@@ -364,7 +383,7 @@ export default function Home() {
       </header>
       
       <main className="flex-1 pt-16">
-        <section id="hero" className="relative w-full h-screen flex items-center py-12 md:py-24 lg:py-32">
+        <section id="hero" className="relative w-full h-screen flex items-center py-12 md:py-24">
             <AnimatedHeroBackground />
             <div className="container z-20 mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -512,6 +531,64 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        <section id="certification" className="w-full py-12 md:py-16 bg-background">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <motion.div 
+                        className="relative"
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        viewport={{ once: true }}
+                    >
+                        <Image
+                            src="https://placehold.co/500x700.png"
+                            alt="Book Design Certificate"
+                            width={500}
+                            height={700}
+                            className="rounded-lg shadow-2xl object-cover w-full h-auto"
+                            data-ai-hint="certificate design"
+                        />
+                        <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm p-3 rounded-md text-white flex items-center gap-2">
+                             <Trophy className="h-6 w-6 text-primary" />
+                            <span className="font-bold text-sm">Certified | BDP</span>
+                        </div>
+                    </motion.div>
+                    <div className="flex flex-col gap-8">
+                        <motion.h2 
+                            className="text-3xl font-bold tracking-tighter sm:text-4xl"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            viewport={{ once: true }}
+                        >
+                            Validate your craft. Elevate your design influence.
+                        </motion.h2>
+                        <div className="space-y-6">
+                            {certificationFeatures.map((feature, i) => (
+                                <motion.div 
+                                    key={feature.title} 
+                                    className="flex items-start gap-4 group"
+                                    initial={{ opacity: 0, x: 50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: i * 0.2 + 0.3 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className="flex-shrink-0 h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center mt-1 group-hover:bg-primary transition-colors">
+                                      <CheckCircle className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-lg">{feature.title}</h3>
+                                        <p className="text-muted-foreground">{feature.description}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="who-we-help" className="w-full py-12 md:py-16">
           <div className="container mx-auto px-4 md:px-6">
@@ -532,10 +609,10 @@ export default function Home() {
                 >
                   <Card className="h-full group relative overflow-hidden transform-style-3d transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50">
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
-                        <item.icon className="h-6 w-6 text-primary" />
+                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all">
+                        <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <CardTitle>{item.title}</CardTitle>
+                      <CardTitle className="font-sans">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground">{item.description}</p>
@@ -633,8 +710,8 @@ export default function Home() {
             >
               <Accordion type="single" collapsible className="w-full space-y-4">
                 {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border border-border/50 rounded-md bg-card/60 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/10">
-                    <AccordionTrigger className="group flex w-full items-center justify-between p-4 text-lg text-left font-medium transition-colors duration-300 hover:no-underline hover:bg-primary/90 hover:text-primary-foreground rounded-md [&[data-state=open]]:bg-primary [&[data-state=open]]:text-primary-foreground">
+                  <AccordionItem key={index} value={`item-${index}`} className="border-border/50 rounded-md bg-card/60 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/10">
+                    <AccordionTrigger className="group flex w-full items-center justify-between p-4 text-lg text-left font-medium transition-colors duration-300 hover:no-underline hover:bg-primary/90 hover:text-primary-foreground rounded-t-md [&[data-state=open]]:bg-primary [&[data-state=open]]:text-primary-foreground [&[data-state=closed]]:rounded-md">
                       <span>{faq.question}</span>
                     </AccordionTrigger>
                     <AccordionContent className="text-base text-muted-foreground p-4 pt-2 bg-background/50 rounded-b-md">
