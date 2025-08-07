@@ -74,8 +74,8 @@ const services = [
 ];
 
 const trustedByLogos = [
-  { 
-    name: "PublixPress", 
+  {
+    name: "PublixPress",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 140 40" className="h-10" {...props}>
         <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" letterSpacing="1" fill="currentColor">
@@ -84,27 +84,27 @@ const trustedByLogos = [
       </svg>
     )
   },
-  { 
-    name: "Typeflow", 
+  {
+    name: "Typeflow",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 120 40" className="h-10" {...props}>
-        <path d="M10 10 Q15 0, 20 10 T30 10" stroke="currentColor" strokeWidth="2" fill="none"/>
+        <path d="M10 10 Q15 0, 20 10 T30 10" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none"/>
         <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Typeflow</text>
       </svg>
     )
   },
-  { 
-    name: "Inkerra", 
+  {
+    name: "Inkerra",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 120 40" className="h-10" {...props}>
         <text x="0" y="30" fontFamily="serif" fontSize="32" fontWeight="600" fill="currentColor" fontStyle="italic">
-          Inkerra
+          Inke<tspan fill="hsl(var(--primary))">rr</tspan>a
         </text>
       </svg>
     )
   },
-  { 
-    name: "Booknova", 
+  {
+    name: "Booknova",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 130 40" className="h-10" {...props}>
         <path d="M20 5 L23 15 L33 15 L25 22 L28 32 L20 25 L12 32 L15 22 L7 15 L17 15 Z" fill="hsl(var(--primary))"/>
@@ -112,45 +112,46 @@ const trustedByLogos = [
       </svg>
     )
   },
-  { 
-    name: "Craftlab Media", 
+  {
+    name: "Craftlab Media",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 180 40" className="h-10" {...props}>
-        <rect x="0" y="10" width="20" height="20" fill="currentColor" rx="4"/>
+        <rect x="0" y="10" width="20" height="20" fill="hsl(var(--primary))" rx="4"/>
         <text x="30" y="30" fontFamily="monospace" fontSize="26" fontWeight="500" fill="currentColor">Craftlab Media</text>
       </svg>
     )
   },
-  { 
-    name: "Readistack", 
+  {
+    name: "Readistack",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 150 40" className="h-10" {...props}>
-        <rect x="0" y="5" width="25" height="5" fill="currentColor"/>
-        <rect x="0" y="15" width="25" height="5" fill="currentColor" opacity="0.7"/>
-        <rect x="0" y="25" width="25" height="5" fill="currentColor" opacity="0.4"/>
+        <rect x="0" y="5" width="25" height="5" fill="hsl(var(--primary))"/>
+        <rect x="0" y="15" width="25" height="5" fill="hsl(var(--primary))" opacity="0.7"/>
+        <rect x="0" y="25" width="25" height="5" fill="hsl(var(--primary))" opacity="0.4"/>
         <text x="35" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Readistack</text>
       </svg>
     )
   },
-  { 
-    name: "Printory", 
+  {
+    name: "Printory",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 120 40" className="h-10" {...props}>
-        <path d="M10 30 C 30 10, 60 10, 80 30" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+        <path d="M10 30 C 30 10, 60 10, 80 30" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
         <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Printory</text>
       </svg>
     )
   },
-  { 
-    name: "Zinfolio", 
+  {
+    name: "Zinfolio",
     Logo: (props: SVGProps<SVGSVGElement>) => (
       <svg viewBox="0 0 130 40" className="h-10" {...props}>
-        <path d="M5 20 A 15 15, 0, 0, 1, 35 20" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+        <path d="M5 20 A 15 15, 0, 0, 1, 35 20" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none"/>
         <text x="45" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Zinfolio</text>
       </svg>
     )
   },
 ];
+
 
 const whoWeHelp = [
     {
@@ -428,7 +429,7 @@ export default function Home() {
               <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
               <div className="flex w-max marquee">
                 {[...trustedByLogos, ...trustedByLogos].map(({ Logo, name }, index) => (
-                  <div key={`${name}-${index}`} className="flex-shrink-0 w-64 h-20 flex items-center justify-center">
+                  <div key={`${name}-${index}`} className="flex-shrink-0 w-64 h-20 flex items-center justify-center px-8">
                     <div className="text-foreground/70 transition-all duration-300 hover:text-foreground hover:scale-105">
                       <Logo />
                     </div>
@@ -436,9 +437,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <p className="mt-8 text-lg text-muted-foreground font-roboto-medium">
-                Trusted by creative entrepreneurs, indie publishers, and storytellers worldwide.
-            </p>
           </div>
         </section>
 
@@ -557,7 +555,7 @@ export default function Home() {
         <section id="stats" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20 border-y border-border/20 relative">
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-94974124a224?q=80&w=2940&auto=format&fit=crop')", opacity: 0.1 }}
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-94974124a224?q=80&w=2940&auto=format&fit=crop')", opacity: 0.2 }}
             data-ai-hint="abstract pattern"
           ></div>
           <div className="container mx-auto px-4 md:px-6 relative">
@@ -636,10 +634,10 @@ export default function Home() {
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index}`} className="border-b border-border/50">
-                    <AccordionTrigger className="py-6 text-lg font-sans text-left hover:no-underline hover:text-primary transition-colors">
+                    <AccordionTrigger className="py-6 text-lg text-left hover:no-underline hover:text-primary transition-colors">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-base font-sans text-muted-foreground">
+                    <AccordionContent className="text-base text-muted-foreground">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -774,5 +772,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
