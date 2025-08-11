@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, useEffect, type SVGProps } from "react";
@@ -21,35 +22,7 @@ import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background
 import React from "react";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Badge } from "@/components/ui/badge";
-
-function Logo(props: SVGProps<SVGSVGElement>) {
-  return (
-    <motion.svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <motion.path
-        d="M12 2L2 7V17L12 22L22 17V7L12 2Z"
-        stroke="hsl(var(--primary))"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
-      <motion.path d="M12 12L22 7" stroke="hsl(var(--primary))" strokeWidth="2" />
-      <motion.path d="M12 12V22" stroke="hsl(var(--primary))" strokeWidth="2" />
-      <motion.path d="M12 12L2 7" stroke="hsl(var(--primary))" strokeWidth="2" />
-      <motion.path
-        d="M7 4.5L17 9.5"
-        stroke="hsl(var(--primary))"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </motion.svg>
-  );
-}
+import AnimatedLogo from "@/components/ui/animated-logo";
 
 const services = [
   {
@@ -373,8 +346,7 @@ export default function Home() {
       <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
         <div className="container mx-auto flex h-16 items-center px-4 md:px-6">
           <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-            <Logo className="h-6 w-6" />
-            <span className="text-lg font-bold">Design Dile</span>
+            <AnimatedLogo />
           </Link>
           <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
             <Link href="#hero" className="text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
@@ -881,8 +853,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-4 flex flex-col gap-4 items-center md:items-start">
                <Link href="/" className="flex items-center gap-2" prefetch={false}>
-                <Logo className="h-8 w-8" />
-                <span className="text-xl font-bold">Design Dile</span>
+                <AnimatedLogo />
               </Link>
               <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
                 A sensorial voyage through the future of book design, where every page is a masterpiece.
