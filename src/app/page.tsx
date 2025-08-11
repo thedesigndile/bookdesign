@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, useEffect, type SVGProps } from "react";
@@ -23,6 +22,7 @@ import React from "react";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Badge } from "@/components/ui/badge";
 import AnimatedLogo from "@/components/ui/animated-logo";
+import { MainNav } from "@/components/main-nav";
 
 const services = [
   {
@@ -343,27 +343,7 @@ export default function Home() {
       className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground"
     >
       <MouseSpotlight />
-      <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
-        <div className="container mx-auto flex h-16 items-center px-4 md:px-6">
-          <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-            <AnimatedLogo />
-          </Link>
-          <nav className="ml-auto hidden md:flex gap-2 sm:gap-4">
-            <Link href="#hero" className="text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
-              Home
-            </Link>
-            <Link href="#portfolio" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
-              Portfolio
-            </Link>
-            <Link href="#services" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
-              Services
-            </Link>
-            <Link href="#contact" className="text-sm font-medium text-muted-foreground rounded-md px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground" prefetch={false}>
-              Contact
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <MainNav activeLink="Home"/>
       
       <main className="flex-1 pt-16">
         <section id="hero" className="relative w-full h-screen flex items-center py-12">
