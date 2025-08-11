@@ -410,9 +410,12 @@ export default function Home() {
                         <p className="max-w-[700px] text-muted-foreground md:text-xl">
                             We are a premium design agency dedicated to creating stunning, memorable book covers and interiors that capture the essence of your narrative.
                         </p>
-                        <div className="flex justify-center md:justify-start mt-4">
-                            <Link href="#portfolio" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-4">
+                            <Link href="#portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-md font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
                                 Explore Our Work
+                            </Link>
+                            <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-md font-semibold text-foreground shadow-lg transition-all hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                                Get in Touch
                             </Link>
                         </div>
                     </motion.div>
@@ -929,6 +932,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-    
