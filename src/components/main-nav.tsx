@@ -75,7 +75,7 @@ export function MainNav({ activeLink }: MainNavProps) {
   );
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-sm border-b border-border/20">
+    <header className="fixed top-0 w-full z-50 bg-background border-b border-border">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
           <AnimatedLogo />
