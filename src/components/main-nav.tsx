@@ -46,7 +46,7 @@ export function MainNav({ activeLink }: MainNavProps) {
           className={cn(
             "text-sm font-medium rounded-md px-3 py-2 transition-colors",
             activeLink === link.label
-              ? 'bg-primary text-primary-foreground'
+              ? 'text-primary-foreground hover:bg-primary/80'
               : 'text-muted-foreground hover:bg-primary/80 hover:text-primary-foreground',
             isMobile && 'w-full text-left'
           )}
@@ -69,7 +69,7 @@ export function MainNav({ activeLink }: MainNavProps) {
           Logout
         </Button>
       ) : (
-        <Button onClick={signIn} className={cn(isMobile && 'w-full')}>Login</Button>
+        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Login</Button>
       )}
     </div>
   );
