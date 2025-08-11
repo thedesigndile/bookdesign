@@ -340,8 +340,8 @@ export default function Home() {
                             <Link href="#portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-md font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
                                 Explore Our Work
                             </Link>
-                            <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-md font-semibold text-foreground shadow-lg transition-all hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
-                                Get in Touch
+                            <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-md font-semibold text-foreground shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                                Start a Project
                             </Link>
                         </div>
                     </motion.div>
@@ -847,3 +847,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
