@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck, Wrench, FileText, Printer, CaseLower, X } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck, Wrench, FileText, Printer, CaseLower, X, PenSquare, GraduationCap, Mic, Megaphone, Store, Layers } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -129,71 +129,12 @@ const trustedByLogos = [
 
 
 const whoWeHelp = [
-    {
-        icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M18 8H38V34H32" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M10 16H30V42H10V16Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M18 42V34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        title: "Content Creators",
-        description: "Convert blogs, newsletters, and notes into stunning lead magnets.",
-    },
-    {
-        icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M24 22C27.3137 22 30 19.3137 30 16C30 12.6863 27.3137 10 24 10C20.6863 10 18 12.6863 18 16C18 19.3137 20.6863 22 24 22Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M38 38V36C38 30.4772 31.5228 26 24 26C16.4772 26 10 30.4772 10 36V38" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        title: "Coaches & Educators",
-        description: "Build brand authority with professionally designed learning assets.",
-    },
-    {
-        icon: (props: SVGProps<SVGSVGElement>) => (
-             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M24 38C32.8366 38 40 30.8366 40 22C40 13.1634 32.8366 6 24 6C15.1634 6 8 13.1634 8 22C8 26.345 10.134 30.262 13.5 33" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M13 28L13 42L21 38L24 42L27 38L35 42V28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        title: "Video & Podcast Hosts",
-        description: "Turn audio/video content into ebooks, transcripts, and summaries.",
-    },
-    {
-        icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M14 10H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M14 18H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M20 26H34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M42 6V34C42 36.2091 40.2091 38 38 38H10C7.79086 38 6 36.2091 6 34V6C6 3.79086 7.79086 2 10 2H38C40.2091 2 42 3.79086 42 6Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                 <path d="M24 38V44L30 41L24 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        title: "Marketers & Agencies",
-        description: "Save time with client-branded ebooks, case studies, and whitepapers.",
-    },
-    {
-        icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M6 30V13C6 11.3431 7.34315 10 9 10H39C40.6569 10 42 11.3431 42 13V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M12 38H36L32 30H16L12 38Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        title: "Small Businesses",
-        description: "Grow subscriber lists by repurposing existing content into powerful assets.",
-    },
-    {
-        icon: (props: SVGProps<SVGSVGElement>) => (
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-                <path d="M24 4L4 14L24 24L44 14L24 4Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M4 24L24 34L44 24" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M4 34L24 44L44 34" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-        title: "Course Creators",
-        description: "Recycle lessons and modules into companion guides, PDFs, or flipbooks.",
-    },
+    { icon: PenSquare, title: "Content Creators", description: "Convert blogs, newsletters, and notes into stunning lead magnets." },
+    { icon: GraduationCap, title: "Coaches & Educators", description: "Build brand authority with professionally designed learning assets." },
+    { icon: Mic, title: "Video & Podcast Hosts", description: "Turn audio/video content into ebooks, transcripts, and summaries." },
+    { icon: Megaphone, title: "Marketers & Agencies", description: "Save time with client-branded ebooks, case studies, and whitepapers." },
+    { icon: Store, title: "Small Businesses", description: "Grow subscriber lists by repurposing existing content into powerful assets." },
+    { icon: Layers, title: "Course Creators", description: "Recycle lessons and modules into companion guides, PDFs, or flipbooks." },
 ];
 
 
@@ -648,7 +589,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="who-we-help" className="w-full py-12">
+        <section id="who-we-help" className="w-full py-12 md:py-24">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Who We Help</h2>
@@ -656,37 +597,37 @@ export default function Home() {
                 Tailored solutions for every storyteller, educator, and marketer.
               </p>
             </div>
-            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-12 mt-12">
-              {whoWeHelp.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full group relative overflow-hidden transform-style-3d transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50">
+            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-12 mt-8 md:mt-12">
+              {whoWeHelp.map((item) => (
+                <div key={item.title}>
+                  <Card className="h-full group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:bg-cyan-600 hover:text-white">
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all">
+                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all group-hover:bg-white">
                         <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <CardTitle className="font-sans">{item.title}</CardTitle>
+                      <CardTitle className="font-playfair text-xl group-hover:text-white">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                      <p className="text-sm text-muted-foreground group-hover:text-cyan-100">{item.description}</p>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
              <div className="flex justify-center mt-12">
-              <Link href="#portfolio" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-lg font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
-                  See Our Work <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+                <Button
+                  asChild
+                  size="lg"
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <Link href="/services">
+                    See Our Work <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
             </div>
           </div>
         </section>
-
+        
         <section id="stats" className="w-full py-12 bg-secondary/20 border-y border-border/20 relative">
           <div 
             className="absolute inset-0 bg-cover bg-center"
@@ -906,6 +847,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
-    
