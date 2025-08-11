@@ -23,7 +23,7 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Badge } from "@/components/ui/badge";
 import AnimatedLogo from "@/components/ui/animated-logo";
 import { MainNav } from "@/components/main-nav";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import PortfolioGallery from "@/components/portfolio-gallery";
 
 const services = [
   {
@@ -197,17 +197,43 @@ const whoWeHelp = [
 ];
 
 
-const projects = [
-  { title: "The Celestial Query", imageUrl: "https://placehold.co/600x800.png", aiHint: "galaxy book" },
-  { title: "Whispers of the Old Wood", imageUrl: "https://placehold.co/600x800.png", aiHint: "fantasy forest" },
-  { title: "Echoes of the Metropolis", imageUrl: "https://placehold.co/600x800.png", aiHint: "future city" },
-  { title: "The Gilded Compass", imageUrl: "https://placehold.co/600x800.png", aiHint: "steampunk map" },
-  { title: "Crimson Bloom", imageUrl: "https://placehold.co/600x800.png", aiHint: "vampire romance" },
-  { title: "Silicon Souls", imageUrl: "https://placehold.co/600x800.png", aiHint: "cyberpunk circuit" },
-  { title: "River of Time", imageUrl: "https://placehold.co/600x800.png", aiHint: "historic saga" },
-  { title: "A Chef's Secret", imageUrl: "https://placehold.co/600x800.png", aiHint: "cookbook design" },
-  { title: "The Last Stargazer", imageUrl: "https://placehold.co/600x800.png", aiHint: "astronomy telescope" },
-  { title: "Beneath the City", imageUrl: "https://placehold.co/600x800.png", aiHint: "urban noir" },
+const portfolioItems = [
+  {
+    title: "The Silent Observer",
+    image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxteXN0ZXJ5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc1MDI1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    link: "/portfolio",
+    aiHint: "mystery book cover"
+  },
+  {
+    title: "Galactic Drifters",
+    image: "https://images.unsplash.com/photo-1690906379371-9513895a2615?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2ktZmklMjBib29rJTIwY292ZXJ8ZW58MHx8fHwxNzU0NzUwMjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    link: "/portfolio",
+    aiHint: "sci-fi book cover"
+  },
+  {
+    title: "The Alchemist's Heir",
+    image: "https://images.unsplash.com/photo-1711185900806-bf85e7fe7767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc1MDI1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    link: "/portfolio",
+    aiHint: "fantasy book cover"
+  },
+  {
+    title: "Echoes of the Past",
+    image: "https://images.unsplash.com/photo-1582561833407-b95380302a43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGlzdG9yaWNhbCUyMGZpY3Rpb24lMjBjb3ZlcnxlbnwwfHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    link: "/portfolio",
+    aiHint: "historical fiction cover"
+  },
+  {
+    title: "Recipes for Joy",
+    image: "https://images.unsplash.com/photo-1641130382532-2514a6c93859?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb29rYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc1MDI1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    link: "/portfolio",
+    aiHint: "cookbook cover"
+  },
+  {
+    title: "The Startup Playbook",
+    image: "https://images.unsplash.com/photo-1641154748135-8032a61a3f80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMGJvb2slMjBjb3ZlcnxlbnwwfHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    link: "/portfolio",
+    aiHint: "business book cover"
+  },
 ];
 
 
@@ -313,7 +339,19 @@ function Counter({ to, className }: { to: number; className?: string }) {
 
 export default function Home() {
   const { toast } = useToast();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const openGallery = (index: number) => {
+      setSelectedImageIndex(index);
+      setIsGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+      setIsGalleryOpen(false);
+  };
+
+  const visiblePortfolioItems = portfolioItems.slice(0, 6);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -405,84 +443,54 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="w-full py-20 bg-background">
+        <section id="portfolio" className="w-full py-12 md:py-24 bg-background">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Award-Winning Portfolio</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Explore a curated selection of our finest book designs, where each project showcases our commitment to visual storytelling and craftsmanship.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
-              {projects.map((project, i) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Card 
-                    className="group relative block w-full overflow-hidden rounded-lg cursor-pointer transform-gpu transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/30"
-                    onClick={() => setSelectedImage(project.imageUrl)}
-                  >
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mt-8 md:mt-12">
+              {visiblePortfolioItems.map((item, i) => (
+                 <div key={i} className="cursor-pointer" onClick={() => openGallery(i)}>
+                  <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
                     <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      width={600}
-                      height={800}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={project.aiHint}
+                      src={item.image}
+                      alt={`Book cover for ${item.title}`}
+                      width={400}
+                      height={550}
+                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+                      data-ai-hint={item.aiHint}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent transition-opacity duration-300" />
-                    <div className="relative flex h-full flex-col justify-end p-4">
-                      <h3 className="text-lg font-bold text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
-                        {project.title}
-                      </h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 flex flex-col justify-end p-4">
+                      <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
                     </div>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
-            <div className="flex justify-center mt-12">
-                <Link href="/portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-md font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+              <div className="flex justify-center mt-12">
+                 <Button
+                  asChild
+                  size="lg"
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <Link href="/portfolio">
                     View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-            </div>
+                  </Link>
+                </Button>
+              </div>
           </div>
         </section>
 
-        <AnimatePresence>
-          {selectedImage && (
-            <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-              <DialogContent className="p-0 max-w-4xl bg-transparent border-0 flex items-center justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  className="relative"
-                >
-                  <Image
-                    src={selectedImage}
-                    alt="Enlarged portfolio view"
-                    width={800}
-                    height={1000}
-                    className="rounded-lg shadow-2xl object-contain max-h-[90vh] w-auto"
-                  />
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setSelectedImage(null)}
-                    className="absolute -top-4 -right-4 rounded-full bg-background/80 hover:bg-background h-10 w-10"
-                  >
-                    <X className="h-6 w-6" />
-                  </Button>
-                </motion.div>
-              </DialogContent>
-            </Dialog>
-          )}
-        </AnimatePresence>
-
+        <PortfolioGallery
+            isOpen={isGalleryOpen}
+            onClose={closeGallery}
+            images={portfolioItems}
+            startIndex={selectedImageIndex}
+        />
 
         <section id="services" className="w-full py-12 bg-secondary/20 border-y border-border/20">
           <div className="container mx-auto px-4 md:px-6">
