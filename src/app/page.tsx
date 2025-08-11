@@ -4,7 +4,7 @@
 import { useState, useEffect, type SVGProps } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck, Wrench, FileText, Printer, CaseLower } from "lucide-react";
+import { Book, PenTool, Palette, Type, Bot, ArrowRight, Twitter, Linkedin, Instagram, Facebook, Trophy, Users, Star, CheckCircle, MoveUpRight, Wand2, LayoutTemplate, ImagePlus, BookOpenCheck, Wrench, FileText, Printer, CaseLower, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -16,13 +16,14 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { motion, useInView, useAnimation, animate } from 'framer-motion';
+import { motion, useInView, useAnimation, animate, AnimatePresence } from 'framer-motion';
 import { AnimatedHeroBackground } from "@/components/ui/animated-hero-background";
 import React from "react";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Badge } from "@/components/ui/badge";
 import AnimatedLogo from "@/components/ui/animated-logo";
 import { MainNav } from "@/components/main-nav";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const services = [
   {
@@ -197,25 +198,18 @@ const whoWeHelp = [
 
 
 const projects = [
-  {
-    title: "The Celestial Query",
-    category: "Science Fiction",
-    imageUrl: "https://placehold.co/600x800.png",
-    aiHint: "galaxy book"
-  },
-  {
-    title: "Whispers of the Old Wood",
-    category: "Fantasy",
-    imageUrl: "https://placehold.co/600x800.png",
-    aiHint: "fantasy forest"
-  },
-  {
-    title: "Echoes of the Metropolis",
-    category: "Dystopian",
-    imageUrl: "https://placehold.co/600x800.png",
-    aiHint: "future city"
-  },
+  { title: "The Celestial Query", imageUrl: "https://placehold.co/600x800.png", aiHint: "galaxy book" },
+  { title: "Whispers of the Old Wood", imageUrl: "https://placehold.co/600x800.png", aiHint: "fantasy forest" },
+  { title: "Echoes of the Metropolis", imageUrl: "https://placehold.co/600x800.png", aiHint: "future city" },
+  { title: "The Gilded Compass", imageUrl: "https://placehold.co/600x800.png", aiHint: "steampunk map" },
+  { title: "Crimson Bloom", imageUrl: "https://placehold.co/600x800.png", aiHint: "vampire romance" },
+  { title: "Silicon Souls", imageUrl: "https://placehold.co/600x800.png", aiHint: "cyberpunk circuit" },
+  { title: "River of Time", imageUrl: "https://placehold.co/600x800.png", aiHint: "historic saga" },
+  { title: "A Chef's Secret", imageUrl: "https://placehold.co/600x800.png", aiHint: "cookbook design" },
+  { title: "The Last Stargazer", imageUrl: "https://placehold.co/600x800.png", aiHint: "astronomy telescope" },
+  { title: "Beneath the City", imageUrl: "https://placehold.co/600x800.png", aiHint: "urban noir" },
 ];
+
 
 const faqs = [
   {
@@ -319,6 +313,7 @@ function Counter({ to, className }: { to: number; className?: string }) {
 
 export default function Home() {
   const { toast } = useToast();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -410,45 +405,84 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="w-full py-12">
+        <section id="portfolio" className="w-full py-20 bg-background">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Masterpieces</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Explore a gallery of our finest work, where every cover is a canvas and every page tells a story of elegance and imagination.
-                </p>
-              </div>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Award-Winning Portfolio</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                Explore a curated selection of our finest book designs, where each project showcases our commitment to visual storytelling and craftsmanship.
+              </p>
             </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 mt-12 [perspective:2000px]">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
               {projects.map((project, i) => (
-                <motion.div 
-                  key={project.title} 
-                  className="group relative transform-style-3d transition-transform duration-500 ease-in-out hover:[transform:translateZ(40px)_rotateX(10deg)]"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="bg-card/60 backdrop-blur-sm border-border/50 transition-all duration-500 ease-in-out group-hover:shadow-[0_25px_50px_-12px_hsl(var(--primary)/0.25)] group-hover:border-primary/50">
-                    <Image 
+                  <Card 
+                    className="group relative block w-full overflow-hidden rounded-lg cursor-pointer transform-gpu transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/30"
+                    onClick={() => setSelectedImage(project.imageUrl)}
+                  >
+                    <Image
                       src={project.imageUrl}
-                      alt={`Book cover for ${project.title}`}
+                      alt={project.title}
                       width={600}
                       height={800}
-                      className="rounded-t-lg object-cover w-full aspect-[3/4] transition-transform duration-500 ease-in-out group-hover:scale-105"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       data-ai-hint={project.aiHint}
                     />
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-bold">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground">{project.category}</p>
-                    </CardContent>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent transition-opacity duration-300" />
+                    <div className="relative flex h-full flex-col justify-end p-4">
+                      <h3 className="text-lg font-bold text-white opacity-0 transition-all duration-300 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
+                        {project.title}
+                      </h3>
+                    </div>
                   </Card>
                 </motion.div>
               ))}
             </div>
+            <div className="flex justify-center mt-12">
+                <Link href="/portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-md font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                    View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+            </div>
           </div>
         </section>
+
+        <AnimatePresence>
+          {selectedImage && (
+            <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+              <DialogContent className="p-0 max-w-4xl bg-transparent border-0 flex items-center justify-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  className="relative"
+                >
+                  <Image
+                    src={selectedImage}
+                    alt="Enlarged portfolio view"
+                    width={800}
+                    height={1000}
+                    className="rounded-lg shadow-2xl object-contain max-h-[90vh] w-auto"
+                  />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setSelectedImage(null)}
+                    className="absolute -top-4 -right-4 rounded-full bg-background/80 hover:bg-background h-10 w-10"
+                  >
+                    <X className="h-6 w-6" />
+                  </Button>
+                </motion.div>
+              </DialogContent>
+            </Dialog>
+          )}
+        </AnimatePresence>
+
 
         <section id="services" className="w-full py-12 bg-secondary/20 border-y border-border/20">
           <div className="container mx-auto px-4 md:px-6">
@@ -868,3 +902,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
