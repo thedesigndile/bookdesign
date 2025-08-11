@@ -356,7 +356,7 @@ export default function Home() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl font-playfair">
                             Crafting Stories, Visually
                         </h1>
                         <p className="max-w-[700px] text-muted-foreground md:text-xl">
@@ -377,29 +377,14 @@ export default function Home() {
                         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                     >
+                         <div className="absolute inset-0 bg-card/10 backdrop-blur-sm rounded-2xl border border-border/20"></div>
                         <Image
                             src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop"
                             alt="Book Design Showcase"
                             width={800}
                             height={600}
-                            className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl mix-blend-luminosity opacity-80"
+                            className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover rounded-xl shadow-2xl"
                             data-ai-hint="books library"
-                        />
-                        <Image
-                            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2940&auto=format&fit=crop"
-                            alt="Book Cover Example"
-                            width={600}
-                            height={800}
-                            className="absolute -bottom-10 -right-10 w-2/3 h-auto object-contain rounded-lg shadow-2xl [transform:rotate(10deg)_translateZ(40px)]"
-                            data-ai-hint="reading book"
-                        />
-                         <Image
-                            src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2940&auto=format&fit=crop"
-                            alt="Book Cover Example 2"
-                            width={600}
-                            height={800}
-                            className="absolute -top-10 -left-10 w-1/2 h-auto object-contain rounded-lg shadow-2xl [transform:rotate(-15deg)_translateZ(20px)]"
-                            data-ai-hint="stack books"
                         />
                     </motion.div>
                 </div>
