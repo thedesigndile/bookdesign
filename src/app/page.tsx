@@ -692,36 +692,36 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="faq" className="w-full py-12">
-          <div className="container mx-auto px-4 md:px-6 max-w-4xl">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Frequently Asked Questions</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Find answers to common questions about our book design services.
-              </p>
+        <section id="faq" className="w-full py-12 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+              <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Frequently Asked Questions</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Find answers to common questions about our book design services.
+                </p>
+              </div>
+              <div className="mt-8 md:mt-12">
+                <Accordion type="single" collapsible className="w-full space-y-4">
+                  {faqs.map((faq, index) => (
+                     <AccordionItem 
+                      key={index} 
+                      value={`item-${index}`} 
+                      className="border-none"
+                    >
+                      <Card className="bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors data-[state=open]:border-primary/50">
+                        <AccordionTrigger className="group flex w-full items-center justify-between p-4 text-left font-sans font-medium text-base hover:no-underline data-[state=open]:text-primary data-[state=open]:pb-2">
+                          <span>{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-base text-muted-foreground p-4 pt-0 font-sans">
+                          {faq.answer}
+                        </AccordionContent>
+                      </Card>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             </div>
-            <motion.div 
-              className="mt-12"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <Accordion type="single" collapsible className="w-full space-y-4">
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-border/50 rounded-md bg-card/60 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/10">
-                    <AccordionTrigger className="group flex w-full items-center justify-between p-4 text-lg text-left font-medium transition-colors duration-300 hover:no-underline hover:bg-primary hover:text-primary-foreground rounded-t-md [&[data-state=open]]:bg-primary [&[data-state=open]]:text-primary-foreground [&[data-state=closed]]:rounded-md">
-                      <span>{faq.question}</span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-base text-muted-foreground p-4 pt-2 bg-background/50 rounded-b-md">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </motion.div>
-          </div>
-        </section>
+          </section>
 
         <section id="contact" className="w-full py-12">
           <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
