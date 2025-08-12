@@ -15,7 +15,10 @@ export async function getPortfolioItems(): Promise<PortfolioItem[]> {
     
     const items: PortfolioItem[] = portfolioSnapshot.docs.map(doc => {
       const data = doc.data();
-      const galleryImages: GalleryImage[] = ((data.images || []) as string[]).map((imgUrl, index) => ({
+      // Ensure data.images is treated as an array, even if it's missing or not an array.
+      const imageUrls = Array.isArray(data.images) ? data.images : [];
+      
+      const galleryImages: GalleryImage[] = imageUrls.map((imgUrl: string, index: number) => ({
         image: imgUrl,
         title: `Page ${index + 1}`,
       }));
