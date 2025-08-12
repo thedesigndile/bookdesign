@@ -46,7 +46,7 @@ export function MainNav({ activeLink }: MainNavProps) {
           className={cn(
             "text-sm font-medium rounded-md px-3 py-2 transition-colors",
             activeLink === link.label
-              ? 'text-primary hover:bg-primary/80 hover:text-primary-foreground'
+              ? 'text-foreground'
               : 'text-muted-foreground hover:bg-primary/80 hover:text-primary-foreground',
             isMobile && 'w-full text-left'
           )}
