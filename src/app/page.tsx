@@ -385,8 +385,8 @@ export default function Home() {
                       <Skeleton className="w-full h-full aspect-[3/4]" />
                     </Card>
                   ))
-                : visiblePortfolioItems.map((item, i) => (
-                    <div key={i} className="cursor-pointer" onClick={() => openGallery(item)}>
+                : visiblePortfolioItems.map((item, i) => {
+                    const PortfolioCard = () => (
                       <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
                         <Image
                           src={item.image}
@@ -401,8 +401,22 @@ export default function Home() {
                           <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
                         </div>
                       </Card>
-                    </div>
-                  ))}
+                    );
+
+                    if (item.id === 'placeholder-1') {
+                      return (
+                        <Link key={i} href={item.link} prefetch={false}>
+                          <PortfolioCard />
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <div key={i} className="cursor-pointer" onClick={() => openGallery(item)}>
+                        <PortfolioCard />
+                      </div>
+                    );
+                  })}
             </div>
               <div className="flex justify-center mt-12">
                  <Button
@@ -636,7 +650,7 @@ export default function Home() {
               >
                 <Users className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-5xl font-bold tracking-tighter">
-                  <Counter to={95} />+
+                  <Counter to={95} />
                 </h3>
                 <p className="text-lg text-muted-foreground mt-2">Happy Clients</p>
               </motion.div>
@@ -649,7 +663,7 @@ export default function Home() {
               >
                 <Book className="h-12 w-12 text-primary mb-4" />
                 <h3 className="text-5xl font-bold tracking-tighter">
-                  <Counter to={150} />+
+                  <Counter to={150} />
                 </h3>
                 <p className="text-lg text-muted-foreground mt-2">Projects Completed</p>
               </motion.div>

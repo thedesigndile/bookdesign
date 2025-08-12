@@ -15,7 +15,6 @@ export async function getPortfolioItems(): Promise<PortfolioItem[]> {
     
     const items: PortfolioItem[] = portfolioSnapshot.docs.map(doc => {
       const data = doc.data();
-      // Ensure data.images is treated as an array, even if it's missing or not an array.
       const imageUrls = Array.isArray(data.images) ? data.images : [];
       
       const galleryImages: GalleryImage[] = imageUrls.map((imgUrl: string, index: number) => ({
@@ -23,16 +22,22 @@ export async function getPortfolioItems(): Promise<PortfolioItem[]> {
         title: `Page ${index + 1}`,
       }));
 
-      // Ensure the cover is the first image in the gallery
       if (data.cover && !galleryImages.some(img => img.image === data.cover)) {
           galleryImages.unshift({ image: data.cover, title: 'Cover' });
       }
+
+      const defaultLink = `/portfolio/${doc.id}`;
+      // Special link for the specific project
+      const link = doc.id === 'positiveThinking' 
+        ? '/portfolio/the-positive-mind-effect' 
+        : defaultLink;
+
 
       return {
         id: doc.id,
         title: data.title || 'Untitled Project',
         image: data.cover || 'https://placehold.co/400x550.png',
-        link: `/portfolio/${doc.id}`,
+        link: link,
         aiHint: data.aiHint || 'book cover',
         galleryImages: galleryImages,
       };
@@ -51,7 +56,7 @@ function getPlaceholderPortfolioItems(): PortfolioItem[] {
         id: "placeholder-1",
         title: "The Positive Mind Effect",
         image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg",
-        link: "/portfolio",
+        link: "/portfolio/the-positive-mind-effect",
         aiHint: "positive thinking book",
         galleryImages: [
           { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg", title: "Cover" },
