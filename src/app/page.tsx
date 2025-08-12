@@ -603,7 +603,7 @@ export default function Home() {
                   <Card className="h-full group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:bg-accent hover:text-accent-foreground">
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
                        <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all group-hover:bg-white">
-                        <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                        <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
                       </div>
                       <CardTitle className="text-xl group-hover:text-white">{item.title}</CardTitle>
                     </CardHeader>
