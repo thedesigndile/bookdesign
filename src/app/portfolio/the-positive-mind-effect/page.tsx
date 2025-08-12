@@ -94,7 +94,7 @@ export default function PositiveMindEffectGallery() {
               >
                 <CarouselContent>
                   {otherItems.map((project) => (
-                    <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={project.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                       <div className="p-1">
                         <Link href={project.link} prefetch={false}>
                           <Card className="group overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
