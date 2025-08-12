@@ -23,7 +23,7 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Badge } from "@/components/ui/badge";
 import AnimatedLogo from "@/components/ui/animated-logo";
 import { MainNav } from "@/components/main-nav";
-import PortfolioGallery from "@/components/portfolio-gallery";
+import PortfolioGallery, { type PortfolioItem } from "@/components/portfolio-gallery";
 
 const services = [
   {
@@ -138,12 +138,28 @@ const whoWeHelp = [
 ];
 
 
-const portfolioItems = [
+const portfolioItems: PortfolioItem[] = [
   {
     title: "The Positive Mind Effect",
-    image: "https://images.unsplash.com/photo-1544716278-e513176f20b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3NpdGl2ZSUyMHRoaW5raW5nJTIwYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc4NDQwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg",
     link: "/portfolio",
-    aiHint: "positive thinking book"
+    aiHint: "positive thinking book",
+    galleryImages: [
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg", title: "Cover" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(2).jpg", title: "Spread 1" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(3).jpg", title: "Spread 2" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(4).jpg", title: "Spread 3" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(5).jpg", title: "Spread 4" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(6).jpg", title: "Spread 5" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(7).jpg", title: "Spread 6" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(8).jpg", title: "Spread 7" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(9).jpg", title: "Spread 8" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(10).jpg", title: "Spread 9" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(11).jpg", title: "Spread 10" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(12).jpg", title: "Spread 11" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(13).jpg", title: "Spread 12" },
+      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(14).jpg", title: "Spread 13" },
+    ]
   },
   {
     title: "Galactic Drifters",
@@ -281,15 +297,18 @@ function Counter({ to, className }: { to: number; className?: string }) {
 export default function Home() {
   const { toast } = useToast();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<PortfolioItem | null>(null);
 
-  const openGallery = (index: number) => {
-      setSelectedImageIndex(index);
+  const openGallery = (item: PortfolioItem) => {
+    if (item.galleryImages && item.galleryImages.length > 0) {
+      setSelectedPortfolioItem(item);
       setIsGalleryOpen(true);
+    }
   };
 
   const closeGallery = () => {
-      setIsGalleryOpen(false);
+    setIsGalleryOpen(false);
+    setSelectedPortfolioItem(null);
   };
 
   const visiblePortfolioItems = portfolioItems.slice(0, 6);
@@ -394,7 +413,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mt-8 md:mt-12">
               {visiblePortfolioItems.map((item, i) => (
-                 <div key={i} className="cursor-pointer" onClick={() => openGallery(i)}>
+                 <div key={i} className="cursor-pointer" onClick={() => openGallery(item)}>
                   <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
                     <Image
                       src={item.image}
@@ -427,10 +446,9 @@ export default function Home() {
         </section>
 
         <PortfolioGallery
-            isOpen={isGalleryOpen}
-            onClose={closeGallery}
-            images={portfolioItems}
-            startIndex={selectedImageIndex}
+          isOpen={isGalleryOpen}
+          onClose={closeGallery}
+          portfolioItem={selectedPortfolioItem}
         />
 
         <section id="services" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
@@ -847,5 +865,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

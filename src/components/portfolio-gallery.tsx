@@ -7,35 +7,46 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from './ui/button';
 
-interface PortfolioItem {
+interface GalleryImage {
+    image: string;
+    title: string;
+}
+
+export interface PortfolioItem {
     title: string;
     image: string;
     link: string;
     aiHint: string;
+    galleryImages?: GalleryImage[];
 }
 
 interface PortfolioGalleryProps {
     isOpen: boolean;
     onClose: () => void;
-    images: PortfolioItem[];
-    startIndex?: number;
+    portfolioItem: PortfolioItem | null;
 }
 
-const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, images, startIndex = 0 }) => {
-    const [currentIndex, setCurrentIndex] = useState(startIndex);
+const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, portfolioItem }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const images = portfolioItem?.galleryImages || [];
 
     useEffect(() => {
         if (isOpen) {
-            setCurrentIndex(startIndex);
+            setCurrentIndex(0);
         }
-    }, [isOpen, startIndex]);
+    }, [isOpen]);
 
     const handleNext = useCallback(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        if (images.length > 0) {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }
     }, [images.length]);
 
     const handlePrev = useCallback(() => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+        if (images.length > 0) {
+            setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+        }
     }, [images.length]);
 
     useEffect(() => {
@@ -54,7 +65,7 @@ const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, im
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, handleNext, handlePrev, onClose]);
 
-    if (!isOpen) {
+    if (!isOpen || !portfolioItem || images.length === 0) {
         return null;
     }
 
@@ -128,5 +139,3 @@ const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, im
 };
 
 export default PortfolioGallery;
-
-    
