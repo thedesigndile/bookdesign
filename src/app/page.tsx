@@ -473,12 +473,12 @@ export default function Home() {
                         viewport={{ once: true }}
                     >
                         <Image
-                            src="https://placehold.co/500x700.png"
+                            src="https://images.unsplash.com/photo-1555935316-fa92ea98e61a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjZXJ0aWZpY2F0ZSUyMHBvcnRyYWl0fGVufDB8fHx8MTc1NDk4ODg0N3ww&ixlib=rb-4.1.0&q=80&w=1080"
                             alt="Book Design Certificate"
                             width={500}
                             height={700}
                             className="rounded-lg shadow-2xl object-cover w-full h-auto"
-                            data-ai-hint="certificate design"
+                            data-ai-hint="certificate portrait"
                         />
                         <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm p-3 rounded-md text-white flex items-center gap-2">
                              <Trophy className="h-6 w-6 text-primary" />
