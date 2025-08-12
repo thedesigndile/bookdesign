@@ -6,18 +6,23 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getPortfolioItems } from '@/services/portfolioService';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { type PortfolioItem } from '@/components/portfolio-gallery';
 import { Skeleton } from '@/components/ui/skeleton';
 import { MainNav } from '@/components/main-nav';
 import { MouseSpotlight } from '@/components/ui/mouse-spotlight';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function PositiveMindEffectGallery() {
   const [item, setItem] = useState<PortfolioItem | null>(null);
   const [otherItems, setOtherItems] = useState<PortfolioItem[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const plugin = useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true, stopOnMouseEnter: true })
+  );
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -86,15 +91,18 @@ export default function PositiveMindEffectGallery() {
             <div className="mt-24">
               <h2 className="text-3xl font-bold tracking-tighter text-center mb-12">More Projects</h2>
               <Carousel
+                plugins={[plugin.current]}
                 opts={{
                   align: "start",
                   loop: true,
                 }}
                 className="w-full"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
               >
                 <CarouselContent>
                   {otherItems.map((project) => (
-                    <CarouselItem key={project.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                    <CarouselItem key={project.id} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                       <div className="p-1">
                         <Link href={project.link} prefetch={false}>
                           <Card className="group overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
@@ -118,8 +126,8 @@ export default function PositiveMindEffectGallery() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="-left-4" />
-                <CarouselNext className="-right-4" />
+                <CarouselPrevious className="-left-4 md:-left-8" />
+                <CarouselNext className="-right-4 md:-right-8" />
               </Carousel>
             </div>
         </main>
