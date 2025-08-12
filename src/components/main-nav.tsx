@@ -18,10 +18,10 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: '#home', label: 'Home' },
+  { href: '#hero', label: 'Home' },
   { href: '#portfolio', label: 'Portfolio' },
   { href: '#services', label: 'Services' },
-  { href: '#about', label: 'About' },
+  { href: '#faq', label: 'FAQs' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -46,7 +46,7 @@ export function MainNav({ activeLink }: MainNavProps) {
           className={cn(
             "text-sm font-medium rounded-md px-3 py-2 transition-colors",
             activeLink === link.label
-              ? 'text-primary-foreground hover:bg-primary/80'
+              ? 'text-primary-foreground bg-primary/80'
               : 'text-muted-foreground hover:bg-primary/80 hover:text-primary-foreground',
             isMobile && 'w-full text-left'
           )}
@@ -75,7 +75,7 @@ export function MainNav({ activeLink }: MainNavProps) {
   );
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-background border-b border-border">
+    <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-border/20">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
           <AnimatedLogo />
@@ -95,7 +95,7 @@ export function MainNav({ activeLink }: MainNavProps) {
             </SheetTrigger>
             <SheetContent side="right" className="w-[80vw] bg-background/95 backdrop-blur-xl">
                <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-4 border-b">
+                <div className="flex items-center justify-between p-4 border-b border-border/20">
                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                       <AnimatedLogo />
                    </Link>

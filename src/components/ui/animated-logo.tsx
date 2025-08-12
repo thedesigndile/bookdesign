@@ -9,8 +9,8 @@ interface AnimatedLogoProps {
 }
 
 const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
-  const word = "Design";
-  const word2 = "Dile";
+  const word = "Luminary";
+  const word2 = "Folio";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,7 +41,7 @@ const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        aria-label="Design Dile"
+        aria-label="Luminary Folio"
       >
         {word.split('').map((char, index) => (
           <motion.span

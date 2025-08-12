@@ -330,7 +330,7 @@ export default function Home() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl font-playfair">
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
                             Crafting Stories, Visually
                         </h1>
                         <p className="max-w-[700px] text-muted-foreground md:text-xl">
@@ -600,15 +600,15 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-12 mt-8 md:mt-12">
               {whoWeHelp.map((item) => (
                 <div key={item.title}>
-                  <Card className="h-full group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:bg-cyan-600 hover:text-white">
+                  <Card className="h-full group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:bg-accent hover:text-accent-foreground">
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
                        <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all group-hover:bg-white">
                         <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <CardTitle className="font-playfair text-xl group-hover:text-white">{item.title}</CardTitle>
+                      <CardTitle className="text-xl group-hover:text-white">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-muted-foreground group-hover:text-cyan-100">{item.description}</p>
+                      <p className="text-sm text-muted-foreground group-hover:text-accent-foreground">{item.description}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -840,12 +840,10 @@ export default function Home() {
 
           </div>
           <div className="border-t border-border/20 mt-8 pt-6 flex flex-col justify-center items-center">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Design Dile. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">&copy; 2025 Luminary Folio. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
   );
 }
-
-    
