@@ -54,29 +54,29 @@ const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
           </motion.span>
         ))}
         <span className="w-1.5" />
-        <motion.span
+        <motion.div
           variants={containerVariants}
           className="flex"
+          animate={{
+            rotate: [0, -5, 5, -5, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            repeatType: 'mirror',
+            ease: 'easeInOut',
+          }}
         >
           {word2.split('').map((char, index) => (
             <motion.span
               key={index}
               variants={letterVariants}
               className="text-primary"
-              animate={{
-                opacity: [0.7, 1, 0.7],
-                transition: {
-                  duration: 2.5,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  delay: index * 0.1,
-                }
-              }}
               >
               {char}
             </motion.span>
           ))}
-        </motion.span>
+        </motion.div>
       </motion.div>
   );
 };
