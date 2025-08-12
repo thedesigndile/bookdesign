@@ -169,7 +169,7 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     title: "The Alchemist's Heir",
-    image: "https://images.unsplash.com/photo-1711185900806-bf85e7fe7767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc1MDI1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "https://images.unsplash.com/photo-1711185900806-bf85e7fe7767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
     link: "/portfolio",
     aiHint: "fantasy book cover"
   },
@@ -181,7 +181,7 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     title: "Recipes for Joy",
-    image: "https://images.unsplash.com/photo-1641130382532-2514a6c93859?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb29rYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc1MDI1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "https://images.unsplash.com/photo-1641130382532-2514a6c93859?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb29rYm9vayUyMGNvdmVyfGVufDB8fHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
     link: "/portfolio",
     aiHint: "cookbook cover"
   },
