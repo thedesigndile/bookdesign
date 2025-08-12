@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState, useEffect, type SVGProps } from "react";
@@ -140,10 +141,10 @@ const whoWeHelp = [
 
 const portfolioItems = [
   {
-    title: "The Silent Observer",
-    image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxteXN0ZXJ5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc1MDI1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+    title: "The Positive Mind Effect",
+    image: "https://images.unsplash.com/photo-1593340035734-5f3751699869?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3NpdGl2ZSUyMHRoaW5raW5nJTIwYm9vayUyMGNvdmVyfGVufDB8fHx8MTc1NDc4NDQwMHww&ixlib=rb-4.1.0&q=80&w=1080",
     link: "/portfolio",
-    aiHint: "mystery book cover"
+    aiHint: "positive thinking book"
   },
   {
     title: "Galactic Drifters",
@@ -847,3 +848,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
