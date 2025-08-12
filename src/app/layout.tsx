@@ -10,8 +10,8 @@ const nunitoSans = Nunito_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Luminary Folio',
-  description: 'A sensorial voyage through the future of book design.',
+  title: 'Design Dile',
+  description: 'A premium design agency.',
 };
 
 export default function RootLayout({

@@ -840,7 +840,7 @@ export default function Home() {
 
           </div>
           <div className="border-t border-border/20 mt-8 pt-6 flex flex-col justify-center items-center">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Luminary Folio. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">&copy; 2025 Design Dile. All rights reserved.</p>
           </div>
         </div>
       </footer>
