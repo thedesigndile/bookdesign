@@ -23,7 +23,9 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Badge } from "@/components/ui/badge";
 import AnimatedLogo from "@/components/ui/animated-logo";
 import { MainNav } from "@/components/main-nav";
-import PortfolioGallery, { type PortfolioItem } from "@/components/portfolio-gallery";
+import PortfolioGallery, { type PortfolioItem, type GalleryImage } from "@/components/portfolio-gallery";
+import { getPortfolioItems } from "@/services/portfolioService";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const services = [
   {
@@ -137,63 +139,6 @@ const whoWeHelp = [
     { icon: Layers, title: "Course Creators", description: "Recycle lessons and modules into companion guides, PDFs, or flipbooks." },
 ];
 
-
-const portfolioItems: PortfolioItem[] = [
-  {
-    title: "The Positive Mind Effect",
-    image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg",
-    link: "/portfolio",
-    aiHint: "positive thinking book",
-    galleryImages: [
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg", title: "Cover" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(2).jpg", title: "Spread 1" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(3).jpg", title: "Spread 2" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(4).jpg", title: "Spread 3" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(5).jpg", title: "Spread 4" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(6).jpg", title: "Spread 5" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(7).jpg", title: "Spread 6" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(8).jpg", title: "Spread 7" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(9).jpg", title: "Spread 8" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(10).jpg", title: "Spread 9" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(11).jpg", title: "Spread 10" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(12).jpg", title: "Spread 11" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(13).jpg", title: "Spread 12" },
-      { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(14).jpg", title: "Spread 13" },
-    ]
-  },
-  {
-    title: "Galactic Drifters",
-    image: "https://images.unsplash.com/photo-1690906379371-9513895a2615?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2ktZmklMjBib29rJTIwY292ZXJ8ZW58MHx8fHwxNzU0NzUwMjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "/portfolio",
-    aiHint: "sci-fi book cover"
-  },
-  {
-    title: "The Alchemist's Heir",
-    image: "https://images.unsplash.com/photo-1711185900806-bf85e7fe7767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "/portfolio",
-    aiHint: "fantasy book cover"
-  },
-  {
-    title: "Echoes of the Past",
-    image: "https://images.unsplash.com/photo-1582561833407-b95380302a43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGlzdG9yaWNhbCUyMGZpY3Rpb24lMjBjb3ZlcnxlbnwwfHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "/portfolio",
-    aiHint: "historical fiction cover"
-  },
-  {
-    title: "Recipes for Joy",
-    image: "https://images.unsplash.com/photo-1641130382532-2514a6c93859?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb29rYm9vayUyMGNvdmVyfGVufDB8fHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "/portfolio",
-    aiHint: "cookbook cover"
-  },
-  {
-    title: "The Startup Playbook",
-    image: "https://images.unsplash.com/photo-1641154748135-8032a61a3f80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMGJvb2slMjBjb3ZlcnxlbnwwfHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "/portfolio",
-    aiHint: "business book cover"
-  },
-];
-
-
 const faqs = [
   {
     question: "What services do you offer in book design?",
@@ -298,6 +243,28 @@ export default function Home() {
   const { toast } = useToast();
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [selectedPortfolioItem, setSelectedPortfolioItem] = useState<PortfolioItem | null>(null);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPortfolioData = async () => {
+      try {
+        const items = await getPortfolioItems();
+        setPortfolioItems(items);
+      } catch (error) {
+        console.error("Failed to fetch portfolio items:", error);
+        toast({
+          title: "Error",
+          description: "Could not load portfolio projects. Please try again later.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPortfolioData();
+  }, [toast]);
 
   const openGallery = (item: PortfolioItem) => {
     if (item.galleryImages && item.galleryImages.length > 0) {
@@ -412,24 +379,30 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mt-8 md:mt-12">
-              {visiblePortfolioItems.map((item, i) => (
-                 <div key={i} className="cursor-pointer" onClick={() => openGallery(item)}>
-                  <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
-                    <Image
-                      src={item.image}
-                      alt={`Book cover for ${item.title}`}
-                      width={400}
-                      height={550}
-                      className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
-                      data-ai-hint={item.aiHint}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 flex flex-col justify-end p-4">
-                      <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
+              {isLoading
+                ? Array.from({ length: 6 }).map((_, i) => (
+                    <Card key={i} className="h-full">
+                      <Skeleton className="w-full h-full aspect-[3/4]" />
+                    </Card>
+                  ))
+                : visiblePortfolioItems.map((item, i) => (
+                    <div key={i} className="cursor-pointer" onClick={() => openGallery(item)}>
+                      <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
+                        <Image
+                          src={item.image}
+                          alt={`Book cover for ${item.title}`}
+                          width={400}
+                          height={550}
+                          className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+                          data-ai-hint={item.aiHint}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 flex flex-col justify-end p-4">
+                          <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
+                        </div>
+                      </Card>
                     </div>
-                  </Card>
-                </div>
-              ))}
+                  ))}
             </div>
               <div className="flex justify-center mt-12">
                  <Button

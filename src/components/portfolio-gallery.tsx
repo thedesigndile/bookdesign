@@ -7,12 +7,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from './ui/button';
 
-interface GalleryImage {
+export interface GalleryImage {
     image: string;
     title: string;
 }
 
 export interface PortfolioItem {
+    id: string;
     title: string;
     image: string;
     link: string;
