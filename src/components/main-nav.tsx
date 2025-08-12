@@ -44,10 +44,10 @@ export function MainNav({ activeLink }: MainNavProps) {
           href={link.href}
           onClick={() => isMobile && setIsMobileMenuOpen(false)}
           className={cn(
-            "text-sm font-medium rounded-md px-3 py-2 transition-colors",
+            "text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary/80 hover:text-primary-foreground",
             activeLink === link.label
               ? 'text-foreground'
-              : 'text-muted-foreground hover:bg-primary/80 hover:text-primary-foreground',
+              : 'text-muted-foreground',
             isMobile && 'w-full text-left'
           )}
           prefetch={false}
