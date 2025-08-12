@@ -17,20 +17,21 @@ const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
+        delayChildren: 0.2,
       },
     },
   };
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         type: "spring",
-        damping: 12,
-        stiffness: 100,
+        damping: 15,
+        stiffness: 200,
       },
     },
   };
@@ -53,15 +54,29 @@ const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
           </motion.span>
         ))}
         <span className="w-1.5" />
-        {word2.split('').map((char, index) => (
-          <motion.span
-            key={index}
-            variants={letterVariants}
-            className="text-primary"
-            >
-            {char}
-          </motion.span>
-        ))}
+        <motion.span
+          variants={containerVariants}
+          className="flex"
+        >
+          {word2.split('').map((char, index) => (
+            <motion.span
+              key={index}
+              variants={letterVariants}
+              className="text-primary"
+              animate={{
+                opacity: [0.7, 1, 0.7],
+                transition: {
+                  duration: 2.5,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  delay: index * 0.1,
+                }
+              }}
+              >
+              {char}
+            </motion.span>
+          ))}
+        </motion.span>
       </motion.div>
   );
 };
