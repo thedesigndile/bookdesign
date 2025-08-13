@@ -381,17 +381,19 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
-              {isLoading
-                ? Array.from({ length: 6 }).map((_, i) => (
+              {isLoading && (
+                  Array.from({ length: 6 }).map((_, i) => (
                     <Card key={i} className="h-full aspect-[3/4]">
                       <Skeleton className="w-full h-full" />
                     </Card>
                   ))
-                : visiblePortfolioItems.map((item, i) => (
-                    <Card key={i} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
-                      <Link href={item.link} prefetch={false} className="absolute inset-0 z-10">
-                        <span className="sr-only">View Project</span>
-                      </Link>
+              )}
+              {!isLoading && visiblePortfolioItems.length === 0 && (
+                <p className="col-span-full text-center text-muted-foreground">Our portfolio is currently being updated. Please check back soon!</p>
+              )}
+              {!isLoading && visiblePortfolioItems.map((item, i) => (
+                <Link key={item.id} href={item.link} prefetch={false} className="group block">
+                    <Card className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out group-hover:-translate-y-2 border-border/50 group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20 h-full aspect-[3/4]">
                       <div className="absolute inset-0 bg-black flex items-center justify-center">
                         <Image
                           src={item.image}
@@ -407,7 +409,8 @@ export default function Home() {
                         <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
                       </div>
                     </Card>
-                  ))}
+                </Link>
+              ))}
             </div>
               <div className="flex justify-center mt-12">
                  <Button
@@ -626,9 +629,7 @@ export default function Home() {
         
         <section id="stats" className="w-full py-12 bg-secondary/20 border-y border-border/20 relative">
           <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-94974124a224?q=80&w=2940&auto=format&fit=crop')", opacity: 0.2 }}
-            data-ai-hint="abstract pattern"
+            className="absolute inset-0 bg-cover bg-center opacity-20"
           ></div>
           <div className="container mx-auto px-4 md:px-6 relative">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
