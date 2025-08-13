@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, type SVGProps } from "react";
@@ -136,7 +135,7 @@ const whoWeHelp = [
     { icon: Mic, title: "Video & Podcast Hosts", description: "Turn audio/video content into ebooks, transcripts, and summaries." },
     { icon: Megaphone, title: "Marketers & Agencies", description: "Save time with client-branded ebooks, case studies, and whitepapers." },
     { icon: Store, title: "Small Businesses", description: "Grow subscriber lists by repurposing existing content into powerful assets." },
-    { icon: Layers, title: "Course Creators", description: "Recycle lessons and modules into companion guides, PDFs, or flipbooks." },
+    { icon: Layers, title: "Course Creators", description: "Recycle lessons and modules and modules into companion guides, PDFs, or flipbooks." },
 ];
 
 const faqs = [
@@ -278,7 +277,7 @@ export default function Home() {
     setSelectedPortfolioItem(null);
   };
 
-  const visiblePortfolioItems = portfolioItems.slice(0, 6);
+  const visiblePortfolioItems = portfolioItems.slice(0, 5);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -380,13 +379,13 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mt-8 md:mt-12">
               {isLoading
-                ? Array.from({ length: 6 }).map((_, i) => (
+                ? Array.from({ length: 5 }).map((_, i) => (
                     <Card key={i} className="h-full">
                       <Skeleton className="w-full h-full aspect-[3/4]" />
                     </Card>
                   ))
-                : visiblePortfolioItems.map((item, i) => {
-                    const PortfolioCard = () => (
+                : visiblePortfolioItems.map((item, i) => (
+                    <Link key={i} href={item.link} prefetch={false} className="cursor-pointer">
                       <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
                         <Image
                           src={item.image}
@@ -401,22 +400,8 @@ export default function Home() {
                           <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
                         </div>
                       </Card>
-                    );
-
-                    if (item.id === 'placeholder-1') {
-                      return (
-                        <Link key={i} href={item.link} prefetch={false}>
-                          <PortfolioCard />
-                        </Link>
-                      );
-                    }
-
-                    return (
-                      <div key={i} className="cursor-pointer" onClick={() => openGallery(item)}>
-                        <PortfolioCard />
-                      </div>
-                    );
-                  })}
+                    </Link>
+                  ))}
             </div>
               <div className="flex justify-center mt-12">
                  <Button
@@ -852,5 +837,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

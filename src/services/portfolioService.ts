@@ -1,7 +1,44 @@
-
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import type { PortfolioItem, GalleryImage } from '@/components/portfolio-gallery';
+
+const PLACEHOLDER_ID_SLUG = 'the-positive-mind-effect';
+
+function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
+  const imageUrls = Array.isArray(data.images) ? data.images : [];
+  
+  const galleryImages: GalleryImage[] = imageUrls.map((imgUrl: string, index: number) => ({
+    image: imgUrl.replace(
+      "https://github.com/thedesigndile/bookdesign/blob/master/",
+      "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/"
+    ).replace('?raw=true', '') + '?raw=true',
+    title: `Page ${index + 1}`,
+  }));
+
+  const coverImage = data.cover ? 
+    data.cover.replace(
+      "https://github.com/thedesigndile/bookdesign/blob/master/",
+      "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/"
+    ).replace('?raw=true', '') + '?raw=true' 
+    : 'https://placehold.co/400x550.png';
+
+  if (coverImage && !galleryImages.some(img => img.image === coverImage)) {
+      galleryImages.unshift({ image: coverImage, title: 'Cover' });
+  }
+
+  // Handle special case for link
+  const slug = docId === 'positiveThinking' ? PLACEHOLDER_ID_SLUG : docId;
+  const link = `/portfolio/${slug}`;
+
+  return {
+    id: slug,
+    title: data.title || 'Untitled Project',
+    image: coverImage,
+    link: link,
+    aiHint: data.aiHint || 'book cover',
+    galleryImages: galleryImages,
+  };
+}
 
 export async function getPortfolioItems(): Promise<PortfolioItem[]> {
   try {
@@ -13,35 +50,9 @@ export async function getPortfolioItems(): Promise<PortfolioItem[]> {
       return getPlaceholderPortfolioItems();
     }
     
-    const items: PortfolioItem[] = portfolioSnapshot.docs.map(doc => {
-      const data = doc.data();
-      const imageUrls = Array.isArray(data.images) ? data.images : [];
-      
-      const galleryImages: GalleryImage[] = imageUrls.map((imgUrl: string, index: number) => ({
-        image: imgUrl,
-        title: `Page ${index + 1}`,
-      }));
-
-      if (data.cover && !galleryImages.some(img => img.image === data.cover)) {
-          galleryImages.unshift({ image: data.cover, title: 'Cover' });
-      }
-
-      const defaultLink = `/portfolio/${doc.id}`;
-      // Special link for the specific project
-      const link = doc.id === 'positiveThinking' 
-        ? '/portfolio/the-positive-mind-effect' 
-        : defaultLink;
-
-
-      return {
-        id: doc.id,
-        title: data.title || 'Untitled Project',
-        image: data.cover || 'https://placehold.co/400x550.png',
-        link: link,
-        aiHint: data.aiHint || 'book cover',
-        galleryImages: galleryImages,
-      };
-    });
+    const items: PortfolioItem[] = portfolioSnapshot.docs.map(doc => 
+      dataToPortfolioItem(doc.id, doc.data())
+    );
 
     return items;
   } catch (error) {
@@ -50,58 +61,66 @@ export async function getPortfolioItems(): Promise<PortfolioItem[]> {
   }
 }
 
+export async function getPortfolioItemBySlug(slug: string): Promise<PortfolioItem | null> {
+    try {
+        // Handle placeholder special case
+        if (slug === PLACEHOLDER_ID_SLUG) {
+            const items = getPlaceholderPortfolioItems();
+            return items.find(item => item.id === PLACEHOLDER_ID_SLUG) || null;
+        }
+
+        const docRef = doc(db, 'bookDesignGallery', slug);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            return dataToPortfolioItem(docSnap.id, docSnap.data());
+        } else {
+            // Fallback for the old ID if slug is not found
+            if (slug === 'the-positive-mind-effect') {
+                const legacyDocRef = doc(db, 'bookDesignGallery', 'positiveThinking');
+                const legacyDocSnap = await getDoc(legacyDocRef);
+                if (legacyDocSnap.exists()) {
+                    return dataToPortfolioItem(legacyDocSnap.id, legacyDocSnap.data());
+                }
+            }
+        }
+        console.warn(`No portfolio item found for slug: ${slug}`);
+        return null;
+
+    } catch (error) {
+        console.error(`Error fetching portfolio item by slug ${slug}:`, error);
+        // Fallback for placeholder on error as well
+        if (slug === PLACEHOLDER_ID_SLUG) {
+            const items = getPlaceholderPortfolioItems();
+            return items.find(item => item.id === PLACEHOLDER_ID_SLUG) || null;
+        }
+        return null;
+    }
+}
+
+
 function getPlaceholderPortfolioItems(): PortfolioItem[] {
     const placeholderItems = [
       {
-        id: "placeholder-1",
+        id: PLACEHOLDER_ID_SLUG,
         title: "The Positive Mind Effect",
-        image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg",
-        link: "/portfolio/the-positive-mind-effect",
+        image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg?raw=true",
+        link: `/portfolio/${PLACEHOLDER_ID_SLUG}`,
         aiHint: "positive thinking book",
         galleryImages: [
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg", title: "Cover" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(2).jpg", title: "Page 1" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(3).jpg", title: "Page 2" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(4).jpg", title: "Page 3" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(5).jpg", title: "Page 4" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(6).jpg", title: "Page 5" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(7).jpg", title: "Page 6" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(8).jpg", title: "Page 7" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(9).jpg", title: "Page 8" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(10).jpg", title: "Page 9" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(11).jpg", title: "Page 10" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(12).jpg", title: "Page 11" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(13).jpg", title: "Page 12" },
-          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(14).jpg", title: "Page 13" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg?raw=true", title: "Cover" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(2).jpg?raw=true", title: "Page 1" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(3).jpg?raw=true", title: "Page 2" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(4).jpg?raw=true", title: "Page 3" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(5).jpg?raw=true", title: "Page 4" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(6).jpg?raw=true", title: "Page 5" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(7).jpg?raw=true", title: "Page 6" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(8).jpg?raw=true", title: "Page 7" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(9).jpg?raw=true", title: "Page 8" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(10).jpg?raw=true", title: "Page 9" },
+          { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(11).jpg?raw=true", title: "Page 10" },
         ]
-      },
-      {
-        id: "placeholder-2",
-        title: "Galactic Drifters",
-        image: "https://images.unsplash.com/photo-1690906379371-9513895a2615?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2ktZmklMjBib29rJTIwY292ZXJ8ZW58MHx8fHwxNzU0NzUwMjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-        link: "/portfolio",
-        aiHint: "sci-fi book cover",
-        galleryImages: [{image: "https://images.unsplash.com/photo-1690906379371-9513895a2615?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2ktZmklMjBib29rJTIwY292ZXJ8ZW58MHx8fHwxNzU0NzUwMjU4fDA&ixlib=rb-4.1.0&q=80&w=1080", title: 'Cover'}]
-      },
-      {
-        id: "placeholder-3",
-        title: "The Alchemist's Heir",
-        image: "https://images.unsplash.com/photo-1711185900806-bf85e7fe7767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        link: "/portfolio",
-        aiHint: "fantasy book cover",
-        galleryImages: [{image: "https://images.unsplash.com/photo-1711185900806-bf85e7fe7767?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYW50YXN5JTIwYm9vayUyMGNvdmVyfGVufDB8fHx8fDE3NTQ3NTAyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080", title: 'Cover'}]
-      },
+      }
     ];
-    // Add more placeholders if needed
-    while (placeholderItems.length < 6) {
-        placeholderItems.push({
-            id: `placeholder-${placeholderItems.length + 1}`,
-            title: "Coming Soon",
-            image: "https://placehold.co/400x550.png",
-            link: "#",
-            aiHint: "placeholder book",
-            galleryImages: [],
-        });
-    }
     return placeholderItems;
 }
