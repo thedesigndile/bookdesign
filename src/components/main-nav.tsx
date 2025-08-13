@@ -20,6 +20,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/packages', label: 'Packages' },
   { href: '#services', label: 'Services' },
@@ -41,7 +42,7 @@ export function MainNav({ }: MainNavProps) {
       isMobile ? "flex-col items-start gap-4 p-4" : "hidden md:flex"
     )}>
       {navLinks.map((link) => {
-        const isActive = (link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href));
+        const isActive = (link.href === '/' && pathname === '/') || (link.href !== '/' && !link.href.startsWith('#') && pathname.startsWith(link.href));
         const finalHref = (link.href.startsWith('#') && pathname !== '/') ? `/${link.href}` : link.href;
         return (
             <Link
