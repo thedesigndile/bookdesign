@@ -382,7 +382,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
               {isLoading ? (
-                  Array.from({ length: visiblePortfolioItems.length || 1 }).map((_, i) => (
+                  Array.from({ length: 6 }).map((_, i) => (
                     <Card key={i} className="h-full aspect-[3/4]">
                       <Skeleton className="w-full h-full" />
                     </Card>
