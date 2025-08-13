@@ -1,10 +1,9 @@
 
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
 import type { PortfolioItem, GalleryImage } from '@/components/portfolio-gallery';
 
-const PLACEHOLDER_ID_SLUG = 'the-positive-mind-effect';
+const PLACEHOLDER_ID_SLUG = 'the-power-of-positive-thinking';
 
+// This function is kept for potential future use with a real database.
 function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
   const imageUrls = Array.isArray(data.images) ? data.images : [];
   
@@ -21,7 +20,7 @@ function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
       "https://github.com/thedesigndile/bookdesign/blob/master/",
       "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/"
     ).replace('?raw=true', '') + '?raw=true' 
-    : 'https://placehold.co/400x550.png';
+    : (galleryImages.find(img => img.image.toLowerCase().includes('cover'))?.image || 'https://placehold.co/400x550.png');
 
   if (coverImage && !galleryImages.some(img => img.image === coverImage)) {
       galleryImages.unshift({ image: coverImage, title: 'Cover' });
@@ -39,6 +38,7 @@ function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
     galleryImages: galleryImages,
   };
 }
+
 
 export async function getPortfolioItems(): Promise<PortfolioItem[]> {
   // We will default to placeholder data because Firestore rules are not public.
