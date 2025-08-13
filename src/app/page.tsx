@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, type SVGProps } from "react";
@@ -25,6 +26,7 @@ import { MainNav } from "@/components/main-nav";
 import PortfolioGallery, { type PortfolioItem, type GalleryImage } from "@/components/portfolio-gallery";
 import { getPortfolioItems } from "@/services/portfolioService";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Chatbot } from "@/components/chatbot";
 
 const services = [
   {
@@ -303,6 +305,7 @@ export default function Home() {
     >
       <MouseSpotlight />
       <MainNav activeLink="Home"/>
+      <Chatbot />
       
       <main className="flex-1 pt-16">
         <section id="hero" className="relative w-full h-screen flex items-center py-12">
