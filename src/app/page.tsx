@@ -381,48 +381,50 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
-              {isLoading && (
+              {isLoading ? (
                   Array.from({ length: 6 }).map((_, i) => (
                     <Card key={i} className="h-full aspect-[3/4]">
                       <Skeleton className="w-full h-full" />
                     </Card>
                   ))
-              )}
-              {!isLoading && visiblePortfolioItems.length === 0 && (
+              ) : visiblePortfolioItems.length > 0 ? (
+                visiblePortfolioItems.map((item) => (
+                    <Card key={item.id} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
+                      <Link href={item.link} prefetch={false} className="block w-full h-full">
+                        <div className="absolute inset-0 bg-black flex items-center justify-center">
+                          <Image
+                            src={item.image}
+                            alt={`Book cover for ${item.title}`}
+                            width={400}
+                            height={550}
+                            className="object-contain w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
+                            data-ai-hint={item.aiHint}
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 flex flex-col justify-end p-4">
+                          <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
+                        </div>
+                      </Link>
+                    </Card>
+                ))
+              ) : (
                 <p className="col-span-full text-center text-muted-foreground">Our portfolio is currently being updated. Please check back soon!</p>
               )}
-              {!isLoading && visiblePortfolioItems.map((item, i) => (
-                <Link key={item.id} href={item.link} prefetch={false} className="group block">
-                    <Card className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out group-hover:-translate-y-2 border-border/50 group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20 h-full aspect-[3/4]">
-                      <div className="absolute inset-0 bg-black flex items-center justify-center">
-                        <Image
-                          src={item.image}
-                          alt={`Book cover for ${item.title}`}
-                          width={400}
-                          height={550}
-                          className="object-contain w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
-                          data-ai-hint={item.aiHint}
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute inset-0 flex flex-col justify-end p-4">
-                        <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
-                      </div>
-                    </Card>
-                </Link>
-              ))}
             </div>
-              <div className="flex justify-center mt-12">
-                 <Button
-                  asChild
-                  size="lg"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                >
-                  <Link href="/portfolio">
-                    View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
+              {portfolioItems.length > 0 && (
+                <div className="flex justify-center mt-12">
+                   <Button
+                    asChild
+                    size="lg"
+                    className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <Link href="/portfolio">
+                      View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+              )}
           </div>
         </section>
 

@@ -10,18 +10,23 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PortfolioItemLayout({ children, params }: { children: React.ReactNode, params: { slug: string } }) {
+interface PortfolioItemLayoutProps {
+  children: React.ReactNode;
+  params: { slug: string };
+}
+
+export default async function PortfolioItemLayout({ children, params }: PortfolioItemLayoutProps) {
   const item = await getPortfolioItemBySlug(params.slug);
-  const allItems = await getPortfolioItems();
 
   if (!item) {
     notFound();
   }
-
+  
+  const allItems = await getPortfolioItems();
   const otherItems = allItems.filter(i => i.id !== item.id);
 
-  // This is a bit of a hack to pass props from a server layout to a client page
-  // A better solution might involve a different architecture or context
+  // We pass the fetched data to the page component via cloned element props.
+  // This is a common pattern for passing server-fetched data to client components in Next.js App Router.
   const childrenWithProps = React.cloneElement(children as React.ReactElement, { item, otherItems });
 
   return <>{childrenWithProps}</>;
