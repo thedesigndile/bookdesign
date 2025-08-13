@@ -380,7 +380,7 @@ export default function Home() {
                 Explore a curated selection of our finest book designs, where each project showcases our commitment to visual storytelling and craftsmanship.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
               {isLoading
                 ? Array.from({ length: 6 }).map((_, i) => (
                     <Card key={i} className="h-full aspect-[3/4]">
