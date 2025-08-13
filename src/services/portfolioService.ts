@@ -56,10 +56,10 @@ export async function getPortfolioItemBySlug(slug: string): Promise<PortfolioIte
 function getPlaceholderPortfolioItems(): PortfolioItem[] {
     const placeholderItems = [
       {
-        id: 'the-positive-mind-effect',
-        title: "The Positive Mind Effect",
+        id: 'the-power-of-positive-thinking',
+        title: "The Power of Positive Thinking",
         image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg?raw=true",
-        link: `/portfolio/the-positive-mind-effect`,
+        link: `/portfolio/the-power-of-positive-thinking`,
         aiHint: "positive thinking book",
         galleryImages: [
             { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg?raw=true", title: "Cover" },
