@@ -1,57 +1,15 @@
 
 import type { PortfolioItem, GalleryImage } from '@/components/portfolio-gallery';
 
-const PLACEHOLDER_ID_SLUG = 'the-power-of-positive-thinking';
-
-// This function is kept for potential future use with a real database.
-function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
-  const imageUrls = Array.isArray(data.images) ? data.images : [];
-  
-  const galleryImages: GalleryImage[] = imageUrls.map((imgUrl: string, index: number) => ({
-    image: imgUrl.replace(
-      "https://github.com/thedesigndile/bookdesign/blob/master/",
-      "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/"
-    ).replace('?raw=true', '') + '?raw=true',
-    title: `Page ${index + 1}`,
-  }));
-
-  const coverImage = data.cover ? 
-    data.cover.replace(
-      "https://github.com/thedesigndile/bookdesign/blob/master/",
-      "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/"
-    ).replace('?raw=true', '') + '?raw=true' 
-    : (galleryImages.find(img => img.image.toLowerCase().includes('cover'))?.image || 'https://placehold.co/400x550.png');
-
-  if (coverImage && !galleryImages.some(img => img.image === coverImage)) {
-      galleryImages.unshift({ image: coverImage, title: 'Cover' });
-  }
-
-  const slug = docId;
-  const link = `/portfolio/${slug}`;
-
-  return {
-    id: slug,
-    title: data.title || 'Untitled Project',
-    image: coverImage,
-    link: link,
-    aiHint: data.aiHint || 'book cover',
-    galleryImages: galleryImages,
-  };
-}
-
-
 export async function getPortfolioItems(): Promise<PortfolioItem[]> {
-  // We will default to placeholder data because Firestore rules are not public.
   return getPlaceholderPortfolioItems();
 }
 
 export async function getPortfolioItemBySlug(slug: string): Promise<PortfolioItem | null> {
-    // We will default to placeholder data because Firestore rules are not public.
     const items = getPlaceholderPortfolioItems();
     const item = items.find(i => i.id === slug);
     return item || null;
 }
-
 
 function getPlaceholderPortfolioItems(): PortfolioItem[] {
     const placeholderItems = [
