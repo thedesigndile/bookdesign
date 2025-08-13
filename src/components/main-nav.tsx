@@ -11,6 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import AnimatedLogo from './ui/animated-logo';
 import { useAuth } from '@/hooks/use-auth';
+import { usePathname } from 'next/navigation';
 
 interface NavLink {
   href: string;
@@ -18,10 +19,10 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: '#hero', label: 'Home' },
-  { href: '#portfolio', label: 'Portfolio' },
+  { href: '/', label: 'Home' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/packages', label: 'Packages' },
   { href: '#services', label: 'Services' },
-  { href: '#faq', label: 'FAQs' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -29,32 +30,37 @@ interface MainNavProps {
   activeLink?: string;
 }
 
-export function MainNav({ activeLink }: MainNavProps) {
+export function MainNav({ }: MainNavProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, loading, signIn, signOut } = useAuth();
+  const pathname = usePathname();
 
   const renderNavLinks = (isMobile = false) => (
     <nav className={cn(
       "flex items-center gap-2",
       isMobile ? "flex-col items-start gap-4 p-4" : "hidden md:flex"
     )}>
-      {navLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          onClick={() => isMobile && setIsMobileMenuOpen(false)}
-          className={cn(
-            "text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary/80 hover:text-primary-foreground",
-            activeLink === link.label
-              ? 'text-foreground'
-              : 'text-muted-foreground',
-            isMobile && 'w-full text-left'
-          )}
-          prefetch={false}
-        >
-          {link.label}
-        </Link>
-      ))}
+      {navLinks.map((link) => {
+        const isActive = (link.href === '/' && pathname === '/') || (link.href !== '/' && pathname.startsWith(link.href));
+        const finalHref = (link.href.startsWith('#') && pathname !== '/') ? `/${link.href}` : link.href;
+        return (
+            <Link
+              key={link.href}
+              href={finalHref}
+              onClick={() => isMobile && setIsMobileMenuOpen(false)}
+              className={cn(
+                "text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary/80 hover:text-primary-foreground",
+                isActive
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground',
+                isMobile && 'w-full text-left'
+              )}
+              prefetch={false}
+            >
+              {link.label}
+            </Link>
+        )
+      })}
     </nav>
   );
   

@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],
         playfair: ['"Playfair Display"', 'serif'],
+        'bebas-neue': ['"Bebas Neue"', 'cursive'],
       },
       colors: {
         border: 'hsl(var(--border))',
