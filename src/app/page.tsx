@@ -279,7 +279,7 @@ export default function Home() {
     setSelectedPortfolioItem(null);
   };
 
-  const visiblePortfolioItems = portfolioItems.slice(0, 5);
+  const visiblePortfolioItems = portfolioItems.slice(0, 3);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -380,9 +380,9 @@ export default function Home() {
                 Explore a curated selection of our finest book designs, where each project showcases our commitment to visual storytelling and craftsmanship.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mt-8 md:mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
               {isLoading
-                ? Array.from({ length: 5 }).map((_, i) => (
+                ? Array.from({ length: 3 }).map((_, i) => (
                     <Card key={i} className="h-full aspect-[3/4]">
                       <Skeleton className="w-full h-full" />
                     </Card>

@@ -27,7 +27,7 @@ function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
       galleryImages.unshift({ image: coverImage, title: 'Cover' });
   }
 
-  const slug = docId === 'positiveThinking' ? PLACEHOLDER_ID_SLUG : docId;
+  const slug = docId;
   const link = `/portfolio/${slug}`;
 
   return {
@@ -56,10 +56,10 @@ export async function getPortfolioItemBySlug(slug: string): Promise<PortfolioIte
 function getPlaceholderPortfolioItems(): PortfolioItem[] {
     const placeholderItems = [
       {
-        id: PLACEHOLDER_ID_SLUG,
+        id: 'the-positive-mind-effect',
         title: "The Positive Mind Effect",
         image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg?raw=true",
-        link: `/portfolio/${PLACEHOLDER_ID_SLUG}`,
+        link: `/portfolio/the-positive-mind-effect`,
         aiHint: "positive thinking book",
         galleryImages: [
           { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/Cover.jpg?raw=true", title: "Cover" },
@@ -76,25 +76,25 @@ function getPlaceholderPortfolioItems(): PortfolioItem[] {
         ]
       },
       {
-        id: 'the-art-of-storytelling',
-        title: 'The Art of Storytelling',
+        id: 'building-a-successful-startup',
+        title: 'Building a Successful Startup',
         image: 'https://placehold.co/400x550.png',
-        link: '/portfolio/the-art-of-storytelling',
-        aiHint: 'minimalist book cover',
+        link: '/portfolio/building-a-successful-startup',
+        aiHint: 'startup business book',
         galleryImages: [
           { image: 'https://placehold.co/800x1100.png', title: 'Cover' },
-          { image: 'https://placehold.co/800x1100.png', title: 'Page 1' },
+          { image: 'https://placehold.co/800x1100.png', title: 'Chapter 1' },
         ],
       },
        {
-        id: 'celestial-journeys',
-        title: 'Celestial Journeys',
+        id: 'personal-budgeting-saving',
+        title: 'Personal Budgeting & Saving',
         image: 'https://placehold.co/400x550.png',
-        link: '/portfolio/celestial-journeys',
-        aiHint: 'sci-fi book cover',
+        link: '/portfolio/personal-budgeting-saving',
+        aiHint: 'finance book cover',
         galleryImages: [
           { image: 'https://placehold.co/800x1100.png', title: 'Cover' },
-          { image: 'https://placehold.co/800x1100.png', title: 'Page 1' },
+          { image: 'https://placehold.co/800x1100.png', title: 'Worksheet' },
         ],
       },
     ];
