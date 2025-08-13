@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from './ui/button';
+import { Skeleton } from './ui/skeleton';
 
 export interface GalleryImage {
     image: string;
@@ -25,27 +26,32 @@ interface PortfolioGalleryProps {
     isOpen: boolean;
     onClose: () => void;
     portfolioItem: PortfolioItem | null;
+    startIndex?: number;
 }
 
-const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, portfolioItem }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, portfolioItem, startIndex = 0 }) => {
+    const [currentIndex, setCurrentIndex] = useState(startIndex);
+    const [isLoading, setIsLoading] = useState(true);
 
     const images = portfolioItem?.galleryImages || [];
 
     useEffect(() => {
         if (isOpen) {
-            setCurrentIndex(0);
+            setCurrentIndex(startIndex);
+            setIsLoading(true);
         }
-    }, [isOpen]);
+    }, [isOpen, startIndex]);
 
     const handleNext = useCallback(() => {
         if (images.length > 0) {
+            setIsLoading(true);
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         }
     }, [images.length]);
 
     const handlePrev = useCallback(() => {
         if (images.length > 0) {
+            setIsLoading(true);
             setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
         }
     }, [images.length]);
@@ -69,6 +75,8 @@ const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, po
     if (!isOpen || !portfolioItem || images.length === 0) {
         return null;
     }
+    
+    const currentImage = images[currentIndex];
 
     return (
         <AnimatePresence>
@@ -77,7 +85,7 @@ const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, po
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+                    className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur-sm"
                     onClick={onClose}
                 >
                     <motion.div
@@ -94,18 +102,24 @@ const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, po
                                 initial={{ opacity: 0, x: 50 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -50 }}
-                                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                className="relative w-auto h-full"
+                                transition={{ duration: 0.2, ease: 'easeInOut' }}
+                                className="relative w-auto h-[90%] flex items-center justify-center"
                             >
+                                {isLoading && <Skeleton className="w-[600px] h-[800px] rounded-lg" />}
                                 <Image
-                                    src={images[currentIndex].image}
-                                    alt={images[currentIndex].title}
+                                    src={currentImage.image}
+                                    alt={currentImage.title}
                                     width={800}
                                     height={1000}
-                                    className="object-contain w-full h-full rounded-lg shadow-2xl"
+                                    className={`object-contain w-auto h-full rounded-lg shadow-2xl transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                                    onLoad={() => setIsLoading(false)}
+                                    priority={true}
                                 />
                             </motion.div>
                         </AnimatePresence>
+                         <div className="absolute bottom-0 text-center p-4 bg-black/50 rounded-b-lg w-auto">
+                            <p className="text-white text-lg font-semibold">{currentImage.title}</p>
+                        </div>
                     </motion.div>
                     
                     <Button
@@ -117,22 +131,26 @@ const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ isOpen, onClose, po
                         <X className="h-6 w-6" />
                     </Button>
 
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={handlePrev}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-background/50 hover:bg-background/80 h-12 w-12 z-50 hidden md:flex"
-                    >
-                        <ChevronLeft className="h-8 w-8" />
-                    </Button>
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={handleNext}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-background/50 hover:bg-background/80 h-12 w-12 z-50 hidden md:flex"
-                    >
-                        <ChevronRight className="h-8 w-8" />
-                    </Button>
+                    {images.length > 1 && (
+                        <>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={handlePrev}
+                                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-background/50 hover:bg-background/80 h-12 w-12 z-50 hidden md:flex"
+                            >
+                                <ChevronLeft className="h-8 w-8" />
+                            </Button>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={handleNext}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-background/50 hover:bg-background/80 h-12 w-12 z-50 hidden md:flex"
+                            >
+                                <ChevronRight className="h-8 w-8" />
+                            </Button>
+                        </>
+                    )}
                 </motion.div>
             )}
         </AnimatePresence>
