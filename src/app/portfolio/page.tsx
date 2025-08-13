@@ -25,8 +25,8 @@ export default async function PortfolioPage() {
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {portfolioItems.map((item) => (
-            <Link key={item.id} href={item.link} prefetch={false}>
-              <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
+            <Card key={item.id} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
+              <Link href={item.link} prefetch={false} className="block w-full h-full">
                 <div className="absolute inset-0 bg-black flex items-center justify-center">
                     <Image
                       src={item.image}
@@ -41,8 +41,8 @@ export default async function PortfolioPage() {
                 <div className="absolute inset-0 flex flex-col justify-end p-4">
                   <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
                 </div>
-              </Card>
-            </Link>
+              </Link>
+            </Card>
           ))}
         </div>
       </main>
