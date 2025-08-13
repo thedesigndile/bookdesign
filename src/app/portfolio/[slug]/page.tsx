@@ -1,8 +1,9 @@
+
 "use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, type ComponentType } from 'react';
+import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MainNav } from '@/components/main-nav';
@@ -15,10 +16,6 @@ interface PortfolioItemPageProps {
   item: PortfolioItem | null;
   otherItems: PortfolioItem[];
 }
-
-// Since we can't directly use async components as client components,
-// we create a loader that will fetch data on the server and pass it to the client component.
-// This is a conceptual explanation. The actual implementation is in layout.tsx for this case.
 
 export default function PortfolioItemPage({ item, otherItems }: PortfolioItemPageProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -63,11 +60,11 @@ export default function PortfolioItemPage({ item, otherItems }: PortfolioItemPag
         </div>
 
         {galleryImages.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {galleryImages.map((image, index) => (
               <div 
                 key={index} 
-                className="overflow-hidden rounded-lg shadow-lg group border border-border/20 transition-all duration-300 hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1 cursor-pointer"
+                className="group relative overflow-hidden rounded-lg shadow-lg border border-border/20 transition-all duration-300 hover:shadow-primary/20 hover:border-primary/50 hover:-translate-y-1 cursor-pointer"
                 onClick={() => openGallery(index)}
               >
                 <div className="w-full aspect-[3/4] bg-black flex items-center justify-center p-2">
