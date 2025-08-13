@@ -1,3 +1,5 @@
+
+import * as React from 'react';
 import { getPortfolioItemBySlug, getPortfolioItems } from "@/services/portfolioService";
 import { notFound } from 'next/navigation';
 
