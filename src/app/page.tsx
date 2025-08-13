@@ -308,9 +308,9 @@ export default function Home() {
         <section id="hero" className="relative w-full h-screen flex items-center py-12">
             <AnimatedHeroBackground />
             <div className="container z-20 mx-auto px-4 md:px-6">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <motion.div
-                        className="flex flex-col gap-6 text-center md:text-left"
+                        className="flex flex-col gap-6 text-center md:text-left order-2 md:order-1"
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
@@ -331,7 +331,7 @@ export default function Home() {
                         </div>
                     </motion.div>
                     <motion.div
-                        className="relative h-[50vh] md:h-[60vh] transform-style-3d"
+                        className="relative h-[50vh] md:h-[60vh] transform-style-3d order-1 md:order-2"
                         initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
                         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
