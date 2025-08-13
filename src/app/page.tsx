@@ -279,7 +279,7 @@ export default function Home() {
     setSelectedPortfolioItem(null);
   };
 
-  const visiblePortfolioItems = portfolioItems.slice(0, 3);
+  const visiblePortfolioItems = portfolioItems.slice(0, 6);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -382,14 +382,14 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
               {isLoading
-                ? Array.from({ length: 3 }).map((_, i) => (
+                ? Array.from({ length: 6 }).map((_, i) => (
                     <Card key={i} className="h-full aspect-[3/4]">
                       <Skeleton className="w-full h-full" />
                     </Card>
                   ))
                 : visiblePortfolioItems.map((item, i) => (
                     <Link key={i} href={item.link} prefetch={false} className="cursor-pointer">
-                      <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full">
+                      <Card className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
                         <div className="absolute inset-0 bg-black flex items-center justify-center">
                           <Image
                             src={item.image}
