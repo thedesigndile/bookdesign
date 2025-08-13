@@ -1,3 +1,4 @@
+
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import type { PortfolioItem, GalleryImage } from '@/components/portfolio-gallery';
@@ -26,7 +27,6 @@ function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
       galleryImages.unshift({ image: coverImage, title: 'Cover' });
   }
 
-  // Handle special case for link
   const slug = docId === 'positiveThinking' ? PLACEHOLDER_ID_SLUG : docId;
   const link = `/portfolio/${slug}`;
 
@@ -41,61 +41,15 @@ function dataToPortfolioItem(docId: string, data: any): PortfolioItem {
 }
 
 export async function getPortfolioItems(): Promise<PortfolioItem[]> {
-  try {
-    const portfolioCollection = collection(db, 'bookDesignGallery');
-    const portfolioSnapshot = await getDocs(portfolioCollection);
-
-    if (portfolioSnapshot.empty) {
-      console.log('No documents found in Firestore, using placeholder data.');
-      return getPlaceholderPortfolioItems();
-    }
-    
-    const items: PortfolioItem[] = portfolioSnapshot.docs.map(doc => 
-      dataToPortfolioItem(doc.id, doc.data())
-    );
-
-    return items;
-  } catch (error) {
-    console.error("Error fetching from Firestore, falling back to placeholder data:", error);
-    return getPlaceholderPortfolioItems();
-  }
+  // We will default to placeholder data because Firestore rules are not public.
+  return getPlaceholderPortfolioItems();
 }
 
 export async function getPortfolioItemBySlug(slug: string): Promise<PortfolioItem | null> {
-    try {
-        // Handle placeholder special case
-        if (slug === PLACEHOLDER_ID_SLUG) {
-            const items = getPlaceholderPortfolioItems();
-            return items.find(item => item.id === PLACEHOLDER_ID_SLUG) || null;
-        }
-
-        const docRef = doc(db, 'bookDesignGallery', slug);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-            return dataToPortfolioItem(docSnap.id, docSnap.data());
-        } else {
-            // Fallback for the old ID if slug is not found
-            if (slug === 'the-positive-mind-effect') {
-                const legacyDocRef = doc(db, 'bookDesignGallery', 'positiveThinking');
-                const legacyDocSnap = await getDoc(legacyDocRef);
-                if (legacyDocSnap.exists()) {
-                    return dataToPortfolioItem(legacyDocSnap.id, legacyDocSnap.data());
-                }
-            }
-        }
-        console.warn(`No portfolio item found for slug: ${slug}`);
-        return null;
-
-    } catch (error) {
-        console.error(`Error fetching portfolio item by slug ${slug}:`, error);
-        // Fallback for placeholder on error as well
-        if (slug === PLACEHOLDER_ID_SLUG) {
-            const items = getPlaceholderPortfolioItems();
-            return items.find(item => item.id === PLACEHOLDER_ID_SLUG) || null;
-        }
-        return null;
-    }
+    // We will default to placeholder data because Firestore rules are not public.
+    const items = getPlaceholderPortfolioItems();
+    const item = items.find(i => i.id === slug);
+    return item || null;
 }
 
 
@@ -120,7 +74,29 @@ function getPlaceholderPortfolioItems(): PortfolioItem[] {
           { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(10).jpg?raw=true", title: "Page 9" },
           { image: "https://raw.githubusercontent.com/thedesigndile/bookdesign/master/Localportfolio/Book%20Design/The%20Power%20of%20Positive%20Thinking/1%20(11).jpg?raw=true", title: "Page 10" },
         ]
-      }
+      },
+      {
+        id: 'the-art-of-storytelling',
+        title: 'The Art of Storytelling',
+        image: 'https://placehold.co/400x550.png',
+        link: '/portfolio/the-art-of-storytelling',
+        aiHint: 'minimalist book cover',
+        galleryImages: [
+          { image: 'https://placehold.co/800x1100.png', title: 'Cover' },
+          { image: 'https://placehold.co/800x1100.png', title: 'Page 1' },
+        ],
+      },
+       {
+        id: 'celestial-journeys',
+        title: 'Celestial Journeys',
+        image: 'https://placehold.co/400x550.png',
+        link: '/portfolio/celestial-journeys',
+        aiHint: 'sci-fi book cover',
+        galleryImages: [
+          { image: 'https://placehold.co/800x1100.png', title: 'Cover' },
+          { image: 'https://placehold.co/800x1100.png', title: 'Page 1' },
+        ],
+      },
     ];
     return placeholderItems;
 }
