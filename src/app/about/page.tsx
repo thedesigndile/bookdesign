@@ -24,7 +24,7 @@ export default function AboutPage() {
             </div>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="relative mx-auto w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-full -rotate-12 transition-transform duration-500 hover:rotate-0"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full -rotate-12 transition-transform duration-500 hover:rotate-0"></div>
                    <Image
                       src="https://placehold.co/400x400.png"
                       alt="Designdile Team Portrait"
@@ -35,13 +35,13 @@ export default function AboutPage() {
                     />
               </div>
               <div className="text-center md:text-left">
-                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground font-playfair">
                   Designdile
                 </h1>
                 <p className="mt-2 text-xl font-medium" style={{ color: "#684DF4" }}>
                   Your Vision, Our Design Expertise
                 </p>
-                <p className="mt-6 text-lg text-muted-foreground font-roboto-medium max-w-xl mx-auto md:mx-0">
+                <p className="mt-6 text-lg text-muted-foreground font-roboto max-w-xl mx-auto md:mx-0">
                   We are a seasoned creative team with over four years of experience in designing modern, reader-friendly cookbooks, eBooks, and print books. Skilled in Adobe InDesign, Photoshop, Illustrator, and industry-standard publishing platforms like Lulu, IngramSpark, and Amazon KDP, we bring your book to life with precision and style.
                 </p>
               </div>
