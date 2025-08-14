@@ -328,7 +328,7 @@ export default function Home() {
                             <Link href="#portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-md font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
                                 Explore Our Work
                             </Link>
-                            <Link href="#contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-md font-semibold text-foreground shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                            <Link href="/contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-md font-semibold text-foreground shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
                                 Start a Project
                             </Link>
                         </div>
@@ -812,10 +812,11 @@ export default function Home() {
             <div className="md:col-span-2">
               <h4 className="font-semibold text-lg mb-4">Explore</h4>
               <div className="flex flex-col gap-3">
-                <Link href="#hero" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Home</Link>
-                <Link href="#portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
-                <Link href="#services" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Services</Link>
-                <Link href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
+                <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Home</Link>
+                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
+                <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
+                <Link href="/packages" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Packages</Link>
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
               </div>
             </div>
 

@@ -23,8 +23,7 @@ const navLinks: NavLink[] = [
   { href: '/about', label: 'About Us' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/packages', label: 'Packages' },
-  { href: '#services', label: 'Services' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 interface MainNavProps {
