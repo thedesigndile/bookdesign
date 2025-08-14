@@ -4,7 +4,7 @@
 import { MainNav } from "@/components/main-nav";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
-import { BookCopy, LayoutTemplate, PenTool, Server, Type, Wand2, Image as ImageIcon, UtensilsCrossed, FileText, BarChart, Presentation, FileCode, CheckCircle, BrainCircuit, Bot } from "lucide-react";
+import { BookCopy, LayoutTemplate, PenTool, Server, Type, Wand2, Image as ImageIcon, UtensilsCrossed, FileText, BarChart, Presentation, FileCode, CheckCircle, BrainCircuit, Bot, Rocket, Award, Users, Store } from "lucide-react";
 
 const skills = [
     { icon: UtensilsCrossed, title: "Cookbook & Recipe Book Design" },
@@ -29,7 +29,15 @@ const tools = [
   { icon: Server, name: "Lulu", description: "Print-on-demand publishing." },
   { icon: Server, name: "IngramSpark", description: "Global print distribution." },
   { icon: Server, name: "Amazon KDP", description: "Kindle & paperback publishing." },
-  { icon: BrainCircuit, name: "Midjourney", description: "AI-powered image generation." },
+];
+
+const journey = [
+    { year: "2019", event: "Started offering freelance book design services on platforms like Upwork & Fiverr.", icon: Rocket },
+    { year: "2020", event: "Expanded services to cookbook redesign and eBook formatting for global clients.", icon: BookCopy },
+    { year: "2021", event: "Reached 100+ successfully completed book projects with 5-star reviews.", icon: Award },
+    { year: "2022", event: "Partnered with self-published authors and small publishers worldwide.", icon: Users },
+    { year: "2023", event: "Launched Designdile as a full-service design agency.", icon: Store },
+    { year: "2024", event: "Introduced advanced layout solutions & creative cover mockups.", icon: Wand2 }
 ];
 
 
@@ -107,6 +115,32 @@ export default function AboutPage() {
                   </div>
                   <h3 className="font-semibold text-lg mb-1">{tool.name}</h3>
                   <p className="text-sm text-muted-foreground">{tool.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="journey" className="py-12 md:py-20">
+            <div className="text-center mb-16">
+              <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
+                Freelancing Journey & Experience
+              </h2>
+            </div>
+            <div className="relative max-w-2xl mx-auto">
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5" style={{ background: 'linear-gradient(to bottom, transparent, #684DF4, transparent)' }}></div>
+              {journey.map((item, index) => (
+                <div key={item.year} className="relative mb-12">
+                  <div className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                    <div className={`w-5/12 ${index % 2 === 0 ? 'order-1 text-right pr-8' : 'order-3 text-left pl-8'}`}>
+                      <p className="text-lg font-bold" style={{ color: '#684DF4' }}>{item.year}</p>
+                      <p className="text-muted-foreground mt-1">{item.event}</p>
+                    </div>
+                    <div className="order-2 flex-shrink-0">
+                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-card border-2 border-primary/50 shadow-lg" style={{ borderColor: '#684DF4' }}>
+                           <item.icon className="h-6 w-6" style={{ color: '#684DF4' }} />
+                        </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
