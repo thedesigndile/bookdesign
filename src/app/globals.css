@@ -21,6 +21,7 @@
     --popover-foreground: 210 40% 98%;
  
     --primary: 199 94% 42%;
+    --primary-raw: 199 94% 42%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 200 92% 42%;
@@ -53,6 +54,7 @@
     --popover-foreground: 210 40% 98%;
  
     --primary: 199 94% 42%;
+    --primary-raw: 199 94% 42%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 200 92% 42%;
@@ -127,3 +129,5 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
 }
+
+    
