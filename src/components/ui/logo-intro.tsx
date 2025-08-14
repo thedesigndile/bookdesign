@@ -1,4 +1,4 @@
-// components/LogoIntro.tsx
+
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion'
@@ -32,75 +32,96 @@ export default function LogoIntro() {
       transition: {
         duration: 1,
         when: 'beforeChildren',
-        staggerChildren: 0.08
+        staggerChildren: 0.05
       }
     },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 1 } }
+    exit: { opacity: 0, scale: 0.9, transition: { duration: 1 } }
   }
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 40, rotateX: 90 },
+    hidden: { opacity: 0, y: 100, rotateX: 90, scale: 0.8 },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.19, 1, 0.22, 1] }
     }
   }
 
   const glowVariants = {
     pulse: {
       textShadow: [
-        '0 0 6px hsl(var(--primary))',
+        '0 0 4px hsl(var(--primary))',
         '0 0 20px hsl(var(--primary))',
-        '0 0 6px hsl(var(--primary))'
+        '0 0 4px hsl(var(--primary))'
       ],
-      transition: { repeat: Infinity, duration: 1.4 }
-    }
-  }
-  
-  const bgVariants = {
-    hidden: {  },
-    visible: {
-      transition: { duration: 3 }
+      transition: { repeat: Infinity, duration: 1.2 }
     }
   }
 
-  const textParts = [
-    { word: 'Design', className: 'text-foreground', glow: false },
-    { word: ' ', className: '', glow: false },
-    { word: 'Dile', className: 'text-primary', glow: true }
-  ]
+  const wordSlideVariants = {
+    hidden: { x: '-100%', opacity: 0 },
+    visible: {
+      x: '0%',
+      opacity: 1,
+      transition: { duration: 1.2, ease: [0.19, 1, 0.22, 1], staggerChildren: 0.05 }
+    }
+  }
+
+  const zoomOutVariants = {
+    visible: { scale: 1 },
+    zoom: {
+      scale: 0.8,
+      opacity: 0,
+      transition: { duration: 1, delay: 4 }
+    }
+  }
 
   return (
     <AnimatePresence>
       {show && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
-          variants={bgVariants}
           initial="hidden"
           animate="visible"
-          exit="hidden"
+          exit="exit"
+          variants={containerVariants}
         >
           <motion.div
-            className="flex font-playfair"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            className="overflow-hidden flex font-playfair"
+            variants={zoomOutVariants}
+            animate={['visible', 'zoom']}
           >
-            {textParts.map(({ word, className, glow }, idx) =>
-              [...word].map((letter, i) => (
+            <motion.div
+              className="flex mr-2"
+              variants={wordSlideVariants}
+            >
+              {[...'Design'].map((letter, i) => (
                 <motion.span
-                  key={`${idx}-${i}`}
-                  variants={glow ? { ...letterVariants, pulse: glowVariants.pulse } : letterVariants}
-                  animate={glow ? 'pulse' : 'visible'}
-                  className={cn("text-5xl md:text-7xl font-extrabold tracking-tight", className)}
+                  key={i}
+                  variants={letterVariants}
+                  className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground"
                 >
-                  {letter === ' ' ? '\u00A0' : letter}
+                  {letter}
                 </motion.span>
-              ))
-            )}
+              ))}
+            </motion.div>
+            <motion.div
+              className="flex"
+              variants={wordSlideVariants}
+            >
+              {[...'Dile'].map((letter, i) => (
+                <motion.span
+                  key={i}
+                  variants={{...letterVariants, pulse: glowVariants.pulse}}
+                  animate={["visible", "pulse"]}
+                  className="text-5xl md:text-7xl font-extrabold tracking-tight text-primary"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
