@@ -109,7 +109,7 @@ const PortfolioCard = ({ project }: { project: { title: string; description: str
       className="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110"
       data-ai-hint={project.aiHint}
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ '--tw-gradient-from': 'hsla(var(--primary-raw), 0.8)', '--tw-gradient-to': 'hsla(var(--primary-raw), 0)' } as React.CSSProperties} />
+    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
     <div className="absolute inset-0 flex flex-col justify-end p-6">
       <h3 className="text-xl font-bold text-white opacity-0 -translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
         {project.title}
@@ -157,10 +157,10 @@ export default function AboutPage() {
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground font-playfair">
                   Designdile
                 </h1>
-                <p className="mt-2 text-xl font-medium" style={{ color: "#684DF4" }}>
+                <p className="mt-2 text-xl font-medium text-primary">
                   Your Vision, Our Design Expertise
                 </p>
-                <p className="mt-6 text-lg text-muted-foreground font-roboto max-w-xl mx-auto md:mx-0">
+                <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">
                   We are a seasoned creative team with over four years of experience in designing modern, reader-friendly cookbooks, eBooks, and print books. Skilled in Adobe InDesign, Photoshop, Illustrator, and industry-standard publishing platforms like Lulu, IngramSpark, and Amazon KDP, we bring your book to life with precision and style.
                 </p>
               </div>
@@ -168,16 +168,14 @@ export default function AboutPage() {
           </section>
 
           <section id="skills" className="py-12 md:py-20">
-            <div className="text-center mb-12">
-                <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
-                    Skills & Expertise
-                </h2>
+             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Skills & Expertise</h2>
             </div>
-            <div className="mx-auto grid max-w-5xl items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
+            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 md:grid-cols-4">
                 {skills.map((skill) => (
                     <div key={skill.title} className="group flex flex-col items-center text-center p-6 bg-card/60 rounded-lg border border-border/20 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300">
                         <div className="mb-4 rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-colors">
-                           <skill.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" style={{ color: '#684DF4' }}/>
+                           <skill.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" />
                         </div>
                         <h3 className="font-semibold text-lg mb-2">{skill.title}</h3>
                     </div>
@@ -186,16 +184,14 @@ export default function AboutPage() {
           </section>
 
           <section id="tools" className="py-12 md:py-20">
-            <div className="text-center mb-12">
-              <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
-                Tools & Software We Use
-              </h2>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Tools & Software We Use</h2>
             </div>
             <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {tools.map((tool) => (
-                <div key={tool.name} className="group flex flex-col items-center text-center p-6 bg-card rounded-lg border border-transparent hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300" style={{'--tw-shadow-color': '#684DF4' } as React.CSSProperties}>
+                <div key={tool.name} className="group flex flex-col items-center text-center p-6 bg-card rounded-lg border border-transparent hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300">
                   <div className="mb-4">
-                    <tool.icon className="h-10 w-10" style={{ color: '#684DF4' }}/>
+                    <tool.icon className="h-10 w-10 text-primary"/>
                   </div>
                   <h3 className="font-semibold text-lg mb-1">{tool.name}</h3>
                   <p className="text-sm text-muted-foreground">{tool.description}</p>
@@ -205,23 +201,21 @@ export default function AboutPage() {
           </section>
 
           <section id="journey" className="py-12 md:py-20">
-            <div className="text-center mb-16">
-              <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
-                Freelancing Journey & Experience
-              </h2>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Freelancing Journey & Experience</h2>
             </div>
             <div className="relative max-w-2xl mx-auto">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5" style={{ background: 'linear-gradient(to bottom, transparent, #684DF4, transparent)' }}></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-transparent via-primary to-transparent"></div>
               {journey.map((item, index) => (
                 <div key={item.year} className="relative mb-12">
                   <div className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
                     <div className={`w-5/12 ${index % 2 === 0 ? 'order-1 text-right pr-8' : 'order-3 text-left pl-8'}`}>
-                      <p className="text-lg font-bold" style={{ color: '#684DF4' }}>{item.year}</p>
+                      <p className="text-lg font-bold text-primary">{item.year}</p>
                       <p className="text-muted-foreground mt-1">{item.event}</p>
                     </div>
                     <div className="order-2 flex-shrink-0">
-                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-card border-2 border-primary/50 shadow-lg" style={{ borderColor: '#684DF4' }}>
-                           <item.icon className="h-6 w-6" style={{ color: '#684DF4' }} />
+                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-card border-2 border-primary/50 shadow-lg">
+                           <item.icon className="h-6 w-6 text-primary" />
                         </div>
                     </div>
                   </div>
@@ -230,30 +224,26 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section id="connect" className="py-12 md:py-20 bg-white dark:bg-card/30 relative">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" style={{'--tw-gradient-stops': 'var(--tw-gradient-from), #684DF4, var(--tw-gradient-to)'} as React.CSSProperties}></div>
-            <div className="text-center mb-12">
-              <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
-                Connect With Us
-              </h2>
+          <section id="connect" className="py-12 md:py-20 bg-card/30 relative border-y border-border/20">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Connect With Us</h2>
             </div>
             <div className="mx-auto grid max-w-7xl gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {socialPlatforms.map((platform) => (
                 <Link key={platform.name} href={platform.href} target="_blank" rel="noopener noreferrer" className="group text-center">
-                    <div className="flex flex-col items-center p-6 rounded-lg transition-all duration-300 group-hover:bg-gray-800 group-hover:text-white">
+                    <div className="flex flex-col items-center p-6 rounded-lg transition-all duration-300 group-hover:bg-primary/10">
                         <div className="mb-4 rounded-full p-4 transition-all duration-300 group-hover:bg-white" style={{ backgroundColor: platform.color }}>
                             <platform.icon className="h-10 w-10 text-white transition-transform duration-300 group-hover:scale-110" style={{ color: 'white' }} />
                         </div>
-                        <h3 className="font-semibold text-lg mb-1 text-gray-900 dark:text-white group-hover:text-white">{platform.name}</h3>
-                        <p className="text-sm text-gray-600 dark:text-muted-foreground group-hover:text-gray-300">{platform.tagline}</p>
+                        <h3 className="font-semibold text-lg mb-1">{platform.name}</h3>
+                        <p className="text-sm text-muted-foreground">{platform.tagline}</p>
                     </div>
                 </Link>
               ))}
             </div>
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent" style={{'--tw-gradient-stops': 'var(--tw-gradient-from), #684DF4, var(--tw-gradient-to)'} as React.CSSProperties}></div>
           </section>
 
-          <section id="portfolio-highlights" className="py-12 md:py-20 bg-white dark:bg-transparent">
+          <section id="portfolio-highlights" className="py-12 md:py-20 bg-transparent">
             <div className="absolute inset-0 -z-10 opacity-5">
                 <div 
                     className="absolute inset-0 bg-repeat"
@@ -262,10 +252,8 @@ export default function AboutPage() {
                     }}
                 ></div>
             </div>
-            <div className="text-center mb-12">
-              <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
-                Portfolio Highlights
-              </h2>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">Portfolio Highlights</h2>
             </div>
             <Tabs defaultValue="all" className="w-full">
               <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3 md:grid-cols-5 mb-8">
