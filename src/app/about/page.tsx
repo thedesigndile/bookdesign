@@ -123,10 +123,10 @@ export default function AboutPage() {
               <div className="md:col-span-7 flex flex-col gap-8">
                 <div>
                   <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground font-playfair">
-                    Design Dile
+                    Mr. Tanzeel Ur Rehman
                   </h1>
                   <p className="mt-2 text-xl font-medium text-primary">
-                    Book Designer & Creative Systems Architect
+                    Founder of Design Dile, Book Designer & Creative Systems Architect
                   </p>
                 </div>
                 
@@ -306,4 +306,5 @@ export default function AboutPage() {
   );
 }
 
+    
     
