@@ -13,7 +13,7 @@ export default function LogoIntro() {
     const timer = setTimeout(() => {
         setShow(false);
         document.body.style.overflow = 'auto';
-    }, 5000); // 5s duration
+    }, 5200); // 5.2s duration
 
     // Prevent scrolling while the intro is visible
     document.body.style.overflow = 'hidden';
@@ -25,41 +25,51 @@ export default function LogoIntro() {
   }, [])
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, scale: 1.2 },
     visible: {
       opacity: 1,
+      scale: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.5
+        duration: 1,
+        when: 'beforeChildren',
+        staggerChildren: 0.08
       }
     },
-    exit: { opacity: 0, transition: { duration: 1 } }
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 1 } }
   }
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 40, rotateX: 90 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' }
+      rotateX: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     }
   }
 
   const glowVariants = {
     pulse: {
       textShadow: [
-        '0px 0px 4px hsl(var(--primary))',
-        '0px 0px 12px hsl(var(--primary))',
-        '0px 0px 4px hsl(var(--primary))'
+        '0 0 6px hsl(var(--primary))',
+        '0 0 20px hsl(var(--primary))',
+        '0 0 6px hsl(var(--primary))'
       ],
-      transition: { repeat: Infinity, duration: 1.5 }
+      transition: { repeat: Infinity, duration: 1.4 }
+    }
+  }
+  
+  const bgVariants = {
+    hidden: {  },
+    visible: {
+      transition: { duration: 3 }
     }
   }
 
-  const text = [
-    { word: 'Design', className: 'text-foreground' },
-    { word: ' ', className: '' },
-    { word: 'Dile', className: 'text-primary' }
+  const textParts = [
+    { word: 'Design', className: 'text-foreground', glow: false },
+    { word: ' ', className: '', glow: false },
+    { word: 'Dile', className: 'text-primary', glow: true }
   ]
 
   return (
@@ -67,31 +77,31 @@ export default function LogoIntro() {
       {show && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
+          variants={bgVariants}
           initial="hidden"
           animate="visible"
-          exit="exit"
-          variants={containerVariants}
+          exit="hidden"
         >
-          <motion.h1
-            className="text-5xl md:text-7xl font-extrabold tracking-tight flex font-playfair"
-            initial="visible"
+          <motion.div
+            className="flex font-playfair"
+            variants={containerVariants}
+            initial="hidden"
             animate="visible"
+            exit="exit"
           >
-            {text.map(({ word, className }, idx) => (
-                <span key={idx} className="flex">
-                    {[...word].map((letter, i) => (
-                    <motion.span
-                        key={`${idx}-${i}`}
-                        variants={{ ...letterVariants, ...(className === 'text-primary' ? glowVariants : {}) }}
-                        className={className}
-                        animate={className === 'text-primary' ? 'pulse' : undefined}
-                    >
-                        {letter === ' ' ? '\u00A0' : letter}
-                    </motion.span>
-                    ))}
-                </span>
-            ))}
-          </motion.h1>
+            {textParts.map(({ word, className, glow }, idx) =>
+              [...word].map((letter, i) => (
+                <motion.span
+                  key={`${idx}-${i}`}
+                  variants={glow ? { ...letterVariants, pulse: glowVariants.pulse } : letterVariants}
+                  animate={glow ? 'pulse' : 'visible'}
+                  className={cn("text-5xl md:text-7xl font-extrabold tracking-tight", className)}
+                >
+                  {letter === ' ' ? '\u00A0' : letter}
+                </motion.span>
+              ))
+            )}
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
