@@ -4,7 +4,18 @@
 import { MainNav } from "@/components/main-nav";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
-import { BookOpen } from "lucide-react";
+import { BookCopy, LayoutTemplate, PenTool, Server, Type, Wand2, Image as ImageIcon, UtensilsCrossed } from "lucide-react";
+
+const skills = [
+    { icon: UtensilsCrossed, title: "Cookbook & Recipe Book Design" },
+    { icon: LayoutTemplate, title: "eBook & Print Layout" },
+    { icon: PenTool, title: "Adobe Creative Suite" },
+    { icon: Server, title: "Publishing Platforms" },
+    { icon: Type, title: "Typography & Visual Hierarchy" },
+    { icon: Wand2, title: "Creative Cover Design" },
+    { icon: ImageIcon, title: "Photo Editing & Optimization" },
+    { icon: BookCopy, title: "Full Jacket Design" },
+];
 
 export default function AboutPage() {
   return (
@@ -45,6 +56,24 @@ export default function AboutPage() {
                   We are a seasoned creative team with over four years of experience in designing modern, reader-friendly cookbooks, eBooks, and print books. Skilled in Adobe InDesign, Photoshop, Illustrator, and industry-standard publishing platforms like Lulu, IngramSpark, and Amazon KDP, we bring your book to life with precision and style.
                 </p>
               </div>
+            </div>
+          </section>
+
+          <section id="skills" className="py-12 md:py-20">
+            <div className="text-center mb-12">
+                <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
+                    Skills & Expertise
+                </h2>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
+                {skills.map((skill) => (
+                    <div key={skill.title} className="group flex flex-col items-center text-center p-6 bg-card/60 rounded-lg border border-border/20 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300">
+                        <div className="mb-4 rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-colors">
+                           <skill.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110" style={{ color: '#684DF4' }}/>
+                        </div>
+                        <h3 className="font-semibold text-lg mb-2">{skill.title}</h3>
+                    </div>
+                ))}
             </div>
           </section>
         </div>
