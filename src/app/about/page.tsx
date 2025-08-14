@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Code, Brush, Layers, Settings, GitBranch, Briefcase, Award, TrendingUp, Users, Facebook, Instagram, Linkedin, Twitter, Star, BookUser, Book, CookingPot, Laptop, Monitor, Pilcrow, PenTool, Image as ImageIcon, CaseSensitive, BookCheck, FileText, Printer, Building, User, Mic, Megaphone, Store } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -34,15 +34,6 @@ const DribbbleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zM3.633 14.25c.334.334 1.83 2.23 4.212 3.693-2.733-2.2-4.14-4.88-4.212-5.013a9.58 9.58 0 010-2.613c.245.245 2.88 2.655 6.018 3.033-2.52.885-4.875-.12-6.018-1.74zm1.092-6.495c1.143 1.62 3.498 2.625 6.018 1.74-3.138-.378-5.773-2.788-6.018-3.033a9.58 9.58 0 000 2.613c.072.133 1.48 2.813 4.212 5.013-2.382-1.463-3.878-3.36-4.212-3.693zM12 21.6c-1.39 0-2.7-.26-3.93-.735 2.115-1.26 3.96-3.48 4.605-5.385.945.165 1.935.15 2.895-.06-1.02 2.7-3.045 4.815-5.565 5.895zm6.81-2.97c-.72-1.89-2.37-3.795-4.47-4.905.795-.09 1.575-.285 2.325-.57C19.68 13.92 21 12.435 21 10.8c0-.795-.39-1.515-.9-2.07.24.81.165 1.695-.21 2.475-.9 1.86-2.58 3.045-4.5 3.51.135-.555.21-1.125.21-1.71 0-3.36-2.31-6.18-5.37-6.84 2.85-1.05 6.045.75 6.045 4.5 0 .54-.075 1.065-.21 1.575 1.29.39 2.415.99 3.315 1.755.78.66 1.155 1.56 1.155 2.46 0 1.215-.705 2.475-1.95 3.3zm-3.12-10.845c-2.325 0-4.215 1.89-4.215 4.215S9.375 16.2 11.7 16.2s4.215-1.89 4.215-4.215-1.89-4.215-4.215-4.215z" /></svg>
 );
 
-const skills = [
-  { icon: CookingPot, title: "Cookbook & Recipe Book Design" },
-  { icon: Laptop, title: "eBook & Print Layout" },
-  { icon: Monitor, title: "Adobe InDesign, Photoshop, Illustrator" },
-  { icon: Book, title: "Publishing Platforms (KDP, Lulu, IngramSpark)" },
-  { icon: Pilcrow, title: "Typography & Visual Hierarchy" },
-  { icon: Brush, title: "Creative Cover Design" },
-  { icon: ImageIcon, title: "Photo Editing & Image Optimization" },
-];
 
 const tools = [
   { icon: AdobeInDesignIcon, name: "Adobe InDesign", description: "Professional book layout design." },
@@ -86,6 +77,213 @@ const socialPlatforms = [
   { name: "Fiverr", tagline: "Get custom book design solutions at flexible packages.", icon: Store, href: "#" },
   { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: DribbbleIcon, href: "#" },
 ];
+
+/* ---------------- Skills & Expertise Component and Icons ---------------- */
+
+const ACCENT = "#00C6FF";
+const BG = "#0A192F";
+
+type Skill = {
+  label: string;
+  Icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+};
+
+function baseIcon(props: React.SVGProps<SVGSVGElement>) {
+  return {
+    fill: "none",
+    strokeWidth: 1.6,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    ...props,
+    viewBox: "0 0 24 24",
+  } as React.SVGProps<SVGSVGElement>;
+}
+
+function IconCookbook(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v16H7.5A2.5 2.5 0 0 0 5 21z" />
+      <path d="M9 6h6M9 9h6" />
+      <path d="M5 7.5A2.5 2.5 0 0 1 7.5 5H19" />
+    </svg>
+  );
+}
+
+function IconLayouts(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M9 4v16M3 10h18" />
+    </svg>
+  );
+}
+
+function IconGrid(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+    </svg>
+  );
+}
+
+function IconType(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <path d="M5 18h14M12 6v9M7 6h10" />
+    </svg>
+  );
+}
+
+function IconCover(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <path d="M6 4h9a3 3 0 0 1 3 3v13l-3-2-3 2-3-2-3 2V7a3 3 0 0 1 3-3z" />
+      <path d="M8.5 9h7" />
+    </svg>
+  );
+}
+
+function IconImage(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="9" cy="9" r="2" />
+      <path d="M3 16l4.5-4.5L14 18l2.5-2.5L21 18" />
+    </svg>
+  );
+}
+
+function IconBrand(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M8 12h8M12 8v8" />
+    </svg>
+  );
+}
+
+function IconAccessibility(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...baseIcon(props)}>
+      <circle cx="12" cy="5" r="2" />
+      <path d="M4 9h16M12 7v5M9 22l3-7 3 7" />
+    </svg>
+  );
+}
+
+const skillsList: Skill[] = [
+  { label: "Cookbook & recipe book design", Icon: IconCookbook },
+  { label: "Editorial & book layout systems", Icon: IconLayouts },
+  { label: "Grid systems & baseline rhythm", Icon: IconGrid },
+  { label: "Typography & visual hierarchy", Icon: IconType },
+  { label: "Creative cover design", Icon: IconCover },
+  { label: "Photo editing & image optimization", Icon: IconImage },
+  { label: "Branding & visual identity", Icon: IconBrand },
+  { label: "Accessibility & reading experience", Icon: IconAccessibility },
+];
+
+function SkillsExpertise() {
+  const reduce = useReducedMotion();
+
+  const container = {
+    hidden: { opacity: 0, y: reduce ? 0 : 8 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: reduce ? 0 : 10, scale: 0.98 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] },
+    },
+  };
+
+  return (
+    <section
+      id="skills"
+      className="w-full print:bg-white print:text-black"
+      style={{ backgroundColor: BG }}
+    >
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <h2
+          className="text-sm md:text-base font-extrabold tracking-[0.22em] uppercase mb-10 md:mb-12 print:tracking-[0.18em]"
+          style={{ color: ACCENT }}
+        >
+          Skills & Expertise
+        </h2>
+
+        <motion.ul
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          variants={container}
+          className="
+            grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6
+            text-white print:text-black
+          "
+        >
+          {skillsList.map(({ label, Icon }) => (
+            <motion.li key={label} variants={item}>
+              <article
+                className="
+                  group relative flex items-start gap-4 p-5 md:p-6
+                  ring-1 ring-white/10 rounded-lg
+                  transition-transform duration-300 ease-out
+                  hover:scale-[1.02] hover:ring-2
+                  print:ring-1 print:ring-black print:shadow-none print:transform-none
+                "
+                style={{
+                  boxShadow:
+                    "0 0 0 rgba(0,0,0,0)",
+                }}
+              >
+                <div
+                  className="shrink-0 grid place-items-center size-10 md:size-12 rounded-md ring-1"
+                  style={{
+                    borderColor: "transparent",
+                    background:
+                      "linear-gradient(180deg, rgba(0,198,255,0.08), rgba(0,198,255,0.02))",
+                    boxShadow:
+                      "inset 0 0 0 1px rgba(255,255,255,0.06)",
+                  }}
+                >
+                  <Icon
+                    className="
+                      size-6 md:size-7
+                      transition-[filter] duration-300
+                      group-hover:drop-shadow-[0_0_12px_rgba(0,198,255,0.6)]
+                      print:drop-shadow-none
+                    "
+                    stroke={ACCENT}
+                  />
+                </div>
+                <h3
+                  className="
+                    text-sm md:text-base font-semibold leading-snug
+                    [word-spacing:0.02em]
+                  "
+                >
+                  {label}
+                </h3>
+                <span
+                  className="pointer-events-none absolute inset-0 rounded-lg ring-0 group-hover:ring-2 transition-[box-shadow,ring-width] duration-300"
+                  style={{ boxShadow: "0 0 24px rgba(0,198,255,0.18)", borderColor: ACCENT }}
+                />
+              </article>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </div>
+    </section>
+  );
+}
 
 
 export default function AboutPage() {
@@ -153,27 +351,7 @@ export default function AboutPage() {
         </section>
 
         {/* Skills & Expertise Section */}
-        <section id="skills" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Skills & Expertise</h2>
-            </div>
-            <div className="mx-auto grid items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4 md:gap-12 mt-8 md:mt-12">
-              {skills.map((skill) => (
-                <div key={skill.title}>
-                  <Card className="relative overflow-hidden group border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 h-full">
-                     <CardContent className="p-6 flex flex-col items-center text-center gap-4 bg-card/95 backdrop-blur-sm h-full">
-                      <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
-                        <skill.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
-                      </div>
-                      <h3 className="text-xl font-bold font-playfair">{skill.title}</h3>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <SkillsExpertise />
 
         {/* Tools & Software Section */}
         <section id="tools" className="w-full py-12 md:py-24 bg-background">
@@ -306,5 +484,4 @@ export default function AboutPage() {
   );
 }
 
-    
     
