@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { Bot, X, Send, User } from 'lucide-react';
+import { Bot, X, Send, User, Loader } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -15,7 +15,7 @@ import { Skeleton } from './ui/skeleton';
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, loading, sendMessage, getBotResponse } = useChat();
+  const { messages, loading, isBotTyping, sendMessage } = useChat();
   const [input, setInput] = useState('');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -23,19 +23,14 @@ export function Chatbot() {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({ top: scrollAreaRef.current.scrollHeight, behavior: 'smooth' });
     }
-  }, [messages]);
+  }, [messages, isBotTyping]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim() === '') return;
-
-    const userMessage = input;
+    const messageToSend = input;
     setInput('');
-    await sendMessage(userMessage);
-
-    setTimeout(() => {
-        getBotResponse(userMessage);
-    }, 1000);
+    await sendMessage(messageToSend);
   };
 
   return (
@@ -103,6 +98,20 @@ export function Chatbot() {
                       )}
                     </div>
                   ))}
+                  {isBotTyping && (
+                    <div className="flex items-end gap-2 justify-start">
+                        <Avatar className="h-8 w-8">
+                          <AvatarFallback><Bot size={20}/></AvatarFallback>
+                        </Avatar>
+                        <div className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm bg-muted rounded-bl-none">
+                            <div className="flex items-center gap-2">
+                                <span className="h-2 w-2 bg-foreground/50 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                                <span className="h-2 w-2 bg-foreground/50 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                                <span className="h-2 w-2 bg-foreground/50 rounded-full animate-bounce"></span>
+                            </div>
+                        </div>
+                    </div>
+                  )}
                 </div>
               </ScrollArea>
               <form onSubmit={handleSendMessage} className="p-4 border-t border-border/50 flex items-center gap-2">
@@ -112,9 +121,10 @@ export function Chatbot() {
                   placeholder="Type a message..."
                   className="flex-1 bg-muted border-none focus-visible:ring-primary"
                   autoComplete="off"
+                  disabled={isBotTyping}
                 />
-                <Button type="submit" size="icon" disabled={!input.trim()}>
-                  <Send className="h-5 w-5" />
+                <Button type="submit" size="icon" disabled={!input.trim() || isBotTyping}>
+                  {isBotTyping ? <Loader className="h-5 w-5 animate-spin"/> : <Send className="h-5 w-5" />}
                 </Button>
               </form>
             </div>

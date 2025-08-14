@@ -3,7 +3,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import {
-  getAuth,
   onAuthStateChanged,
   signInAnonymously,
   type User,
@@ -20,6 +19,7 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
+import { chat } from '@/ai/flows/chat-flow';
 
 export interface Message {
   id: string;
@@ -29,20 +29,11 @@ export interface Message {
   uid: string;
 }
 
-const BOT_RESPONSES: { keywords: string[]; response: string }[] = [
-    { keywords: ['hello', 'hi', 'hey'], response: "Hello! How can I help you with your book design needs today?" },
-    { keywords: ['services', 'offer'], response: "We offer Cover Design, Typography & Layout, Illustration & Art, and Full Jacket Design. Which service are you interested in?" },
-    { keywords: ['pricing', 'cost', 'price'], response: "Our pricing varies depending on the project scope. The best way to get a quote is to fill out our contact form with your project details!" },
-    { keywords: ['contact', 'talk', 'email'], response: "You can reach us by filling out the contact form on our website. We typically respond within 24 hours." },
-    { keywords: ['portfolio', 'work', 'examples'], response: "You can see our work on the portfolio page. We've designed for many happy authors!" },
-    { keywords: ['help', 'support'], response: "I'm here to help. What do you need assistance with?" },
-    { keywords: ['bye', 'thanks', 'thank you'], response: "You're welcome! Feel free to reach out if you have more questions. Have a great day!" },
-];
-
 export const useChat = () => {
   const [user, setUser] = useState<User | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isBotTyping, setIsBotTyping] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -89,48 +80,62 @@ export const useChat = () => {
   }, [user]);
 
   const sendMessage = async (text: string) => {
-    if (!user) return;
+    if (!user || !text.trim()) return;
+
+    const newUserMessage: Message = {
+      id: Date.now().toString(), // Temporary ID
+      text,
+      sender: 'user',
+      createdAt: Timestamp.now(),
+      uid: user.uid,
+    };
+    
+    // Add user message to state immediately for better UX
+    setMessages(prevMessages => [...prevMessages, newUserMessage]);
+    setIsBotTyping(true);
 
     try {
+      // Save user message to Firestore
       await addDoc(collection(db, 'messages'), {
         text,
         sender: 'user',
         createdAt: serverTimestamp(),
         uid: user.uid,
       });
-    } catch (error) {
-      console.error('Error sending message:', error);
-    }
-  };
-  
-  const sendBotMessage = useCallback(async (text: string) => {
-    if (!user) return;
-    try {
+
+      // Prepare data for AI
+      const history = messages.map(m => ({
+        role: m.sender as 'user' | 'assistant', // Cast sender to role
+        text: m.text
+      }));
+
+      // Get AI response
+      const response = await chat({
+        history: history,
+        message: text,
+      });
+
+      // Save bot message to Firestore
       await addDoc(collection(db, 'messages'), {
-        text,
+        text: response,
         sender: 'bot',
         createdAt: serverTimestamp(),
         uid: user.uid,
       });
+
     } catch (error) {
-      console.error('Error sending bot message:', error);
+      console.error('Error sending message or getting AI response:', error);
+      // Optionally add an error message to the chat
+      await addDoc(collection(db, 'messages'), {
+        text: "Sorry, I'm having trouble connecting. Please try again later.",
+        sender: 'bot',
+        createdAt: serverTimestamp(),
+        uid: user.uid,
+      });
+    } finally {
+      setIsBotTyping(false);
     }
-  }, [user]);
+  };
 
-
-  const getBotResponse = useCallback((userMessage: string) => {
-    const lowerCaseMessage = userMessage.toLowerCase();
-    
-    for (const rule of BOT_RESPONSES) {
-        if (rule.keywords.some(keyword => lowerCaseMessage.includes(keyword))) {
-            sendBotMessage(rule.response);
-            return;
-        }
-    }
-    
-    // Default response
-    sendBotMessage("I'm not sure how to answer that. Can you try rephrasing? You can ask me about our services, pricing, or portfolio.");
-  }, [sendBotMessage]);
-
-  return { messages, loading, sendMessage, getBotResponse };
+  return { messages, loading, isBotTyping, sendMessage };
 };
