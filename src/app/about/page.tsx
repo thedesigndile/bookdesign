@@ -4,7 +4,7 @@
 import { MainNav } from "@/components/main-nav";
 import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
-import { BookCopy, LayoutTemplate, PenTool, Server, Type, Wand2, Image as ImageIcon, UtensilsCrossed } from "lucide-react";
+import { BookCopy, LayoutTemplate, PenTool, Server, Type, Wand2, Image as ImageIcon, UtensilsCrossed, FileText, BarChart, Presentation, FileCode, CheckCircle, BrainCircuit, Bot } from "lucide-react";
 
 const skills = [
     { icon: UtensilsCrossed, title: "Cookbook & Recipe Book Design" },
@@ -16,6 +16,22 @@ const skills = [
     { icon: ImageIcon, title: "Photo Editing & Optimization" },
     { icon: BookCopy, title: "Full Jacket Design" },
 ];
+
+const tools = [
+  { icon: PenTool, name: "Adobe InDesign", description: "Professional book layout design." },
+  { icon: ImageIcon, name: "Adobe Photoshop", description: "Advanced image editing." },
+  { icon: Wand2, name: "Adobe Illustrator", description: "Vector graphics and illustrations." },
+  { icon: Bot, name: "Canva", description: "Quick creative design layouts." },
+  { icon: FileText, name: "Microsoft Word", description: "Manuscript preparation & editing." },
+  { icon: BarChart, name: "Microsoft Excel", description: "Data organization & recipe indexing." },
+  { icon: Presentation, name: "Microsoft PowerPoint", description: "Visual presentations & pitch decks." },
+  { icon: FileCode, name: "Google Docs", description: "Real-time content collaboration." },
+  { icon: Server, name: "Lulu", description: "Print-on-demand publishing." },
+  { icon: Server, name: "IngramSpark", description: "Global print distribution." },
+  { icon: Server, name: "Amazon KDP", description: "Kindle & paperback publishing." },
+  { icon: BrainCircuit, name: "Midjourney", description: "AI-powered image generation." },
+];
+
 
 export default function AboutPage() {
   return (
@@ -76,6 +92,26 @@ export default function AboutPage() {
                 ))}
             </div>
           </section>
+
+          <section id="tools" className="py-12 md:py-20">
+            <div className="text-center mb-12">
+              <h2 className="font-roboto-medium text-3xl font-bold uppercase tracking-wider" style={{ color: '#684DF4' }}>
+                Tools & Software We Use
+              </h2>
+            </div>
+            <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {tools.map((tool) => (
+                <div key={tool.name} className="group flex flex-col items-center text-center p-6 bg-card rounded-lg border border-transparent hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300" style={{'--tw-shadow-color': '#684DF4' } as React.CSSProperties}>
+                  <div className="mb-4">
+                    <tool.icon className="h-10 w-10" style={{ color: '#684DF4' }}/>
+                  </div>
+                  <h3 className="font-semibold text-lg mb-1">{tool.name}</h3>
+                  <p className="text-sm text-muted-foreground">{tool.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
         </div>
       </main>
     </div>
