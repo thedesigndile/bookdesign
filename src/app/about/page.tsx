@@ -109,6 +109,28 @@ const platforms = [
   { icon: IngramSparkIcon, name: "IngramSpark" },
 ];
 
+const testimonials = [
+  {
+    quote: "Working with them was a dream. Their design sense is impeccable and they delivered beyond our expectations.",
+    name: "Jane Doe",
+    title: "Bestselling Author",
+    rating: 5,
+  },
+  {
+    quote: "The cover design captured the essence of my story perfectly. I've seen a significant increase in sales since the redesign.",
+    name: "John Smith",
+    title: "Founder, PublixPress",
+    rating: 5,
+  },
+  {
+    quote: "Professional, responsive, and incredibly talented. They transformed my manuscript into a beautiful, readable book.",
+    name: "Emily White",
+    title: "Independent Publisher",
+    rating: 5,
+  },
+];
+
+
 export default function AboutPage() {
   const reduceMotion = useReducedMotion();
 
@@ -289,6 +311,44 @@ export default function AboutPage() {
             </div>
         </section>
 
+        {/* Testimonials Section */}
+        <section id="testimonials" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">What Our Clients Say</h2>
+              <p className="max-w-[700px] text-muted-foreground">Hear from authors and publishers who have trusted us with their vision.</p>
+            </div>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full flex flex-col justify-between p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm">
+                    <div>
+                      <div className="flex items-center mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="h-5 w-5 text-primary fill-primary" />
+                        ))}
+                      </div>
+                      <blockquote className="text-lg italic text-foreground border-l-2 border-primary pl-4 mb-4">
+                        "{testimonial.quote}"
+                      </blockquote>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
         {/* Portfolio Highlights Section */}
         <section id="portfolio-highlights" className="w-full py-12 md:py-24 border-t border-border/20">
             <div className="container mx-auto px-4 md:px-6">
@@ -367,3 +427,4 @@ export default function AboutPage() {
     
 
     
+
