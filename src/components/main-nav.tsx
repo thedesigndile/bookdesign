@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import AnimatedLogo from './ui/animated-logo';
 import { useAuth } from '@/hooks/use-auth';
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 interface NavLink {
   href: string;
@@ -89,6 +90,7 @@ export function MainNav({ }: MainNavProps) {
         </Link>
         <div className="hidden md:flex items-center gap-4">
             {renderNavLinks()}
+            <ThemeToggle />
             {renderAuthButtons()}
         </div>
         
@@ -106,9 +108,12 @@ export function MainNav({ }: MainNavProps) {
                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                       <AnimatedLogo />
                    </Link>
-                   <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                      <X className="h-6 w-6" />
-                   </Button>
+                   <div className="flex items-center gap-2">
+                     <ThemeToggle />
+                     <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                        <X className="h-6 w-6" />
+                     </Button>
+                   </div>
                 </div>
                 <div className="flex-grow flex flex-col justify-between p-4">
                   {renderNavLinks(true)}

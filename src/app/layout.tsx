@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Nunito_Sans } from 'next/font/google'
 import HomeFooter from '@/components/home-footer'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
@@ -21,13 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
       </head>
       <body className={`font-sans antialiased ${nunitoSans.variable}`}>
-        {children}
-        <HomeFooter />
-        <Toaster />
+        <ThemeProvider>
+          {children}
+          <HomeFooter />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
