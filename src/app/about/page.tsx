@@ -22,15 +22,6 @@ const tools = [
   { image: "https://placehold.co/64x64.png", aiHint: "google docs logo", name: "Google Docs", description: "Real-time content collaboration." },
 ];
 
-const journey = [
-  { year: "2019", title: "The Leap", description: "Started offering freelance book design services on platforms like Upwork & Fiverr.", icon: User },
-  { year: "2020", title: "Global Reach", description: "Expanded services to cookbook redesign and eBook formatting for global clients.", icon: Mic },
-  { year: "2021", title: "Milestone Achievement", description: "Reached 100+ successfully completed book projects with 5-star reviews.", icon: Award },
-  { year: "2022", title: "Strategic Partnerships", description: "Partnered with self-published authors and small publishers worldwide.", icon: Users },
-  { year: "2023", title: "The Agency Is Born", description: "Launched Designdile as a full-service design agency.", icon: Briefcase },
-  { year: "2024", title: "Innovation", description: "Introduced advanced layout solutions & creative cover mockups.", icon: TrendingUp },
-];
-
 const portfolioItems = [
     { category: 'Cookbooks', title: 'Modern Minimalist Cookbook', description: 'Clean layouts for a chef-focused cookbook.', image: 'https://placehold.co/600x800.png', aiHint: 'cookbook cover' },
     { category: 'eBooks', title: 'The Digital Nomad Guide', description: 'An engaging eBook designed for digital readers.', image: 'https://placehold.co/600x800.png', aiHint: 'ebook cover travel' },
@@ -192,44 +183,6 @@ export default function AboutPage() {
           </div>
         </section>
         
-        {/* Freelancing Journey Section */}
-        <section id="journey" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Freelancing Journey & Experience</h2>
-            </div>
-            <div className="relative">
-              <div className="absolute left-1/2 h-full w-0.5 bg-border/50" aria-hidden="true"></div>
-              <div className="relative flex flex-col gap-12">
-                {journey.map((item, index) => (
-                  <motion.div
-                    key={item.year}
-                    className="relative flex items-center"
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
-                  >
-                    <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8'}`}>
-                      <div className="p-6 bg-card/80 rounded-lg shadow-lg border border-border/50">
-                        <p className="text-primary font-semibold text-lg">{item.year}</p>
-                        <h3 className="text-xl font-bold mt-1 font-playfair">{item.title}</h3>
-                        <p className="text-muted-foreground mt-2">{item.description}</p>
-                      </div>
-                    </div>
-                    <div className="absolute left-1/2 -translate-x-1/2 bg-background p-2 rounded-full border-2 border-primary">
-                      <item.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className={`w-1/2 ${index % 2 === 0 ? 'pl-8' : 'pr-8 text-right'}`}>
-                      {/* This space is intentional for layout */}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-        
         {/* Book Design Services Section */}
         <section id="services" className="w-full py-12 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
@@ -382,5 +335,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
 
     
