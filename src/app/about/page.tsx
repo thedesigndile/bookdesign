@@ -139,7 +139,7 @@ export default function AboutPage() {
                     Mr. Tanzeel Ur Rehman
                   </h1>
                   <p className="mt-2 text-xl font-medium text-primary">
-                    Founder of Design Dile, Book Designer & Creative Systems Architect
+                    Founder of Design Dile, Book Designer &amp; Creative Systems Architect
                   </p>
                 </div>
                 
@@ -169,7 +169,7 @@ export default function AboutPage() {
         <section id="tools" className="w-full py-12 md:py-24 bg-background">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Tools & Software We Use</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Tools &amp; Software We Use</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {tools.map((tool) => (
@@ -335,7 +335,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
-
-    
