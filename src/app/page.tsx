@@ -26,7 +26,12 @@ import { MainNav } from "@/components/main-nav";
 import PortfolioGallery, { type PortfolioItem, type GalleryImage } from "@/components/portfolio-gallery";
 import { getPortfolioItems } from "@/services/portfolioService";
 import { Skeleton } from "@/components/ui/skeleton";
+<<<<<<< Current (Your changes)
+// import { Chatbot } from "@/components/chatbot";
+=======
 import { Chatbot } from "@/components/chatbot";
+import HomePortfolioGrid from "@/components/home-portfolio-grid";
+>>>>>>> Incoming (Background Agent changes)
 
 const services = [
   {
@@ -305,7 +310,7 @@ export default function Home() {
     >
       <MouseSpotlight />
       <MainNav activeLink="Home"/>
-      <Chatbot />
+              {/* <Chatbot /> */}
       
       <main className="flex-1 pt-16">
         <section id="hero" className="relative w-full h-screen flex items-center py-12">
@@ -380,51 +385,14 @@ export default function Home() {
                 Explore a curated selection of our finest book designs, where each project showcases our commitment to visual storytelling and craftsmanship.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
-              {isLoading ? (
-                  Array.from({ length: 6 }).map((_, i) => (
-                    <Card key={i} className="h-full aspect-[3/4]">
-                      <Skeleton className="w-full h-full" />
-                    </Card>
-                  ))
-              ) : visiblePortfolioItems.length > 0 ? (
-                visiblePortfolioItems.map((item) => (
-                  <Card key={item.id} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
-                    <Link href={item.link} className="block w-full h-full cursor-pointer">
-                      <div className="absolute inset-0 bg-black flex items-center justify-center">
-                        <Image
-                          src={item.image}
-                          alt={`Book cover for ${item.title}`}
-                          width={400}
-                          height={550}
-                          className="object-contain w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
-                          data-ai-hint={item.aiHint}
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute inset-0 flex flex-col justify-end p-4">
-                        <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
-                      </div>
-                    </Link>
-                  </Card>
-                ))
-              ) : (
-                <p className="col-span-full text-center text-muted-foreground">Our portfolio is currently being updated. Please check back soon!</p>
-              )}
+            <HomePortfolioGrid />
+            <div className="flex justify-center mt-12">
+              <Button asChild size="lg" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                <Link href="/portfolio">
+                  View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
             </div>
-              {portfolioItems.length > 0 && (
-                <div className="flex justify-center mt-12">
-                   <Button
-                    asChild
-                    size="lg"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    <Link href="/portfolio">
-                      View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
           </div>
         </section>
 
@@ -722,28 +690,61 @@ export default function Home() {
             </div>
           </section>
 
-        <section id="contact" className="w-full py-12">
-          <div className="container mx-auto grid items-center justify-center gap-8 px-4 text-center md:px-6">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Begin Your Narrative</h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Ready to turn your manuscript into a masterpiece? Fill out the form below and let's discuss how we can bring your vision to life.
-              </p>
+        <section id="contact" className="w-full py-12 md:py-24 bg-gradient-to-br from-background via-secondary/5 to-background">
+          <div className="container mx-auto grid items-center justify-center gap-12 px-4 text-center md:px-6">
+            <div className="space-y-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                  <PenTool className="h-4 w-4" />
+                  Start Your Project
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">Begin Your Narrative</h2>
+                <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-lg/relaxed">
+                  Ready to turn your manuscript into a masterpiece? Let's discuss how we can bring your vision to life with stunning design.
+                </p>
+              </motion.div>
             </div>
-            <div className="mx-auto w-full max-w-lg">
-              <Card className="bg-card/60 backdrop-blur-sm border-border/50">
-                <CardContent className="p-6 md:p-8">
+            
+            <motion.div 
+              className="mx-auto w-full max-w-2xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="relative overflow-hidden bg-card/80 backdrop-blur-sm border-border/50 shadow-2xl shadow-primary/5">
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-secondary/10 rounded-full blur-2xl" />
+                
+                <CardContent className="relative p-8 md:p-10">
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
                           name="name"
                           render={({ field }) => (
-                            <FormItem className="text-left">
-                              <FormLabel>Your Name</FormLabel>
+                            <FormItem className="text-left group">
+                              <FormLabel className="text-sm font-semibold text-foreground mb-2 block">
+                                Your Name
+                              </FormLabel>
                               <FormControl>
-                                <Input placeholder="Jane Doe" {...field} />
+                                <div className="relative">
+                                  <Input 
+                                    placeholder="Jane Doe" 
+                                    {...field} 
+                                    className="h-12 px-4 border-border/50 bg-background/50 backdrop-blur-sm transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-background group-hover:border-primary/50"
+                                  />
+                                  <div className="absolute inset-0 rounded-md bg-gradient-to-r from-primary/0 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                </div>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -753,97 +754,73 @@ export default function Home() {
                           control={form.control}
                           name="email"
                           render={({ field }) => (
-                            <FormItem className="text-left">
-                              <FormLabel>Your Email</FormLabel>
+                            <FormItem className="text-left group">
+                              <FormLabel className="text-sm font-semibold text-foreground mb-2 block">
+                                Your Email
+                              </FormLabel>
                               <FormControl>
-                                <Input placeholder="jane.doe@example.com" {...field} />
+                                <div className="relative">
+                                  <Input 
+                                    placeholder="jane.doe@example.com" 
+                                    {...field} 
+                                    className="h-12 px-4 border-border/50 bg-background/50 backdrop-blur-sm transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-background group-hover:border-primary/50"
+                                  />
+                                  <div className="absolute inset-0 rounded-md bg-gradient-to-r from-primary/0 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                </div>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
                       </div>
+                      
                       <FormField
                         control={form.control}
                         name="projectDetails"
                         render={({ field }) => (
-                          <FormItem className="text-left">
-                            <FormLabel>Project Details</FormLabel>
+                          <FormItem className="text-left group">
+                            <FormLabel className="text-sm font-semibold text-foreground mb-2 block">
+                              Project Details
+                            </FormLabel>
                             <FormControl>
-                              <Textarea placeholder="Tell us about your book, genre, and what you're looking for..." className="min-h-32" {...field} />
+                              <div className="relative">
+                                <Textarea 
+                                  placeholder="Tell us about your book, genre, target audience, and what you're looking for in terms of design..." 
+                                  className="min-h-40 px-4 py-4 border-border/50 bg-background/50 backdrop-blur-sm transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-background group-hover:border-primary/50 resize-none"
+                                  {...field} 
+                                />
+                                <div className="absolute inset-0 rounded-md bg-gradient-to-r from-primary/0 via-primary/0 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                              </div>
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-                      <div className="flex flex-col sm:flex-row gap-2 mt-2">
-                        <Button type="submit" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 active:scale-95">Submit Inquiry</Button>
-                        <Button variant="outline" className="flex-1 gap-2 group" type="button" onClick={() => form.reset()}>
-                          <Bot className="w-4 h-4 text-primary group-hover:text-primary transition-colors" /> AI Autofill
+                      
+                      <div className="pt-4">
+                        <Button 
+                          type="submit" 
+                          className="w-full h-14 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground font-semibold text-lg transition-all duration-300 hover:from-primary/90 hover:to-primary hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] focus:ring-4 focus:ring-primary/20"
+                        >
+                          <PenTool className="w-5 h-5 mr-2" />
+                          Send Project Inquiry
                         </Button>
+                      </div>
+                      
+                      <div className="text-center">
+                        <p className="text-sm text-muted-foreground">
+                          We'll get back to you within 24 hours to discuss your project
+                        </p>
                       </div>
                     </form>
                   </Form>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
 
-      <footer className="w-full bg-background border-t border-border/20 text-foreground">
-        <div className="container mx-auto py-12 px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-4 flex flex-col gap-4 items-center md:items-start">
-               <Link href="/" className="flex items-center gap-2" prefetch={false}>
-                <AnimatedLogo />
-              </Link>
-              <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
-                A sensorial voyage through the future of book design, where every page is a masterpiece.
-              </p>
-               <div className="flex space-x-4 mt-2">
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Twitter className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Linkedin className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Instagram className="h-5 w-5" /></Link>
-                 <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Facebook className="h-5 w-5" /></Link>
-              </div>
-            </div>
-
-            <div className="md:col-span-2">
-              <h4 className="font-semibold text-lg mb-4">Explore</h4>
-              <div className="flex flex-col gap-3">
-                <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Home</Link>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
-                <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
-                <Link href="/packages" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Packages</Link>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
-              </div>
-            </div>
-
-             <div className="md:col-span-2">
-              <h4 className="font-semibold text-lg mb-4">Company</h4>
-              <div className="flex flex-col gap-3">
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Blog</Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Careers</Link>
-              </div>
-            </div>
-
-            <div className="md:col-span-4">
-              <h4 className="font-semibold text-lg mb-4">Stay Updated</h4>
-              <p className="text-sm text-muted-foreground mb-4">Subscribe to our newsletter for the latest design trends and insights.</p>
-              <form className="flex gap-2">
-                <Input type="email" placeholder="Enter your email" className="flex-grow" />
-                <Button type="submit" variant="outline">Subscribe</Button>
-              </form>
-            </div>
-
-          </div>
-          <div className="border-t border-border/20 mt-8 pt-6 flex flex-col justify-center items-center">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Design Dile. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

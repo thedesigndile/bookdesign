@@ -1,0 +1,150 @@
+/* Global Icon System - "Connect With Us" Style Enforcement */
+
+/* Base Icon Styles - Applied to ALL icons */
+.icon-base {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Primary Icon Color - Exact match to "Connect With Us" */
+.icon-primary {
+  @apply text-primary;
+}
+
+/* Secondary Icon Color */
+.icon-secondary {
+  @apply text-secondary;
+}
+
+/* Muted Icon Color */
+.icon-muted {
+  @apply text-muted-foreground;
+}
+
+/* Default Icon Color */
+.icon-default {
+  @apply text-foreground;
+}
+
+/* Icon Sizes - Consistent across website */
+.icon-sm {
+  @apply h-4 w-4;
+}
+
+.icon-md {
+  @apply h-5 w-5;
+}
+
+.icon-lg {
+  @apply h-8 w-8;
+}
+
+.icon-xl {
+  @apply h-12 w-12;
+}
+
+/* Hover Animations - Exact match to "Connect With Us" */
+.icon-hover {
+  @apply transition-transform duration-300 group-hover:scale-110;
+}
+
+/* Card Icon Container - Exact match to "Connect With Us" */
+.icon-card {
+  @apply group relative flex flex-col items-center justify-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary;
+}
+
+/* Icon with Text - For navigation and buttons */
+.icon-with-text {
+  @apply inline-flex items-center gap-2 font-medium;
+}
+
+/* Badge Icon - For status indicators */
+.icon-badge {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.icon-badge-primary {
+  @apply bg-primary/10 text-primary;
+}
+
+.icon-badge-secondary {
+  @apply bg-secondary/10 text-secondary;
+}
+
+.icon-badge-muted {
+  @apply bg-muted text-muted-foreground;
+}
+
+.icon-badge-default {
+  @apply bg-background border border-border text-foreground;
+}
+
+/* Animation Variants */
+.icon-animate-fade {
+  @apply transition-opacity duration-300;
+}
+
+.icon-animate-slide {
+  @apply transition-transform duration-300;
+}
+
+.icon-animate-bounce {
+  @apply transition-all duration-300 hover:animate-bounce;
+}
+
+/* Focus States - Accessibility */
+.icon-focus {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .icon-base,
+  .icon-hover,
+  .icon-card,
+  .icon-animate-fade,
+  .icon-animate-slide,
+  .icon-animate-bounce {
+    @apply transition-none;
+  }
+  
+  .icon-hover {
+    @apply group-hover:scale-100;
+  }
+  
+  .icon-card {
+    @apply hover:-translate-y-0;
+  }
+}
+
+/* Dark Mode Adjustments */
+.dark .icon-card {
+  @apply bg-card/90 border-border/60;
+}
+
+.dark .icon-badge-default {
+  @apply bg-background/80 border-border/60;
+}
+
+/* Responsive Icon Sizes */
+@media (max-width: 640px) {
+  .icon-xl {
+    @apply h-10 w-10;
+  }
+  
+  .icon-lg {
+    @apply h-6 w-6;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .icon-base,
+  .icon-hover,
+  .icon-card {
+    @apply transition-none;
+  }
+  
+  .icon-card {
+    @apply shadow-none border-border/30;
+  }
+}
