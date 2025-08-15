@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Nunito_Sans } from 'next/font/google'
+import HomeFooter from '@/components/home-footer'
 
 const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export default function RootLayout({
       </head>
       <body className={`font-sans antialiased ${nunitoSans.variable}`}>
         {children}
+        <HomeFooter />
         <Toaster />
       </body>
     </html>
