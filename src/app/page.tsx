@@ -27,6 +27,7 @@ import PortfolioGallery, { type PortfolioItem, type GalleryImage } from "@/compo
 import { getPortfolioItems } from "@/services/portfolioService";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Chatbot } from "@/components/chatbot";
+import HomePortfolioGrid from "@/components/home-portfolio-grid";
 
 const services = [
   {
@@ -380,51 +381,14 @@ export default function Home() {
                 Explore a curated selection of our finest book designs, where each project showcases our commitment to visual storytelling and craftsmanship.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
-              {isLoading ? (
-                  Array.from({ length: 6 }).map((_, i) => (
-                    <Card key={i} className="h-full aspect-[3/4]">
-                      <Skeleton className="w-full h-full" />
-                    </Card>
-                  ))
-              ) : visiblePortfolioItems.length > 0 ? (
-                visiblePortfolioItems.map((item) => (
-                  <Card key={item.id} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 h-full aspect-[3/4]">
-                    <Link href={item.link} className="block w-full h-full cursor-pointer">
-                      <div className="absolute inset-0 bg-black flex items-center justify-center">
-                        <Image
-                          src={item.image}
-                          alt={`Book cover for ${item.title}`}
-                          width={400}
-                          height={550}
-                          className="object-contain w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
-                          data-ai-hint={item.aiHint}
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute inset-0 flex flex-col justify-end p-4">
-                        <h3 className="text-lg font-bold text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">{item.title}</h3>
-                      </div>
-                    </Link>
-                  </Card>
-                ))
-              ) : (
-                <p className="col-span-full text-center text-muted-foreground">Our portfolio is currently being updated. Please check back soon!</p>
-              )}
+            <HomePortfolioGrid />
+            <div className="flex justify-center mt-12">
+              <Button asChild size="lg" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                <Link href="/portfolio">
+                  View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
             </div>
-              {portfolioItems.length > 0 && (
-                <div className="flex justify-center mt-12">
-                   <Button
-                    asChild
-                    size="lg"
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    <Link href="/portfolio">
-                      View Full Portfolio <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
           </div>
         </section>
 
@@ -791,59 +755,6 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="w-full bg-background border-t border-border/20 text-foreground">
-        <div className="container mx-auto py-12 px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-4 flex flex-col gap-4 items-center md:items-start">
-               <Link href="/" className="flex items-center gap-2" prefetch={false}>
-                <AnimatedLogo />
-              </Link>
-              <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
-                A sensorial voyage through the future of book design, where every page is a masterpiece.
-              </p>
-               <div className="flex space-x-4 mt-2">
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Twitter className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Linkedin className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Instagram className="h-5 w-5" /></Link>
-                 <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Facebook className="h-5 w-5" /></Link>
-              </div>
-            </div>
-
-            <div className="md:col-span-2">
-              <h4 className="font-semibold text-lg mb-4">Explore</h4>
-              <div className="flex flex-col gap-3">
-                <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Home</Link>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
-                <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
-                <Link href="/packages" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Packages</Link>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
-              </div>
-            </div>
-
-             <div className="md:col-span-2">
-              <h4 className="font-semibold text-lg mb-4">Company</h4>
-              <div className="flex flex-col gap-3">
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Blog</Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Careers</Link>
-              </div>
-            </div>
-
-            <div className="md:col-span-4">
-              <h4 className="font-semibold text-lg mb-4">Stay Updated</h4>
-              <p className="text-sm text-muted-foreground mb-4">Subscribe to our newsletter for the latest design trends and insights.</p>
-              <form className="flex gap-2">
-                <Input type="email" placeholder="Enter your email" className="flex-grow" />
-                <Button type="submit" variant="outline">Subscribe</Button>
-              </form>
-            </div>
-
-          </div>
-          <div className="border-t border-border/20 mt-8 pt-6 flex flex-col justify-center items-center">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Design Dile. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

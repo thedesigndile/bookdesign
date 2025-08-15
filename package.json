@@ -1,4 +1,3 @@
-
 {
   "name": "nextn",
   "version": "0.1.0",
@@ -10,7 +9,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "export": "next export",
+    "deploy": "npm run build && next export && npx --yes firebase-tools@latest hosting:deploy -P dile-book-design --non-interactive"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.14.1",
@@ -68,5 +69,3 @@
     "typescript": "^5"
   }
 }
-
-    
