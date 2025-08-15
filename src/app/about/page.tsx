@@ -211,7 +211,7 @@ export default function AboutPage() {
             </div>
             <Carousel
               plugins={[plugin.current]}
-              className="w-full max-w-4xl mx-auto"
+              className="w-full max-w-5xl mx-auto"
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
               opts={{
@@ -222,8 +222,8 @@ export default function AboutPage() {
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <div className="p-1 h-full">
-                      <Card className="h-full flex flex-col justify-between p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center">
-                        <div className="flex-grow">
+                      <Card className="h-full flex flex-col justify-between p-8 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center min-h-[360px]">
+                        <div className="flex-grow flex flex-col">
                           <Image
                             src={testimonial.image}
                             alt={`Portrait of ${testimonial.name}`}
@@ -232,12 +232,12 @@ export default function AboutPage() {
                             className="rounded-full mx-auto mb-4"
                             data-ai-hint={testimonial.aiHint}
                           />
-                          <blockquote className="text-lg italic text-foreground mb-4">
+                          <blockquote className="text-lg italic text-foreground mb-4 flex-grow">
                             "{testimonial.quote}"
                           </blockquote>
                           <div className="flex items-center justify-center mb-4">
                             {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="h-5 w-5 text-primary fill-primary" />
+                              <Star key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                             ))}
                           </div>
                         </div>
