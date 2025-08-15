@@ -24,9 +24,7 @@ const navLinks: NavLink[] = [
   { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
-  { href: '/portfolio/bulding-a-successful-startup', label: 'Bulding a Successful Startup' },
-  { href: '/portfolio/personal-budgeting-saving', label: 'Personal Budgeting & Saving' },
-  { href: '/portfolio/the-positive-mind-effect', label: 'The Positive Mind Effect' },
+
   { href: '/packages', label: 'Packages' },
   { href: '/contact', label: 'Contact' },
 ];
