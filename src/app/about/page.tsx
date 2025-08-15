@@ -6,7 +6,7 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, Code, Brush, Layers, Settings, GitBranch, Briefcase, Award, TrendingUp, Users, Facebook, Instagram, Linkedin, Twitter, Star, BookUser, Book, CookingPot, Laptop, Monitor, Pilcrow, PenTool, Image as ImageIcon, CaseSensitive, BookCheck, FileText, Printer, Building, User, Mic, Megaphone, Store, LayoutTemplate, Palette, BookCopy, FileUp, CheckCircle, Search, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Code, Brush, Layers, Settings, GitBranch, Briefcase, Award, TrendingUp, Users, Facebook, Instagram, Linkedin, Twitter, Star, BookUser, Book, CookingPot, Laptop, Monitor, Pilcrow, PenTool, Image as ImageIcon, CaseSensitive, BookCheck, FileText, Printer, Building, User, Mic, Megaphone, Store, LayoutTemplate, Palette, BookCopy, FileUp, CheckCircle, Search, Sparkles, Quote } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -92,6 +92,27 @@ const socialPlatforms = [
   { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: DribbbleIcon, href: "#" },
 ];
 
+const testimonials = [
+  {
+    quote: "Working with them was a dream. The final design exceeded all my expectations and has received amazing feedback from readers.",
+    name: "Jane Doe",
+    title: "Bestselling Author",
+    rating: 5,
+  },
+  {
+    quote: "Their attention to detail and creative vision are unparalleled. The book cover is a work of art and perfectly captures the story's essence.",
+    name: "John Smith",
+    title: "Debut Novelist",
+    rating: 5,
+  },
+  {
+    quote: "A seamless process from start to finish. They are true professionals who understand the nuances of book design and the publishing industry.",
+    name: "Emily White",
+    title: "Publisher, White Leaf Press",
+    rating: 5,
+  },
+];
+
 
 export default function AboutPage() {
   const reduceMotion = useReducedMotion();
@@ -100,7 +121,7 @@ export default function AboutPage() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.04, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.05, delayChildren: 0.1 },
     },
   };
 
@@ -232,9 +253,45 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        
+        {/* Testimonials Section */}
+        <section id="testimonials" className="w-full py-12 md:py-24">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">What Our Clients Say</h2>
+                </div>
+                <motion.div 
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
+                    {testimonials.map((testimonial, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                            <Card className="h-full flex flex-col p-6 bg-card/80 border-border/50 rounded-lg shadow-sm">
+                                <div className="flex items-center mb-2">
+                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                        <Star key={i} className="h-5 w-5 text-primary fill-primary" />
+                                    ))}
+                                </div>
+                                <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                                <blockquote className="text-muted-foreground italic mb-4 flex-grow">
+                                    "{testimonial.quote}"
+                                </blockquote>
+                                <div className="mt-auto">
+                                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                                    <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                                </div>
+                            </Card>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
 
         {/* Portfolio Highlights Section */}
-        <section id="portfolio-highlights" className="w-full py-12 md:py-24">
+        <section id="portfolio-highlights" className="w-full py-12 md:py-24 border-t border-border/20">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Portfolio Highlights</h2>
@@ -307,5 +364,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
 
     
