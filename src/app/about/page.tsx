@@ -6,10 +6,10 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, Code, Brush, Layers, Settings, GitBranch, Briefcase, Award, TrendingUp, Users, Facebook, Instagram, Linkedin, Twitter, Star, BookUser, Book, CookingPot, Laptop, Monitor, Pilcrow, PenTool, Image as ImageIcon, CaseSensitive, BookCheck, FileText, Printer, Building, User, Mic, Megaphone, Store } from "lucide-react";
+import { ArrowRight, BookOpen, Code, Brush, Layers, Settings, GitBranch, Briefcase, Award, TrendingUp, Users, Facebook, Instagram, Linkedin, Twitter, Star, BookUser, Book, CookingPot, Laptop, Monitor, Pilcrow, PenTool, Image as ImageIcon, CaseSensitive, BookCheck, FileText, Printer, Building, User, Mic, Megaphone, Store, LayoutTemplate, Palette, BookCopy, FileUp, CheckCircle, Search, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 // SVG icons for tools that are not in lucide-react
 const AdobeIllustratorIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -34,6 +34,41 @@ const DribbbleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zM3.633 14.25c.334.334 1.83 2.23 4.212 3.693-2.733-2.2-4.14-4.88-4.212-5.013a9.58 9.58 0 010-2.613c.245.245 2.88 2.655 6.018 3.033-2.52.885-4.875-.12-6.018-1.74zm1.092-6.495c1.143 1.62 3.498 2.625 6.018 1.74-3.138-.378-5.773-2.788-6.018-3.033a9.58 9.58 0 000 2.613c.072.133 1.48 2.813 4.212 5.013-2.382-1.463-3.878-3.36-4.212-3.693zM12 21.6c-1.39 0-2.7-.26-3.93-.735 2.115-1.26 3.96-3.48 4.605-5.385.945.165 1.935.15 2.895-.06-1.02 2.7-3.045 4.815-5.565 5.895zm6.81-2.97c-.72-1.89-2.37-3.795-4.47-4.905.795-.09 1.575-.285 2.325-.57C19.68 13.92 21 12.435 21 10.8c0-.795-.39-1.515-.9-2.07.24.81.165 1.695-.21 2.475-.9 1.86-2.58 3.045-4.5 3.51.135-.555.21-1.125.21-1.71 0-3.36-2.31-6.18-5.37-6.84 2.85-1.05 6.045.75 6.045 4.5 0 .54-.075 1.065-.21 1.575 1.29.39 2.415.99 3.315 1.755.78.66 1.155 1.56 1.155 2.46 0 1.215-.705 2.475-1.95 3.3zm-3.12-10.845c-2.325 0-4.215 1.89-4.215 4.215S9.375 16.2 11.7 16.2s4.215-1.89 4.215-4.215-1.89-4.215-4.215-4.215z" /></svg>
 );
 
+const AmazonKdpIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c.58 0 1.05.47 1.05 1.05v15.75c0 .58-.47 1.05-1.05 1.05s-1.05-.47-1.05-1.05V3.3c0-.58.47-1.05 1.05-1.05zm5.02 2.1l-5.25 5.25h1.5l3.75-3.75v10.5h1.5V5.25c0-.58-.47-1.05-1.05-1.05s-1.05.47-1.05 1.05v-.75zM6.98 4.35c-.58 0-1.05.47-1.05 1.05v13.5h1.5V5.4c0-.58-.47-1.05-1.05-1.05h.6zm-2.63 3.9l2.25 2.25v6.6H5.1V8.25z" />
+    </svg>
+);
+
+const LuluIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM8.25 6h1.5v9h-1.5V6zm6 0h1.5v9h-1.5V6zM6 9h1.5v3H6V9zm10.5 0h1.5v3h-1.5V9z"/>
+    </svg>
+);
+
+const IngramSparkIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.05 4.5h2.1v15h-2.1V4.5zm-3.6 2.25h1.5v10.5h-1.5V6.75zm7.2 0h1.5v10.5h-1.5V6.75z" />
+    </svg>
+);
+
+
+const services = [
+  { icon: LayoutTemplate, title: "Custom Interior Layouts", description: "Tailored print and eBook layouts designed for readability and aesthetic appeal across all genres." },
+  { icon: Palette, title: "Cover Design & Branding", description: "Genre-matched covers with cohesive series identity to captivate readers and build your author brand." },
+  { icon: Laptop, title: "eBook Conversion", description: "Optimized and validated formatting for Kindle (MOBI), EPUB, and Kobo to ensure a perfect digital reading experience." },
+  { icon: Printer, title: "Print-Ready Formatting", description: "Meticulously prepared, press-ready PDF files that meet global publishing standards for flawless printing." },
+  { icon: Pilcrow, title: "Editorial & Typography", description: "Expert font pairing, hierarchy, and layout strategy to enhance readability and professional polish." },
+  { icon: Users, title: "Author Platform Support", description: "Seamless integration of design assets with your author website, social media, and marketing profiles." },
+  { icon: BookCopy, title: "Series & Collection Design", description: "Unified and consistent layouts and covers for multi-book projects, creating a strong brand identity." },
+  { icon: FileUp, title: "Publishing Prep & File Audit", description: "Comprehensive pre-flight checks and file audits to ensure upload and print success on any platform." },
+];
+
+const platforms = [
+  { name: "Amazon KDP", Icon: AmazonKdpIcon },
+  { name: "Lulu", Icon: LuluIcon },
+  { name: "IngramSpark", Icon: IngramSparkIcon },
+];
 
 const tools = [
   { icon: AdobeInDesignIcon, name: "Adobe InDesign", description: "Professional book layout design." },
@@ -44,9 +79,6 @@ const tools = [
   { icon: Layers, name: "Microsoft Excel", description: "Data organization & recipe indexing." },
   { icon: BookCheck, name: "Microsoft PowerPoint", description: "Visual presentations & pitch decks." },
   { icon: BookUser, name: "Google Docs", description: "Real-time content collaboration." },
-  { icon: Printer, name: "Lulu", description: "Print-on-demand publishing." },
-  { icon: Building, name: "IngramSpark", description: "Global print distribution." },
-  { icon: Store, name: "Amazon KDP", description: "Kindle & paperback publishing." },
 ];
 
 const journey = [
@@ -80,6 +112,26 @@ const socialPlatforms = [
 
 
 export default function AboutPage() {
+  const reduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.04, delayChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.98 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] },
+    },
+  };
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <MouseSpotlight />
@@ -143,6 +195,48 @@ export default function AboutPage() {
             </div>
         </section>
 
+        {/* Book Design Services Section */}
+        <section id="services" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Book Design Services</h2>
+            </div>
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={containerVariants}
+            >
+              {services.map((service) => (
+                <motion.div key={service.title} variants={itemVariants}>
+                  <Card className="group h-full flex flex-col items-center text-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary">
+                    <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
+                      <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
+                    </div>
+                    <h3 className="text-lg font-semibold mt-4 font-playfair">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-2 flex-grow">{service.description}</p>
+                    <Button variant="link" className="mt-4 text-primary">Learn More</Button>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <div className="mt-16 text-center">
+              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl mb-8">Supported Publishing Platforms</h3>
+              <div className="flex justify-center items-center gap-8 md:gap-12">
+                {platforms.map((platform) => (
+                   <div key={platform.name} className="flex flex-col items-center gap-2 group">
+                     <platform.Icon className="h-12 w-12 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
+                     <p className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">{platform.name}</p>
+                   </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </section>
+        
         {/* Tools & Software Section */}
         <section id="tools" className="w-full py-12 md:py-24 bg-background">
           <div className="container mx-auto px-4 md:px-6">
