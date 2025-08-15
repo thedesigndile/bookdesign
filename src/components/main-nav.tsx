@@ -76,7 +76,7 @@ export function MainNav({ }: MainNavProps) {
           Logout
         </Button>
       ) : (
-        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Login</Button>
+        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Register</Button>
       )}
     </div>
   );

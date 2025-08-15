@@ -560,7 +560,7 @@ export default function Home() {
                 >
                   <Badge variant="secondary" className="mb-2">Used by 50K+ Self-Published Authors</Badge>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-gray-900 dark:text-white">
-                    Transform Ideas into Stunning Books — Effortlessly
+                    Transform Ideas into Stunning Books — Effortlessly [Live]
                   </h2>
                   <p className="mt-4 text-gray-600 dark:text-muted-foreground">
                     Craft visually compelling, publication-ready books with smart formatting tools designed for authors, designers, and creators of all levels.
