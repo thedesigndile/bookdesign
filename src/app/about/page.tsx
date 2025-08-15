@@ -6,7 +6,7 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle } from "lucide-react";
+import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -280,30 +280,29 @@ export default function AboutPage() {
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                     <div className="p-1 h-full">
-                      <Card className="h-full flex flex-col justify-between p-8 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center min-h-[360px]">
-                        <div className="flex-grow flex flex-col">
-                          <blockquote className="text-lg italic text-foreground mb-4 flex-grow">
-                            "{testimonial.quote}"
-                          </blockquote>
-                          <div className="flex items-center justify-center mb-6">
+                      <Card className="h-full flex flex-col p-8 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center">
+                        <div className="flex-grow flex flex-col items-center">
+                          <Image
+                            src={testimonial.image}
+                            alt={`Portrait of ${testimonial.name}`}
+                            width={80}
+                            height={80}
+                            className="rounded-full mb-4"
+                            data-ai-hint={testimonial.aiHint}
+                          />
+                           <div className="flex items-center justify-center mb-4">
                             {[...Array(testimonial.rating)].map((_, i) => (
                               <Star key={i} className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                             ))}
                           </div>
+                          <Quote className="h-8 w-8 text-primary/50 mb-2" />
+                          <blockquote className="text-lg italic text-foreground mb-4 flex-grow">
+                            {testimonial.quote}
+                          </blockquote>
                         </div>
-                        <div className="flex items-center justify-center gap-4">
-                           <Image
-                            src={testimonial.image}
-                            alt={`Portrait of ${testimonial.name}`}
-                            width={60}
-                            height={60}
-                            className="rounded-full"
-                            data-ai-hint={testimonial.aiHint}
-                          />
-                          <div className="text-left">
-                            <p className="font-semibold">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                          </div>
+                        <div className="mt-auto">
+                          <p className="font-semibold text-lg">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                         </div>
                       </Card>
                     </div>
