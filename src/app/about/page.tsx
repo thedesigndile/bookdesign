@@ -11,56 +11,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
-// SVG icons for tools that are not in lucide-react
-const AdobeIllustratorIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.26 17.65h-2.13l-1.09-3.3h-4.08l-1.09 3.3H4.74l4.2-11.3h2.12l4.2 11.3zM10.02 12.9h3.96L12 7.18 10.02 12.9z" /></svg>
-);
-const AdobePhotoshopIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.28 17.65h-2.31l-.92-2.78h-4.1l-1.02 2.78H4.72l4.2-11.3h2.12l4.22 11.3zm-4.7-4.22c.3-.9.6-1.8.88-2.68.08-.24.15-.49.21-.73h.02c.06.24.13.49.21.73.28.88.58 1.78.88 2.68h-2.2z" /></svg>
-);
-const AdobeInDesignIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.33 17.65h-2.31l-1.05-3.3H8.03v3.3H5.87V6.35h4.94c2.52 0 4.12 1.51 4.12 3.82 0 1.69-.92 2.9-2.28 3.42l1.68 4.06zM8.03 8.51v2.94h2.18c1.05 0 1.68-.6 1.68-1.47 0-.88-.63-1.47-1.68-1.47H8.03z" /></svg>
-);
-const CanvaIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.5 14.2a3.3 3.3 0 110-6.6 3.3 3.3 0 010 6.6zm-9-3.3a3.3 3.3 0 11-6.6 0 3.3 3.3 0 016.6 0z" /></svg>
-);
-const BehanceIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M7.65 10.35h4.2v1.05h-4.2v2.1h4.5v1.05h-4.5v2.4h-1.5V7.5h5.7c1.65 0 2.7 1.05 2.7 2.4s-1.05 2.4-2.7 2.4H7.65v-1.95zm.75-1.8V10.2h.9c.75 0 1.2-.45 1.2-1.2s-.45-1.2-1.2-1.2h-.9zm8.1 7.5h-3V12c0-1.05.75-1.8 1.8-1.8s1.8.75 1.8 1.8v3.9zm1.5-3.9c0-1.95-1.5-3.3-3.3-3.3s-3.3 1.35-3.3 3.3v3.9h6.6v-3.9z" /></svg>
-);
-const PinterestIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12.115 2.25c-5.32 0-9.56 4.24-9.56 9.47 0 3.79 2.21 7.03 5.37 8.53-.08-1.03.01-2.29.3-3.26.28-.94.94-3.99.94-3.99s-.25-.49-.25-1.22c0-1.14.67-2 1.51-2 .71 0 1.05.53 1.05 1.18 0 .71-.45 1.77-.69 2.74-.2 1.01.5 1.83 1.52 1.83 1.82 0 3.23-1.9 3.23-4.66 0-2.45-1.74-4.28-4.42-4.28-2.96 0-4.7 2.19-4.7 4.31 0 .86.32 1.78.73 2.28.08.1.09.18.06.28-.08.31-.27 1.12-.31 1.25-.05.15-.2.2-.42.08-1.55-.83-2.52-2.97-2.52-4.83 0-3.95 2.88-7.22 7.84-7.22 4.12 0 7.33 2.91 7.33 6.9 0 4.1-2.61 7.42-6.22 7.42-1.21 0-2.35-.62-2.74-1.34 0 0-.57 2.29-.7 2.7-.27.86-.98 1.95-1.46 2.58.94.27 1.94.42 2.99.42 5.25 0 9.7-4.32 9.7-9.6 0-5.46-4.51-9.84-10.03-9.84z" /></svg>
-);
-const DribbbleIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}><path d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zM3.633 14.25c.334.334 1.83 2.23 4.212 3.693-2.733-2.2-4.14-4.88-4.212-5.013a9.58 9.58 0 010-2.613c.245.245 2.88 2.655 6.018 3.033-2.52.885-4.875-.12-6.018-1.74zm1.092-6.495c1.143 1.62 3.498 2.625 6.018 1.74-3.138-.378-5.773-2.788-6.018-3.033a9.58 9.58 0 000 2.613c.072.133 1.48 2.813 4.212 5.013-2.382-1.463-3.878-3.36-4.212-3.693zM12 21.6c-1.39 0-2.7-.26-3.93-.735 2.115-1.26 3.96-3.48 4.605-5.385.945.165 1.935.15 2.895-.06-1.02 2.7-3.045 4.815-5.565 5.895zm6.81-2.97c-.72-1.89-2.37-3.795-4.47-4.905.795-.09 1.575-.285 2.325-.57C19.68 13.92 21 12.435 21 10.8c0-.795-.39-1.515-.9-2.07.24.81.165 1.695-.21 2.475-.9 1.86-2.58 3.045-4.5 3.51.135-.555.21-1.125.21-1.71 0-3.36-2.31-6.18-5.37-6.84 2.85-1.05 6.045.75 6.045 4.5 0 .54-.075 1.065-.21 1.575 1.29.39 2.415.99 3.315 1.755.78.66 1.155 1.56 1.155 2.46 0 1.215-.705 2.475-1.95 3.3zm-3.12-10.845c-2.325 0-4.215 1.89-4.215 4.215S9.375 16.2 11.7 16.2s4.215-1.89 4.215-4.215-1.89-4.215-4.215-4.215z" /></svg>
-);
-
-const AmazonKdpIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c.58 0 1.05.47 1.05 1.05v15.75c0 .58-.47 1.05-1.05 1.05s-1.05-.47-1.05-1.05V3.3c0-.58.47-1.05 1.05-1.05zm5.02 2.1l-5.25 5.25h1.5l3.75-3.75v10.5h1.5V5.25c0-.58-.47-1.05-1.05-1.05s-1.05.47-1.05 1.05v-.75zM6.98 4.35c-.58 0-1.05.47-1.05 1.05v13.5h1.5V5.4c0-.58-.47-1.05-1.05-1.05h.6zm-2.63 3.9l2.25 2.25v6.6H5.1V8.25z" />
-    </svg>
-);
-
-const LuluIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM8.25 6h1.5v9h-1.5V6zm6 0h1.5v9h-1.5V6zM6 9h1.5v3H6V9zm10.5 0h1.5v3h-1.5V9z"/>
-    </svg>
-);
-
-const IngramSparkIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.05 4.5h2.1v15h-2.1V4.5zm-3.6 2.25h1.5v10.5h-1.5V6.75zm7.2 0h1.5v10.5h-1.5V6.75z" />
-    </svg>
-);
-
 const tools = [
-  { icon: AdobeInDesignIcon, name: "Adobe InDesign", description: "Professional book layout design." },
-  { icon: AdobePhotoshopIcon, name: "Adobe Photoshop", description: "Advanced image editing." },
-  { icon: AdobeIllustratorIcon, name: "Adobe Illustrator", description: "Vector graphics and illustrations." },
-  { icon: CanvaIcon, name: "Canva", description: "Quick creative design layouts." },
-  { icon: FileText, name: "Microsoft Word", description: "Manuscript preparation & editing." },
-  { icon: Layers, name: "Microsoft Excel", description: "Data organization & recipe indexing." },
-  { icon: BookCheck, name: "Microsoft PowerPoint", description: "Visual presentations & pitch decks." },
-  { icon: BookUser, name: "Google Docs", description: "Real-time content collaboration." },
+  { image: "https://placehold.co/64x64.png", aiHint: "adobe indesign logo", name: "Adobe InDesign", description: "Professional book layout design." },
+  { image: "https://placehold.co/64x64.png", aiHint: "adobe photoshop logo", name: "Adobe Photoshop", description: "Advanced image editing." },
+  { image: "https://placehold.co/64x64.png", aiHint: "adobe illustrator logo", name: "Adobe Illustrator", description: "Vector graphics and illustrations." },
+  { image: "https://placehold.co/64x64.png", aiHint: "canva logo", name: "Canva", description: "Quick creative design layouts." },
+  { image: "https://placehold.co/64x64.png", aiHint: "microsoft word logo", name: "Microsoft Word", description: "Manuscript preparation & editing." },
+  { image: "https://placehold.co/64x64.png", aiHint: "microsoft excel logo", name: "Microsoft Excel", description: "Data organization & recipe indexing." },
+  { image: "https://placehold.co/64x64.png", aiHint: "microsoft powerpoint logo", name: "Microsoft PowerPoint", description: "Visual presentations & pitch decks." },
+  { image: "https://placehold.co/64x64.png", aiHint: "google docs logo", name: "Google Docs", description: "Real-time content collaboration." },
 ];
 
 const journey = [
@@ -85,11 +44,11 @@ const socialPlatforms = [
   { name: "Facebook", tagline: "Stay updated with our latest book design projects.", icon: Facebook, href: "#" },
   { name: "Instagram", tagline: "See behind-the-scenes of our creative process.", icon: Instagram, href: "#" },
   { name: "LinkedIn", tagline: "Explore our professional portfolio and collaborations.", icon: Linkedin, href: "#" },
-  { name: "Behance", tagline: "View our curated design showcases.", icon: BehanceIcon, href: "#" },
-  { name: "Pinterest", tagline: "Discover our book cover inspirations and moodboards.", icon: PinterestIcon, href: "#" },
+  { name: "Behance", tagline: "View our curated design showcases.", icon: Briefcase, href: "#" }, // Placeholder
+  { name: "Pinterest", tagline: "Discover our book cover inspirations and moodboards.", icon: Instagram, href: "#" }, // Placeholder
   { name: "Upwork", tagline: "Hire us for professional book design services.", icon: Briefcase, href: "#" },
   { name: "Fiverr", tagline: "Get custom book design solutions at flexible packages.", icon: Store, href: "#" },
-  { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: DribbbleIcon, href: "#" },
+  { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: Palette, href: "#" }, // Placeholder
 ];
 
 const services = [
@@ -104,9 +63,9 @@ const services = [
 ];
 
 const platforms = [
-  { icon: AmazonKdpIcon, name: "Amazon KDP" },
-  { icon: LuluIcon, name: "Lulu" },
-  { icon: IngramSparkIcon, name: "IngramSpark" },
+  { image: "https://placehold.co/128x64.png", aiHint: "amazon kdp logo", name: "Amazon KDP" },
+  { image: "https://placehold.co/128x64.png", aiHint: "lulu logo", name: "Lulu" },
+  { image: "https://placehold.co/128x64.png", aiHint: "ingramspark logo", name: "IngramSpark" },
 ];
 
 const testimonials = [
@@ -224,7 +183,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {tools.map((tool) => (
                 <Card key={tool.name} className="group relative flex flex-col items-center justify-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary">
-                  <tool.icon className="h-12 w-12 text-primary mb-4 transition-transform duration-300 group-hover:scale-110" />
+                  <Image src={tool.image} alt={`${tool.name} logo`} width={64} height={64} className="h-12 w-12 mb-4 transition-transform duration-300 group-hover:scale-110" data-ai-hint={tool.aiHint} />
                   <h3 className="text-lg font-semibold text-center font-playfair">{tool.name}</h3>
                   <p className="text-sm text-muted-foreground text-center mt-1">{tool.description}</p>
                 </Card>
@@ -302,7 +261,7 @@ export default function AboutPage() {
                     <div className="flex justify-center items-center gap-12">
                         {platforms.map(platform => (
                             <div key={platform.name} className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
-                                <platform.icon className="h-16 w-16" />
+                                <Image src={platform.image} alt={`${platform.name} logo`} width={128} height={64} className="h-16 w-auto object-contain" data-ai-hint={platform.aiHint} />
                                 <span className="font-semibold">{platform.name}</span>
                             </div>
                         ))}
@@ -425,6 +384,3 @@ export default function AboutPage() {
 }
 
     
-
-    
-
