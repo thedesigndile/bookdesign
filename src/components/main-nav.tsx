@@ -20,10 +20,10 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/packages', label: 'Packages' },
+  { href: '/about', label: 'About Us' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -76,7 +76,7 @@ export function MainNav({ }: MainNavProps) {
           Logout
         </Button>
       ) : (
-        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Login</Button>
+        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Register</Button>
       )}
     </div>
   );
