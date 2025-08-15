@@ -10,6 +10,9 @@ import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twi
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import React from "react";
 
 const tools = [
   { image: "https://placehold.co/64x64.png", aiHint: "adobe indesign logo", name: "Adobe InDesign", description: "Professional book layout design." },
@@ -67,11 +70,38 @@ const testimonials = [
     image: "https://placehold.co/100x100.png",
     aiHint: "creative professional portrait"
   },
+  {
+    quote: "The attention to detail in the typography and layout was extraordinary. It made my book a pleasure to read.",
+    name: "David Chen",
+    title: "Novelist",
+    rating: 5,
+    image: "https://placehold.co/100x100.png",
+    aiHint: "male author portrait"
+  },
+  {
+    quote: "An amazing partner for any author. Their creativity and understanding of the market are second to none.",
+    name: "Sophia Rodriguez",
+    title: "Marketing Director, Booknova",
+    rating: 5,
+    image: "https://placehold.co/100x100.png",
+    aiHint: "female marketing director"
+  },
+  {
+    quote: "I couldn't be happier with the final product. The design process was smooth, collaborative, and inspiring.",
+    name: "Michael Brown",
+    title: "First-time Author",
+    rating: 5,
+    image: "https://placehold.co/100x100.png",
+    aiHint: "happy man portrait"
+  },
 ];
 
 
 export default function AboutPage() {
   const reduceMotion = useReducedMotion();
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -179,42 +209,50 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">What Our Clients Say</h2>
               <p className="max-w-[700px] text-muted-foreground">Hear from authors and publishers who have trusted us with their vision.</p>
             </div>
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+            <Carousel
+              plugins={[plugin.current]}
+              className="w-full max-w-4xl mx-auto"
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+              opts={{
+                loop: true,
+              }}
             >
-              {testimonials.map((testimonial, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <Card className="h-full flex flex-col justify-between p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center">
-                    <div className="flex-grow">
-                      <Image 
-                        src={testimonial.image}
-                        alt={`Portrait of ${testimonial.name}`}
-                        width={80}
-                        height={80}
-                        className="rounded-full mx-auto mb-4"
-                        data-ai-hint={testimonial.aiHint}
-                      />
-                      <blockquote className="text-lg italic text-foreground mb-4">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <div className="flex items-center justify-center mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="h-5 w-5 text-primary fill-primary" />
-                        ))}
-                      </div>
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1 h-full">
+                      <Card className="h-full flex flex-col justify-between p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center">
+                        <div className="flex-grow">
+                          <Image
+                            src={testimonial.image}
+                            alt={`Portrait of ${testimonial.name}`}
+                            width={80}
+                            height={80}
+                            className="rounded-full mx-auto mb-4"
+                            data-ai-hint={testimonial.aiHint}
+                          />
+                          <blockquote className="text-lg italic text-foreground mb-4">
+                            "{testimonial.quote}"
+                          </blockquote>
+                          <div className="flex items-center justify-center mb-4">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="h-5 w-5 text-primary fill-primary" />
+                            ))}
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <p className="font-semibold">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                        </div>
+                      </Card>
                     </div>
-                    <div className="text-center">
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </section>
 
