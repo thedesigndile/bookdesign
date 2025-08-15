@@ -53,7 +53,7 @@ export default function ServicesPage() {
         <section id="services" className="w-full py-12 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Book Design Services</h1>
+                    <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl !text-white font-roboto">Book Design Services</h1>
                     <p className="max-w-[700px] text-muted-foreground">Comprehensive design solutions to bring your book to life, from cover to cover.</p>
                 </div>
                 <motion.div 

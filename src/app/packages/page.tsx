@@ -61,8 +61,8 @@ export default function PackagesPage() {
       <MainNav />
       <main className="container mx-auto px-4 md:px-6 py-24">
         <div className="pt-8 text-center mb-12">
-          <h1 className="font-bebas-neue text-5xl font-bold tracking-wider sm:text-6xl md:text-7xl">
-            BOOK DESIGN PACKAGES
+          <h1 className="font-bebas-neue text-5xl font-bold tracking-wider sm:text-6xl md:text-7xl text-white">
+            Book Design Packages
           </h1>
           <p className="max-w-[700px] mx-auto text-muted-foreground md:text-xl mt-4">
             Choose the perfect package to bring your book to life.
