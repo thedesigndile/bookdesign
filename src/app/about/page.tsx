@@ -48,18 +48,24 @@ const testimonials = [
     name: "Jane Doe",
     title: "Bestselling Author",
     rating: 5,
+    image: "https://placehold.co/100x100.png",
+    aiHint: "professional woman portrait"
   },
   {
     quote: "The cover design captured the essence of my story perfectly. I've seen a significant increase in sales since the redesign.",
     name: "John Smith",
     title: "Founder, PublixPress",
     rating: 5,
+    image: "https://placehold.co/100x100.png",
+    aiHint: "male founder headshot"
   },
   {
     quote: "Professional, responsive, and incredibly talented. They transformed my manuscript into a beautiful, readable book.",
     name: "Emily White",
     title: "Independent Publisher",
     rating: 5,
+    image: "https://placehold.co/100x100.png",
+    aiHint: "creative professional portrait"
   },
 ];
 
@@ -182,18 +188,26 @@ export default function AboutPage() {
             >
               {testimonials.map((testimonial, index) => (
                 <motion.div key={index} variants={itemVariants}>
-                  <Card className="h-full flex flex-col justify-between p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm">
-                    <div>
-                      <div className="flex items-center mb-4">
+                  <Card className="h-full flex flex-col justify-between p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm text-center">
+                    <div className="flex-grow">
+                      <Image 
+                        src={testimonial.image}
+                        alt={`Portrait of ${testimonial.name}`}
+                        width={80}
+                        height={80}
+                        className="rounded-full mx-auto mb-4"
+                        data-ai-hint={testimonial.aiHint}
+                      />
+                      <blockquote className="text-lg italic text-foreground mb-4">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      <div className="flex items-center justify-center mb-4">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="h-5 w-5 text-primary fill-primary" />
                         ))}
                       </div>
-                      <blockquote className="text-lg italic text-foreground border-l-2 border-primary pl-4 mb-4">
-                        "{testimonial.quote}"
-                      </blockquote>
                     </div>
-                    <div className="text-right">
+                    <div className="text-center">
                       <p className="font-semibold">{testimonial.name}</p>
                       <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                     </div>
@@ -278,5 +292,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
