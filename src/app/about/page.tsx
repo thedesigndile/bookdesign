@@ -52,24 +52,6 @@ const IngramSparkIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-
-const services = [
-  { icon: LayoutTemplate, title: "Custom Interior Layouts", description: "Tailored print and eBook layouts designed for readability and aesthetic appeal across all genres." },
-  { icon: Palette, title: "Cover Design & Branding", description: "Genre-matched covers with cohesive series identity to captivate readers and build your author brand." },
-  { icon: Laptop, title: "eBook Conversion", description: "Optimized and validated formatting for Kindle (MOBI), EPUB, and Kobo to ensure a perfect digital reading experience." },
-  { icon: Printer, title: "Print-Ready Formatting", description: "Meticulously prepared, press-ready PDF files that meet global publishing standards for flawless printing." },
-  { icon: Pilcrow, title: "Editorial & Typography", description: "Expert font pairing, hierarchy, and layout strategy to enhance readability and professional polish." },
-  { icon: Users, title: "Author Platform Support", description: "Seamless integration of design assets with your author website, social media, and marketing profiles." },
-  { icon: BookCopy, title: "Series & Collection Design", description: "Unified and consistent layouts and covers for multi-book projects, creating a strong brand identity." },
-  { icon: FileUp, title: "Publishing Prep & File Audit", description: "Comprehensive pre-flight checks and file audits to ensure upload and print success on any platform." },
-];
-
-const platforms = [
-  { name: "Amazon KDP", Icon: AmazonKdpIcon },
-  { name: "Lulu", Icon: LuluIcon },
-  { name: "IngramSpark", Icon: IngramSparkIcon },
-];
-
 const tools = [
   { icon: AdobeInDesignIcon, name: "Adobe InDesign", description: "Professional book layout design." },
   { icon: AdobePhotoshopIcon, name: "Adobe Photoshop", description: "Advanced image editing." },
@@ -195,48 +177,6 @@ export default function AboutPage() {
             </div>
         </section>
 
-        {/* Book Design Services Section */}
-        <section id="services" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl uppercase text-primary font-roboto">Book Design Services</h2>
-            </div>
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={containerVariants}
-            >
-              {services.map((service) => (
-                <motion.div key={service.title} variants={itemVariants}>
-                  <Card className="group h-full flex flex-col items-center text-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary">
-                    <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
-                      <service.icon className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-125" />
-                    </div>
-                    <h3 className="text-lg font-semibold mt-4 font-playfair">{service.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-2 flex-grow">{service.description}</p>
-                    <Button variant="link" className="mt-4 text-primary">Learn More</Button>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <div className="mt-16 text-center">
-              <h3 className="text-2xl font-bold tracking-tight sm:text-3xl mb-8">Supported Publishing Platforms</h3>
-              <div className="flex justify-center items-center gap-8 md:gap-12">
-                {platforms.map((platform) => (
-                   <div key={platform.name} className="flex flex-col items-center gap-2 group">
-                     <platform.Icon className="h-12 w-12 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
-                     <p className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">{platform.name}</p>
-                   </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </section>
-        
         {/* Tools & Software Section */}
         <section id="tools" className="w-full py-12 md:py-24 bg-background">
           <div className="container mx-auto px-4 md:px-6">
@@ -367,7 +307,5 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
 
     
