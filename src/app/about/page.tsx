@@ -23,6 +23,8 @@ const tools = [
   { image: "https://placehold.co/64x64.png", aiHint: "microsoft excel logo", name: "Microsoft Excel", description: "Data organization & recipe indexing." },
   { image: "https://placehold.co/64x64.png", aiHint: "microsoft powerpoint logo", name: "Microsoft PowerPoint", description: "Visual presentations & pitch decks." },
   { image: "https://placehold.co/64x64.png", aiHint: "google docs logo", name: "Google Docs", description: "Real-time content collaboration." },
+  { image: "https://placehold.co/64x64.png", aiHint: "affinity designer logo", name: "Affinity Designer", description: "Vector editing and UI design." },
+  { image: "https://placehold.co/64x64.png", aiHint: "coreldraw logo", name: "CorelDRAW", description: "Professional vector illustration." },
 ];
 
 const portfolioItems = [
