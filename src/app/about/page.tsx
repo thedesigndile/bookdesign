@@ -223,7 +223,7 @@ export default function AboutPage() {
                             
                             <h3 className="text-lg font-semibold text-center font-playfair">{service.title}</h3>
                             <p className="text-sm text-muted-foreground text-center mt-1 flex-grow">{service.description}</p>
-                            <Button variant="link" className="mt-4 text-primary">Learn More</Button>
+                            
                         </Card>
                     </motion.div>
                 ))}
@@ -389,3 +389,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
