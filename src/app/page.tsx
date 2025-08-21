@@ -499,33 +499,18 @@ export default function Home() {
                 Tailored solutions for every storyteller, educator, and marketer.
               </p>
             </div>
-            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-12 mt-8 md:mt-12">
+            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 lg:grid-cols-3 md:gap-12 mt-8 md:mt-12">
               {whoWeHelp.map((item) => (
-                <div key={item.title}>
-                  <Card className="h-full group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:bg-secondary hover:text-secondary-foreground">
-                    <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                       <div className="rounded-full border-2 border-primary/20 p-3 bg-background group-hover:border-primary transition-all group-hover:bg-white">
-                        <item.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
-                      </div>
-                      <CardTitle className="text-xl group-hover:text-secondary-foreground">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground group-hover:text-secondary-foreground">{item.description}</p>
-                    </CardContent>
-                  </Card>
+                <div key={item.title} className="flex flex-col items-center text-center gap-4">
+                  <div className="rounded-full border-2 border-primary/20 p-4 bg-background transition-all hover:border-primary hover:scale-110">
+                    <item.icon className="h-8 w-8 text-primary transition-transform duration-300" />
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-bold">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </div>
                 </div>
               ))}
-            </div>
-             <div className="flex justify-center mt-12">
-                <Button
-                  asChild
-                  size="lg"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                >
-                  <Link href="/services">
-                    See Our Work <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
             </div>
           </div>
         </section>
@@ -717,7 +702,6 @@ export default function Home() {
                 <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
                 <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
                 <Link href="/packages" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Packages</Link>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
               </div>
             </div>
 
@@ -727,6 +711,7 @@ export default function Home() {
                 <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
                 <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Blog</Link>
                 <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Careers</Link>
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
               </div>
             </div>
 
