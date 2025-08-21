@@ -51,86 +51,6 @@ const services = [
   },
 ];
 
-const trustedByLogos = [
-  {
-    name: "PublixPress",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 140 40" className="h-10 w-auto" {...props}>
-        <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" letterSpacing="1" fill="hsl(var(--primary))">
-          Publix<tspan fill="currentColor">Press</tspan>
-        </text>
-      </svg>
-    )
-  },
-  {
-    name: "Typeflow",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
-        <path d="M10 10 Q15 0, 20 10 T30 10" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none"/>
-        <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Typeflow</text>
-      </svg>
-    )
-  },
-  {
-    name: "Inkerra",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
-        <text x="0" y="30" fontFamily="serif" fontSize="32" fontWeight="600" fill="currentColor" fontStyle="italic">
-          Inke<tspan fill="hsl(var(--primary))">rr</tspan>
-        </text>
-      </svg>
-    )
-  },
-  {
-    name: "Booknova",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 130 40" className="h-10 w-auto" {...props}>
-        <path d="M20 5 L23 15 L33 15 L25 22 L28 32 L20 25 L12 32 L15 22 L7 15 L17 15 Z" fill="hsl(var(--primary))"/>
-        <text x="40" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Booknova</text>
-      </svg>
-    )
-  },
-  {
-    name: "Craftlab Media",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 180 40" className="h-10 w-auto" {...props}>
-        <rect x="0" y="10" width="20" height="20" fill="hsl(var(--primary))" rx="4"/>
-        <text x="30" y="30" fontFamily="monospace" fontSize="26" fontWeight="500" fill="currentColor">Craftlab Media</text>
-      </svg>
-    )
-  },
-  {
-    name: "Readistack",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 150 40" className="h-10 w-auto" {...props}>
-        <rect x="0" y="5" width="25" height="5" fill="hsl(var(--primary))"/>
-        <rect x="0" y="15" width="25" height="5" fill="hsl(var(--primary))" opacity="0.7"/>
-        <rect x="0" y="25" width="25" height="5" fill="hsl(var(--primary))" opacity="0.4"/>
-        <text x="35" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Readistack</text>
-      </svg>
-    )
-  },
-  {
-    name: "Printory",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 120 40" className="h-10 w-auto" {...props}>
-        <path d="M10 30 C 30 10, 60 10, 80 30" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-        <text x="0" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Printory</text>
-      </svg>
-    )
-  },
-  {
-    name: "Zinfolio",
-    Logo: (props: SVGProps<SVGSVGElement>) => (
-      <svg viewBox="0 0 130 40" className="h-10 w-auto" {...props}>
-        <path d="M5 20 A 15 15, 0, 0, 1, 35 20" stroke="hsl(var(--primary))" strokeWidth="2.5" fill="none"/>
-        <text x="45" y="30" fontFamily="Roboto, sans-serif" fontSize="28" fontWeight="500" fill="currentColor">Zinfolio</text>
-      </svg>
-    )
-  },
-];
-
-
 const whoWeHelp = [
     { icon: PenSquare, title: "Content Creators", description: "Convert blogs, newsletters, and notes into stunning lead magnets." },
     { icon: GraduationCap, title: "Coaches & Educators", description: "Build brand authority with professionally designed learning assets." },
@@ -351,25 +271,6 @@ export default function Home() {
                     </motion.div>
                 </div>
             </div>
-        </section>
-
-        <section className="w-full py-12 bg-gradient-to-b from-background to-secondary/10">
-          <div className="container mx-auto text-center">
-             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Featured On & Trusted By</h2>
-            <div className="relative mt-12 overflow-hidden">
-              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
-              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
-              <div className="flex w-max marquee">
-                {[...trustedByLogos, ...trustedByLogos].map(({ Logo, name }, index) => (
-                  <div key={`${name}-${index}`} className="flex-shrink-0 w-64 h-20 flex items-center justify-center px-8">
-                    <div className="text-foreground/70 transition-all duration-300 hover:text-foreground hover:scale-105">
-                      <Logo />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </section>
 
         <section id="portfolio" className="w-full py-12 md:py-24 bg-background">
