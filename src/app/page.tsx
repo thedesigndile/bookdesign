@@ -261,7 +261,7 @@ export default function Home() {
                     >
                          <div className="absolute inset-0 bg-card/10 backdrop-blur-sm rounded-2xl border border-border/20"></div>
                         <Image
-                            src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2787&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1544947950-fa07a9pr8d237f?q=80&w=2787&auto=format&fit=crop"
                             alt="Book Design Showcase"
                             width={800}
                             height={600}
@@ -732,4 +732,5 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+
+    
