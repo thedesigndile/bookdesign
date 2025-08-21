@@ -223,7 +223,6 @@ export default function AboutPage() {
                             <service.icon className="h-12 w-12 text-primary mb-4 transition-transform duration-300 group-hover:scale-110" />
                             <h3 className="text-lg font-semibold text-center font-playfair">{service.title}</h3>
                             <p className="text-sm text-muted-foreground text-center mt-1 flex-grow">{service.description}</p>
-                            <Button variant="link" className="mt-4 text-primary">Learn More</Button>
                         </Card>
                     </motion.div>
                 ))}
