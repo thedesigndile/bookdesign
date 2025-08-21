@@ -220,10 +220,10 @@ export default function AboutPage() {
                 {services.map((service) => (
                     <motion.div key={service.title} variants={itemVariants}>
                         <Card className="h-full group relative flex flex-col items-center justify-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary">
-                            
+                            <service.icon className="h-12 w-12 text-primary mb-4 transition-transform duration-300 group-hover:scale-110" />
                             <h3 className="text-lg font-semibold text-center font-playfair">{service.title}</h3>
                             <p className="text-sm text-muted-foreground text-center mt-1 flex-grow">{service.description}</p>
-                            
+                            <Button variant="link" className="mt-4 text-primary">Learn More</Button>
                         </Card>
                     </motion.div>
                 ))}
@@ -389,5 +389,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    

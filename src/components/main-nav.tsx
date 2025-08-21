@@ -21,7 +21,6 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
-  { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/packages', label: 'Packages' },
   { href: '/contact', label: 'Contact' },
@@ -122,5 +121,3 @@ export function MainNav({ }: MainNavProps) {
     </header>
   );
 }
-
-    
