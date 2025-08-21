@@ -13,16 +13,27 @@ const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
   const words = text.split(" ");
 
   const containerVariants = {
-    hover: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.08,
+        delayChildren: 0.2,
       },
     },
   };
 
   const letterVariants = {
-    initial: { y: 0 },
-    hover: { y: -4, transition: { type: 'spring', stiffness: 300, damping: 10 } },
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 200,
+      },
+    },
   };
 
   return (
@@ -30,8 +41,8 @@ const AnimatedLogo = ({ className }: AnimatedLogoProps) => {
       className={cn("flex items-center text-2xl font-semibold tracking-tight cursor-pointer font-playfair", className)}
       aria-label="Design Dile"
       variants={containerVariants}
-      initial="initial"
-      whileHover="hover"
+      initial="hidden"
+      animate="visible"
     >
       <span className="text-foreground">
         {words[0].split('').map((letter, i) => (
