@@ -245,12 +245,17 @@ export default function Home() {
                             We are a premium design agency dedicated to creating stunning, memorable book covers and interiors that capture the essence of your narrative.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-4">
-                            <Link href="#portfolio" className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-8 text-md font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                            <Button asChild size="lg" className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-10 text-lg font-semibold text-primary-foreground shadow-lg transition-all duration-300 hover:bg-primary/90 hover:scale-105 hover:shadow-primary/30 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                                <Link href="#portfolio">
                                 Explore Our Work
-                            </Link>
-                            <Link href="/contact" className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background/50 px-8 text-md font-semibold text-foreground shadow-lg transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" prefetch={false}>
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                                </Link>
+                            </Button>
+                            <Button asChild variant="outline" size="lg" className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background/50 px-10 text-lg font-semibold text-foreground shadow-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                                <Link href="/contact">
                                 Start a Project
-                            </Link>
+                                </Link>
+                            </Button>
                         </div>
                     </motion.div>
                     <motion.div
@@ -664,8 +669,13 @@ export default function Home() {
                       />
                       <div className="flex flex-col sm:flex-row gap-2 mt-2">
                         <Button type="submit" className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 active:scale-95">Submit Inquiry</Button>
-                        <Button variant="outline" className="flex-1 gap-2 group" type="button" onClick={() => form.reset()}>
-                          <Bot className="w-4 h-4 text-primary group-hover:text-primary transition-colors" /> AI Autofill
+                        <Button variant="outline" className="flex-1 gap-2 group" type="button" asChild>
+                          <a href="https://wa.me/03157504305" target="_blank" rel="noopener noreferrer">
+                            <svg className="w-4 h-4 text-primary group-hover:text-primary transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413 0 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.269.654 4.288 1.902 6.043l-1.205 4.413 4.545-1.157z" />
+                            </svg>
+                            Direct contact
+                          </a>
                         </Button>
                       </div>
                     </form>
@@ -677,59 +687,6 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="w-full bg-background border-t border-border/20 text-foreground">
-        <div className="container mx-auto py-12 px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-4 flex flex-col gap-4 items-center md:items-start">
-               <Link href="/" className="flex items-center gap-2" prefetch={false}>
-                <AnimatedLogo />
-              </Link>
-              <p className="text-sm text-muted-foreground text-center md:text-left max-w-xs">
-                A sensorial voyage through the future of book design, where every page is a masterpiece.
-              </p>
-               <div className="flex space-x-4 mt-2">
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Twitter className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Linkedin className="h-5 w-5" /></Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Instagram className="h-5 w-5" /></Link>
-                 <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 transform hover:-translate-y-1" prefetch={false}><Facebook className="h-5 w-5" /></Link>
-              </div>
-            </div>
-
-            <div className="md:col-span-2">
-              <h4 className="font-semibold text-lg mb-4">Explore</h4>
-              <div className="flex flex-col gap-3">
-                <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Home</Link>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
-                <Link href="/portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Portfolio</Link>
-                <Link href="/packages" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Packages</Link>
-              </div>
-            </div>
-
-             <div className="md:col-span-2">
-              <h4 className="font-semibold text-lg mb-4">Company</h4>
-              <div className="flex flex-col gap-3">
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>About Us</Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Blog</Link>
-                <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Careers</Link>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors" prefetch={false}>Contact</Link>
-              </div>
-            </div>
-
-            <div className="md:col-span-4">
-              <h4 className="font-semibold text-lg mb-4">Stay Updated</h4>
-              <p className="text-sm text-muted-foreground mb-4">Subscribe to our newsletter for the latest design trends and insights.</p>
-              <form className="flex gap-2">
-                <Input type="email" placeholder="Enter your email" className="flex-grow" />
-                <Button type="submit" variant="outline">Subscribe</Button>
-              </form>
-            </div>
-
-          </div>
-          <div className="border-t border-border/20 mt-8 pt-6 flex flex-col justify-center items-center">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Design Dile. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 
