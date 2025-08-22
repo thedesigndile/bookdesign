@@ -314,54 +314,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Portfolio Highlights Section */}
-        <section id="portfolio-highlights" className="w-full py-12 md:py-24 border-t border-border/20">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary font-roboto">Portfolio Highlights</h2>
-                </div>
-                <Tabs defaultValue="all" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-                        <TabsTrigger value="all">All</TabsTrigger>
-                        <TabsTrigger value="cookbooks">Cookbooks</TabsTrigger>
-                        <TabsTrigger value="ebooks">eBooks</TabsTrigger>
-                        <TabsTrigger value="print">Print Books</TabsTrigger>
-                    </TabsList>
-                    
-                    <TabsContent value="all">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {portfolioItems.map((item) => (
-                                <Card key={item.title} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
-                                    <Image src={item.image} alt={item.title} width={600} height={800} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={item.aiHint} />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
-                                        <h3 className="text-xl font-bold text-white mb-2 font-playfair">{item.title}</h3>
-                                        <p className="text-white/90 text-sm mb-4">{item.description}</p>
-                                        <Button variant="secondary" size="sm" className="self-start">View Project</Button>
-                                    </div>
-                                </Card>
-                            ))}
-                        </div>
-                    </TabsContent>
-                    {['cookbooks', 'ebooks', 'print'].map(category => (
-                        <TabsContent key={category} value={category}>
-                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {portfolioItems.filter(item => item.category.toLowerCase().includes(category.slice(0, -1))).map((item) => (
-                                    <Card key={item.title} className="group relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
-                                        <Image src={item.image} alt={item.title} width={600} height={800} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" data-ai-hint={item.aiHint} />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
-                                            <h3 className="text-xl font-bold text-white mb-2 font-playfair">{item.title}</h3>
-                                            <p className="text-white/90 text-sm mb-4">{item.description}</p>
-                                            <Button variant="secondary" size="sm" className="self-start">View Project</Button>
-                                        </div>
-                                    </Card>
-                                ))}
-                            </div>
-                        </TabsContent>
-                    ))}
-                </Tabs>
-            </div>
-        </section>
-
         {/* Social Media Section */}
         <section id="connect" className="w-full py-12 md:py-24 border-t border-border/20">
             <div className="container mx-auto px-4 md:px-6">
