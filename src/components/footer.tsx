@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
 import AnimatedLogo from "@/components/ui/animated-logo";
