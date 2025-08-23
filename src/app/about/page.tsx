@@ -6,7 +6,7 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote } from "lucide-react";
+import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote, BookText, BookImage, TabletSmartphone, FileCog, Baseline, Globe, LibraryBig, FileCheck2 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -99,14 +99,14 @@ const testimonials = [
 ];
 
 const services = [
-  { icon: LayoutTemplate, title: "Custom Interior Layouts", description: "Tailored print and eBook layouts for all genres, ensuring a beautiful reading experience." },
-  { icon: BookCopy, title: "Cover Design & Branding", description: "Genre-matched covers with cohesive series identity that captivate your target audience." },
-  { icon: FileUp, title: "eBook Conversion", description: "Optimized formatting for Kindle, EPUB, and Kobo to ensure flawless digital delivery." },
-  { icon: Printer, title: "Print-Ready Formatting", description: "Final PDFs meeting global publishing standards for a professional and polished final product." },
-  { icon: CaseSensitive, title: "Typography Consulting", description: "Expert font pairing, hierarchy, and layout strategy to enhance readability and style." },
-  { icon: Building, title: "Author Platform Support", description: "Integration of design assets with author websites and social media profiles for a consistent brand." },
-  { icon: Layers, title: "Series & Collection Design", description: "Unified layouts and covers for multi-book projects that create a strong, recognizable brand." },
-  { icon: CheckCircle, title: "Publishing Prep & File Audit", description: "Pre-flight checks to ensure your files are perfect for upload and print, avoiding costly errors." },
+  { icon: BookText, title: "Custom Interior Layouts", description: "Tailored print and eBook layouts for all genres, ensuring a beautiful reading experience." },
+  { icon: BookImage, title: "Cover Design & Branding", description: "Genre-matched covers with cohesive series identity that captivate your target audience." },
+  { icon: TabletSmartphone, title: "eBook Conversion", description: "Optimized formatting for Kindle, EPUB, and Kobo to ensure flawless digital delivery." },
+  { icon: FileCog, title: "Print-Ready Formatting", description: "Final PDFs meeting global publishing standards for a professional and polished final product." },
+  { icon: Baseline, title: "Typography Consulting", description: "Expert font pairing, hierarchy, and layout strategy to enhance readability and style." },
+  { icon: Globe, title: "Author Platform Support", description: "Integration of design assets with author websites and social media profiles for a consistent brand." },
+  { icon: LibraryBig, title: "Series & Collection Design", description: "Unified layouts and covers for multi-book projects that create a strong, recognizable brand." },
+  { icon: FileCheck2, title: "Publishing Prep & File Audit", description: "Pre-flight checks to ensure your files are perfect for upload and print, avoiding costly errors." },
 ];
 
 const platforms = [
@@ -340,3 +340,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
