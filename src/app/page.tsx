@@ -449,12 +449,12 @@ export default function Home() {
                     </svg>
                 </div>
                 <Image
-                  src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2940&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2940&auto=format&fit=crop"
                   alt="Book design editor mockup"
                   width={600}
                   height={600}
                   className="rounded-lg shadow-2xl object-cover w-full h-auto relative"
-                  data-ai-hint="design editor mockup"
+                  data-ai-hint="creative work"
                 />
               </motion.div>
               <div className="flex flex-col gap-6">
@@ -691,4 +691,5 @@ export default function Home() {
   );
 
     
+
 
