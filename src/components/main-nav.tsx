@@ -3,7 +3,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, Info, Briefcase, Package, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -16,14 +17,15 @@ import { usePathname } from 'next/navigation';
 interface NavLink {
   href: string;
   label: string;
+  icon: React.ElementType;
 }
 
 const navLinks: NavLink[] = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/packages', label: 'Packages' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/about', label: 'About Us', icon: Info },
+  { href: '/portfolio', label: 'Portfolio', icon: Briefcase },
+  { href: '/packages', label: 'Packages', icon: Package },
+  { href: '/contact', label: 'Contact', icon: Mail },
 ];
 
 interface MainNavProps {
@@ -34,6 +36,18 @@ export function MainNav({ }: MainNavProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, loading, signIn, signOut } = useAuth();
   const pathname = usePathname();
+
+  const iconVariants = {
+    hover: { 
+      scale: 1.2,
+      rotate: [0, -10, 10, -10, 0],
+      transition: { duration: 0.4, ease: "easeInOut" }
+    },
+    initial: {
+      scale: 1,
+      rotate: 0
+    }
+  };
 
   const renderNavLinks = (isMobile = false) => (
     <nav className={cn(
@@ -49,7 +63,7 @@ export function MainNav({ }: MainNavProps) {
               href={finalHref}
               onClick={() => isMobile && setIsMobileMenuOpen(false)}
               className={cn(
-                "text-sm font-medium rounded-md px-3 py-2 transition-colors hover:bg-primary/80 hover:text-primary-foreground",
+                "group text-sm font-medium rounded-md px-3 py-2 transition-colors flex items-center gap-2 hover:bg-primary/80 hover:text-primary-foreground",
                 isActive
                   ? 'bg-primary/10 text-primary'
                   : 'text-muted-foreground',
@@ -57,7 +71,14 @@ export function MainNav({ }: MainNavProps) {
               )}
               prefetch={false}
             >
-              {link.label}
+              <motion.div
+                variants={iconVariants}
+                whileHover="hover"
+                initial="initial"
+              >
+                <link.icon className="h-4 w-4" />
+              </motion.div>
+              <span>{link.label}</span>
             </Link>
         )
       })}
