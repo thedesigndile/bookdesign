@@ -160,12 +160,12 @@ export default function AboutPage() {
               <div className="md:col-span-5 relative flex justify-center">
                 <div className="relative w-[300px] h-[400px] md:w-full md:h-[500px]">
                   <Image
-                    src="https://placehold.co/600x800.png"
-                    alt="Portrait of Design Dile"
+                    src="https://images.unsplash.com/photo-1561069934-eee225952461?q=80&w=1974&auto=format&fit=crop"
+                    alt="Portrait of Design Dile Founder"
                     width={600}
                     height={800}
                     className="object-cover rounded-lg shadow-2xl w-full h-full filter grayscale"
-                    data-ai-hint="creative portrait"
+                    data-ai-hint="male creative portrait"
                   />
                    <div className="absolute inset-0 rounded-lg bg-primary/20 mix-blend-multiply pointer-events-none"></div>
                 </div>
