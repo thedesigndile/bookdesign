@@ -27,6 +27,7 @@ import PortfolioGallery, { type PortfolioItem, type GalleryImage } from "@/compo
 import { getPortfolioItems } from "@/services/portfolioService";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Chatbot } from "@/components/chatbot";
+import { TrustedBy } from "@/components/ui/trusted-by";
 
 const services = [
   {
@@ -278,6 +279,8 @@ export default function Home() {
             </div>
         </section>
 
+        <TrustedBy />
+
         <section id="portfolio" className="w-full py-12 md:py-24 bg-background">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -449,12 +452,12 @@ export default function Home() {
                     </svg>
                 </div>
                 <Image
-                  src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2940&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1620641788421-7a1c363ea42a?q=80&w=2874&auto=format&fit=crop"
                   alt="Book design editor mockup"
                   width={600}
                   height={600}
                   className="rounded-lg shadow-2xl object-cover w-full h-auto relative"
-                  data-ai-hint="creative work"
+                  data-ai-hint="creative work abstract"
                 />
               </motion.div>
               <div className="flex flex-col gap-6">
@@ -689,7 +692,3 @@ export default function Home() {
 
     </div>
   );
-
-    
-
-

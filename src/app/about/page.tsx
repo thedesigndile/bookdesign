@@ -6,7 +6,7 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote, BookText, BookImage, TabletSmartphone, FileCog, Baseline, Globe, LibraryBig, FileCheck2 } from "lucide-react";
+import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote, BookText, BookImage, TabletSmartphone, FileCog, Baseline, Globe, LibraryBig, FileCheck2, DribbbleIcon, MessageSquare } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -37,14 +37,13 @@ const portfolioItems = [
 ];
 
 const socialPlatforms = [
-  { name: "Facebook", tagline: "Stay updated with our latest book design projects.", icon: Facebook, href: "#" },
-  { name: "Instagram", tagline: "See behind-the-scenes of our creative process.", icon: Instagram, href: "#" },
-  { name: "LinkedIn", tagline: "Explore our professional portfolio and collaborations.", icon: Linkedin, href: "#" },
-  { name: "Behance", tagline: "View our curated design showcases.", icon: Briefcase, href: "#" }, // Placeholder
-  { name: "Pinterest", tagline: "Discover our book cover inspirations and moodboards.", icon: Instagram, href: "#" }, // Placeholder
-  { name: "Upwork", tagline: "Hire us for professional book design services.", icon: Briefcase, href: "#" },
-  { name: "Fiverr", tagline: "Get custom book design solutions at flexible packages.", icon: Store, href: "#" },
-  { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: Palette, href: "#" }, // Placeholder
+  { name: "Instagram", tagline: "See behind-the-scenes of our creative process.", icon: Instagram, href: "https://www.instagram.com/tanzeel_designz/" },
+  { name: "Pinterest", tagline: "Discover our book cover inspirations and moodboards.", icon: FaPinterest, href: "https://www.pinterest.com/tanzeel_designz/" },
+  { name: "LinkedIn", tagline: "Explore our professional portfolio and collaborations.", icon: Linkedin, href: "https://pk.linkedin.com/in/tanzeeldesignz" },
+  { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: DribbbleIcon, href: "https://dribbble.com/thedesigndile/" },
+  { name: "Behance", tagline: "View our curated design showcases.", icon: Briefcase, href: "https://www.behance.net/tanzeel_designz" },
+  { name: "Threads", tagline: "Join the conversation on our latest thoughts.", icon: MessageSquare, href: "https://www.threads.com/@tanzeel_designz" },
+  { name: "X (Twitter)", tagline: "Stay updated with our latest news and insights.", icon: Twitter, href: "https://x.com/thedesigndile" },
 ];
 
 const testimonials = [
@@ -114,6 +113,11 @@ const platforms = [
   { image: "https://placehold.co/128x64.png", aiHint: "lulu logo", name: "Lulu" },
   { image: "https://placehold.co/128x64.png", aiHint: "ingramspark logo", name: "IngramSpark" },
 ];
+
+// A placeholder for the Pinterest icon
+const FaPinterest = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M12.017 1.5c-5.932 0-8.527 4.144-8.527 8.322 0 3.422 2.185 6.431 5.163 7.424.316.059.431-.137.431-.304 0-.15-.006-1.077-.009-1.874-1.995.433-2.417-1.12-2.417-1.12-.288-.731-.703-.926-.703-.926-.576-.393.044-.385.044-.385.637.045.973.654.973.654.567.971 1.487.69 1.85.527.058-.41.222-.69.404-.848-1.411-.16-2.894-.705-2.894-3.142 0-.694.248-1.261.654-1.706-.065-.161-.284-.808.062-1.682 0 0 .533-.171 1.745.651.507-.141 1.052-.212 1.594-.214.542.002 1.087.073 1.594.214 1.212-.822 1.745-.651 1.745-.651.346.874.127 1.521.062 1.682.407.445.653 1.012.653 1.706 0 2.446-1.484 2.981-2.898 3.137.228.196.43.583.43 1.176 0 .848-.008 1.531-.008 1.738 0 .168.114.364.432.303C18.358 16.255 20.54 13.24 20.54 9.822c0-4.178-2.595-8.322-8.523-8.322z"></path></svg>
+);
 
 
 export default function AboutPage() {

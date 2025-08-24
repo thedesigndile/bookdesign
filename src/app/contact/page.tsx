@@ -75,7 +75,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                         <h3 className="font-semibold">Email Us</h3>
-                        <p className="text-muted-foreground">hello@designdile.com</p>
+                        <p className="text-muted-foreground">contact@designdile.com</p>
                     </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -84,7 +84,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                         <h3 className="font-semibold">Call Us</h3>
-                        <p className="text-muted-foreground">(123) 456-7890</p>
+                        <p className="text-muted-foreground">03157504305</p>
                     </div>
                 </div>
             </div>
