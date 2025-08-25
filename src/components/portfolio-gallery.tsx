@@ -19,6 +19,7 @@ export interface PortfolioItem {
     image: string;
     link: string;
     aiHint: string;
+    category?: string;
     galleryImages?: GalleryImage[];
 }
 

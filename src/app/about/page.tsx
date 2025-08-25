@@ -6,25 +6,69 @@ import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
 import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote, BookText, BookImage, TabletSmartphone, FileCog, Baseline, Globe, LibraryBig, FileCheck2, DribbbleIcon, MessageSquare } from "lucide-react";
+=======
+import { ArrowRight, Briefcase, Award, Users, Facebook, Instagram, Linkedin, Twitter, Star, Store, Palette, Layers, LayoutTemplate, BookCopy, FileUp, Printer, CaseSensitive, Building, CheckCircle, Quote, MessageCircle, Mail } from "lucide-react";
+>>>>>>> origin/master
 import { motion, useReducedMotion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import React from "react";
+import AnimatedLogo from "@/components/ui/animated-logo";
+import { AnimatedIconCard, GlobalIcon, BadgeIcon } from "@/components/ui/global-icon";
 
 const tools = [
-  { image: "https://placehold.co/64x64.png", aiHint: "adobe indesign logo", name: "Adobe InDesign", description: "Professional book layout design." },
-  { image: "https://placehold.co/64x64.png", aiHint: "adobe photoshop logo", name: "Adobe Photoshop", description: "Advanced image editing." },
-  { image: "https://placehold.co/64x64.png", aiHint: "adobe illustrator logo", name: "Adobe Illustrator", description: "Vector graphics and illustrations." },
-  { image: "https://placehold.co/64x64.png", aiHint: "canva logo", name: "Canva", description: "Quick creative design layouts." },
-  { image: "https://placehold.co/64x64.png", aiHint: "microsoft word logo", name: "Microsoft Word", description: "Manuscript preparation & editing." },
-  { image: "https://placehold.co/64x64.png", aiHint: "microsoft excel logo", name: "Microsoft Excel", description: "Data organization & recipe indexing." },
-  { image: "https://placehold.co/64x64.png", aiHint: "microsoft powerpoint logo", name: "Microsoft PowerPoint", description: "Visual presentations & pitch decks." },
-  { image: "https://placehold.co/64x64.png", aiHint: "google docs logo", name: "Google Docs", description: "Real-time content collaboration." },
-  { image: "https://placehold.co/64x64.png", aiHint: "affinity designer logo", name: "Affinity Designer", description: "Vector editing and UI design." },
-  { image: "https://placehold.co/64x64.png", aiHint: "coreldraw logo", name: "CorelDRAW", description: "Professional vector illustration." },
+  { 
+    image: "/images/icons/indesign_5611049.png", 
+    aiHint: "adobe indesign logo", 
+    name: "Adobe InDesign", 
+    description: "Professional book layout design." 
+  },
+  { 
+    image: "/images/icons/photoshop-lightroom.png", 
+    aiHint: "adobe photoshop logo", 
+    name: "Adobe Photoshop", 
+    description: "Advanced image editing." 
+  },
+  { 
+    image: "/images/icons/logo.png", 
+    aiHint: "adobe illustrator logo", 
+    name: "Adobe Illustrator", 
+    description: "Vector graphics and illustrations." 
+  },
+  { 
+    image: "/images/icons/canva.png", 
+    aiHint: "canva logo", 
+    name: "Canva", 
+    description: "Quick creative design layouts." 
+  },
+  { 
+    image: "/images/icons/Microsoft_Office_Word_Logo.png", 
+    aiHint: "microsoft word logo", 
+    name: "Microsoft Word", 
+    description: "Manuscript preparation & editing." 
+  },
+  { 
+    image: "/images/icons/logo.png", 
+    aiHint: "microsoft excel logo", 
+    name: "Microsoft Excel", 
+    description: "Data organization & recipe indexing." 
+  },
+  { 
+    image: "/images/icons/Microsoft_Office_PowerPoint_Logo.png", 
+    aiHint: "microsoft powerpoint logo", 
+    name: "Microsoft PowerPoint", 
+    description: "Visual presentations & pitch decks." 
+  },
+  { 
+    image: "/images/icons/acrobat_5968377.png", 
+    aiHint: "adobe acrobat logo", 
+    name: "Adobe Acrobat", 
+    description: "PDF creation and editing." 
+  },
 ];
 
 const portfolioItems = [
@@ -37,6 +81,7 @@ const portfolioItems = [
 ];
 
 const socialPlatforms = [
+<<<<<<< HEAD
   { name: "Instagram", tagline: "See behind-the-scenes of our creative process.", icon: Instagram, href: "https://www.instagram.com/tanzeel_designz/" },
   { name: "Pinterest", tagline: "Discover our book cover inspirations and moodboards.", icon: FaPinterest, href: "https://www.pinterest.com/tanzeel_designz/" },
   { name: "LinkedIn", tagline: "Explore our professional portfolio and collaborations.", icon: Linkedin, href: "https://pk.linkedin.com/in/tanzeeldesignz" },
@@ -44,6 +89,17 @@ const socialPlatforms = [
   { name: "Behance", tagline: "View our curated design showcases.", icon: Briefcase, href: "https://www.behance.net/tanzeel_designz" },
   { name: "Threads", tagline: "Join the conversation on our latest thoughts.", icon: MessageSquare, href: "https://www.threads.com/@tanzeel_designz" },
   { name: "X (Twitter)", tagline: "Stay updated with our latest news and insights.", icon: Twitter, href: "https://x.com/thedesigndile" },
+=======
+  { name: "WhatsApp", tagline: "Get instant support and quick quotes for your book design project.", icon: MessageCircle, href: "https://wa.me/923157504305" },
+  { name: "Facebook", tagline: "Stay updated with our latest book design projects.", icon: Facebook, href: "#" },
+  { name: "Instagram", tagline: "See behind-the-scenes of our creative process.", icon: Instagram, href: "#" },
+  { name: "LinkedIn", tagline: "Explore our professional portfolio and collaborations.", icon: Linkedin, href: "#" },
+  { name: "Behance", tagline: "View our curated design showcases.", icon: Briefcase, href: "#" },
+  { name: "Pinterest", tagline: "Discover our book cover inspirations and moodboards.", icon: Instagram, href: "#" },
+  { name: "Upwork", tagline: "Hire us for professional book design services.", icon: Briefcase, href: "#" },
+  { name: "Fiverr", tagline: "Get custom book design solutions at flexible packages.", icon: Store, href: "#" },
+  { name: "Dribbble", tagline: "See our creative shots and design experiments.", icon: Palette, href: "#" },
+>>>>>>> origin/master
 ];
 
 const testimonials = [
@@ -97,6 +153,7 @@ const testimonials = [
   },
 ];
 
+<<<<<<< HEAD
 const services = [
   { icon: BookText, title: "Custom Interior Layouts", description: "Tailored print and eBook layouts for all genres, ensuring a beautiful reading experience." },
   { icon: BookImage, title: "Cover Design & Branding", description: "Genre-matched covers with cohesive series identity that captivate your target audience." },
@@ -119,6 +176,8 @@ const FaPinterest = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M12.017 1.5c-5.932 0-8.527 4.144-8.527 8.322 0 3.422 2.185 6.431 5.163 7.424.316.059.431-.137.431-.304 0-.15-.006-1.077-.009-1.874-1.995.433-2.417-1.12-2.417-1.12-.288-.731-.703-.926-.703-.926-.576-.393.044-.385.044-.385.637.045.973.654.973.654.567.971 1.487.69 1.85.527.058-.41.222-.69.404-.848-1.411-.16-2.894-.705-2.894-3.142 0-.694.248-1.261.654-1.706-.065-.161-.284-.808.062-1.682 0 0 .533-.171 1.745.651.507-.141 1.052-.212 1.594-.214.542.002 1.087.073 1.594.214 1.212-.822 1.745-.651 1.745-.651.346.874.127 1.521.062 1.682.407.445.653 1.012.653 1.706 0 2.446-1.484 2.981-2.898 3.137.228.196.43.583.43 1.176 0 .848-.008 1.531-.008 1.738 0 .168.114.364.432.303C18.358 16.255 20.54 13.24 20.54 9.822c0-4.178-2.595-8.322-8.523-8.322z"></path></svg>
 );
 
+=======
+>>>>>>> origin/master
 
 export default function AboutPage() {
   const reduceMotion = useReducedMotion();
@@ -191,7 +250,7 @@ export default function AboutPage() {
 
                 <blockquote className="border-l-4 border-primary pl-6 py-2 my-4">
                   <p className="text-xl italic text-foreground font-playfair">
-                    “Design is not decoration — it’s cognitive architecture.”
+                    "Design is not decoration — it's cognitive architecture."
                   </p>
                 </blockquote>
 
@@ -207,12 +266,16 @@ export default function AboutPage() {
             </div>
         </section>
 
-        {/* Book Design Services Section */}
-        <section id="services" className="w-full py-12 md:py-24 bg-secondary/20">
+        {/* Tools & Software Section */}
+        <section id="tools" className="w-full py-12 md:py-24 bg-background">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+<<<<<<< HEAD
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary font-roboto">Book Design Services</h2>
               <p className="max-w-[700px] text-muted-foreground">Comprehensive design solutions to bring your book to life, from cover to cover.</p>
+=======
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white font-roboto">Tools &amp; Software We Use</h2>
+>>>>>>> origin/master
             </div>
             <motion.div 
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -221,16 +284,30 @@ export default function AboutPage() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
             >
-                {services.map((service) => (
-                    <motion.div key={service.title} variants={itemVariants}>
+                {tools.map((tool, index) => (
+                    <motion.div key={tool.name} variants={itemVariants}>
                         <Card className="h-full group relative flex flex-col items-center justify-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary">
+<<<<<<< HEAD
                             <service.icon className="h-12 w-12 text-primary mb-4 transition-transform duration-300 group-hover:scale-110" />
                             <h3 className="text-lg font-semibold text-center font-playfair">{service.title}</h3>
                             <p className="text-sm text-muted-foreground text-center mt-1 flex-grow">{service.description}</p>
+=======
+                            <Image 
+                                src={tool.image} 
+                                alt={`${tool.name} logo`} 
+                                width={64} 
+                                height={64} 
+                                className="h-12 w-12 mb-4 transition-transform duration-300 group-hover:scale-110" 
+                                data-ai-hint={tool.aiHint} 
+                            />
+                            <h3 className="text-lg font-semibold text-center font-playfair">{tool.name}</h3>
+                            <p className="text-sm text-muted-foreground text-center mt-1 flex-grow">{tool.description}</p>
+>>>>>>> origin/master
                         </Card>
                     </motion.div>
                 ))}
             </motion.div>
+<<<<<<< HEAD
              <div className="mt-16 text-center">
                 <h3 className="text-2xl font-bold tracking-tight mb-8">Supported Publishing Platforms</h3>
                 <div className="flex justify-center items-center gap-12">
@@ -260,6 +337,8 @@ export default function AboutPage() {
                 </Card>
               ))}
             </div>
+=======
+>>>>>>> origin/master
           </div>
         </section>
         
@@ -267,7 +346,11 @@ export default function AboutPage() {
         <section id="testimonials" className="w-full py-12 md:py-24 bg-secondary/20 border-y border-border/20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+<<<<<<< HEAD
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary font-roboto">What Our Clients Say</h2>
+=======
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white font-roboto">What Our Clients Say</h2>
+>>>>>>> origin/master
               <p className="max-w-[700px] text-muted-foreground">Hear from authors and publishers who have trusted us with their vision.</p>
             </div>
             <Carousel
@@ -318,29 +401,136 @@ export default function AboutPage() {
           </div>
         </section>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
         {/* Social Media Section */}
         <section id="connect" className="w-full py-12 md:py-24 border-t border-border/20">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+<<<<<<< HEAD
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary font-roboto">Connect With Us</h2>
+=======
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white font-roboto">Connect With Us</h2>
+>>>>>>> origin/master
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {socialPlatforms.map((platform) => (
-                        <a key={platform.name} href={platform.href} target="_blank" rel="noopener noreferrer" className="group block text-center">
-                             <Card className="relative overflow-hidden group border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 h-full p-6 flex flex-col items-center justify-center">
-                                <div className="rounded-full border-2 border-primary/20 p-4 bg-background group-hover:border-primary transition-all group-hover:scale-110 group-hover:-translate-y-1">
-                                    <platform.icon className="h-10 w-10 text-primary transition-transform duration-300 group-hover:scale-125" />
-                                </div>
-                                <h3 className="text-xl font-bold mt-4 font-playfair">{platform.name}</h3>
-                                <p className="text-muted-foreground mt-2 text-sm">{platform.tagline}</p>
-                            </Card>
-                        </a>
+                <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
+                    {socialPlatforms.map((platform, index) => (
+                        <motion.div key={platform.name} variants={itemVariants}>
+                            <a href={platform.href} target="_blank" rel="noopener noreferrer" className="group block text-center">
+                                <Card className="h-full group relative flex flex-col items-center justify-center p-6 bg-card/80 border border-border/50 rounded-lg shadow-sm transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:border-primary">
+                                    <platform.icon className="h-12 w-12 text-primary mb-4 transition-transform duration-300 group-hover:scale-110" />
+                                    <h3 className="text-lg font-semibold text-center font-playfair">{platform.name}</h3>
+                                    <p className="text-sm text-muted-foreground text-center mt-1 flex-grow">{platform.tagline}</p>
+                                </Card>
+                            </a>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
 
       </main>
+
+      {/* Footer Section */}
+      <footer className="w-full bg-background/80 backdrop-blur-sm border-t border-border/20">
+        <div className="container mx-auto px-4 md:px-6 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-2 mb-4">
+                <AnimatedLogo />
+              </div>
+              <p className="text-muted-foreground max-w-md mb-4">
+                Transforming books through innovative design and creative systems. We empower authors with elegant, repeatable layouts that elevate every page.
+              </p>
+                             <div className="flex space-x-4">
+                 {socialPlatforms.slice(0, 4).map((platform) => (
+                   <a
+                     key={platform.name}
+                     href={platform.href}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="text-muted-foreground hover:text-primary transition-colors group"
+                   >
+                     <platform.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                   </a>
+                 ))}
+               </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <MessageCircle className="h-4 w-4 text-primary" />
+                  <span className="text-muted-foreground">WhatsApp: 0315 750 43 05</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-primary" />
+                  <span className="text-muted-foreground">Contact@designdile</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-border/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-muted-foreground">
+              © 2024 Design Dile. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

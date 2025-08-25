@@ -13,6 +13,23 @@ import { cn } from '@/lib/utils';
 import AnimatedLogo from './ui/animated-logo';
 import { useAuth } from '@/hooks/use-auth';
 import { usePathname } from 'next/navigation';
+<<<<<<< Current (Your changes)
+<<<<<<< Current (Your changes)
+<<<<<<< Current (Your changes)
+<<<<<<< Current (Your changes)
+import { ThemeToggle } from './ui/theme-toggle';
+=======
+import { ThemeToggle } from '@/components/theme-toggle';
+>>>>>>> Incoming (Background Agent changes)
+=======
+import { ThemeToggle } from '@/components/theme-toggle';
+>>>>>>> Incoming (Background Agent changes)
+=======
+import { ThemeToggle } from '@/components/theme-toggle';
+>>>>>>> Incoming (Background Agent changes)
+=======
+import { ThemeToggle } from '@/components/theme-toggle';
+>>>>>>> Incoming (Background Agent changes)
 
 interface NavLink {
   href: string;
@@ -21,11 +38,21 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
+<<<<<<< HEAD
   { href: '/', label: 'Home', icon: Home },
   { href: '/about', label: 'About Us', icon: Info },
   { href: '/portfolio', label: 'Portfolio', icon: Briefcase },
   { href: '/packages', label: 'Packages', icon: Package },
   { href: '/contact', label: 'Contact', icon: Mail },
+=======
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+
+  { href: '/packages', label: 'Packages' },
+  { href: '/about', label: 'About Us' },
+  { href: '/contact', label: 'Contact' },
+>>>>>>> origin/master
 ];
 
 interface MainNavProps {
@@ -96,7 +123,7 @@ export function MainNav({ }: MainNavProps) {
           Logout
         </Button>
       ) : (
-        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Login</Button>
+        <Button onClick={signIn} className={cn("bg-primary text-primary-foreground hover:bg-primary/90", isMobile && 'w-full')}>Register</Button>
       )}
     </div>
   );
@@ -109,6 +136,7 @@ export function MainNav({ }: MainNavProps) {
         </Link>
         <div className="hidden md:flex items-center gap-4">
             {renderNavLinks()}
+            <ThemeToggle />
             {renderAuthButtons()}
         </div>
         
@@ -126,12 +154,18 @@ export function MainNav({ }: MainNavProps) {
                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                       <AnimatedLogo />
                    </Link>
-                   <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
-                      <X className="h-6 w-6" />
-                   </Button>
+                   <div className="flex items-center gap-2">
+                     <ThemeToggle />
+                     <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                        <X className="h-6 w-6" />
+                     </Button>
+                   </div>
                 </div>
                 <div className="flex-grow flex flex-col justify-between p-4">
                   {renderNavLinks(true)}
+                  <div className="flex items-center justify-center py-4">
+                    <ThemeToggle />
+                  </div>
                   {renderAuthButtons(true)}
                 </div>
                </div>
