@@ -1,3 +1,5 @@
+blue navy color book design portfolio 1st 
+
 # Firebase Studio
 
 This is a NextJS starter in Firebase Studio.
