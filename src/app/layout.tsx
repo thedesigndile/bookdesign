@@ -12,7 +12,7 @@ const nunitoSans = Nunito_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Design Dile',
+  title: 'Design Dile (Preview)',
   description: 'A premium design agency.',
 };
 
